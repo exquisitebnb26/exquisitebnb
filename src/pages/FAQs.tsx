@@ -86,9 +86,20 @@ const FAQs = () => {
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card border border-border rounded-sm px-6 data-[state=open]:border-gold/30"
+                className="bg-card border border-border rounded-sm px-6
+                  transition-all duration-500 ease-out
+                  hover:border-gold
+                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+                  hover:-translate-y-1
+                  data-[state=open]:border-gold"
               >
-                <AccordionTrigger className="text-left font-serif text-cream hover:text-gold hover:no-underline py-6">
+                <AccordionTrigger
+                  className="text-left font-serif text-cream py-6
+                    transition-all duration-300
+                    hover:text-gold
+                    hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]
+                    hover:no-underline"
+                >
                   {faq.question}
                 </AccordionTrigger>
                 <AccordionContent className="text-cream-muted leading-relaxed pb-6">
@@ -108,7 +119,10 @@ const FAQs = () => {
           </p>
           <a
             href="/contact"
-            className="text-gold hover:text-gold-muted transition-colors font-serif text-lg"
+            className="text-gold font-serif text-lg
+              transition-all duration-300
+              hover:text-gold-muted
+              hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]"
           >
             Contact Us →
           </a>

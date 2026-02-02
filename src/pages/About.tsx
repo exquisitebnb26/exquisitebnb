@@ -109,7 +109,10 @@ const About = () => {
             ].map((value, index) => (
               <div
                 key={index}
-                className="p-8 bg-card border border-border rounded-sm hover:border-gold/30 transition-colors duration-300"
+                className="p-8 bg-card border border-border rounded-sm
+                  transition-all duration-500 ease-out
+                  hover:border-gold
+                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]"
               >
                 <value.icon className="w-8 h-8 text-gold mb-6" />
                 <h3 className="text-xl font-serif text-cream mb-3">

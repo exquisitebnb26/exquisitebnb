@@ -121,8 +121,8 @@ const Contact = () => {
 
       {/* Contact Form */}
       <section className="py-16 lg:py-24 bg-charcoal-light">
-        <div className="container mx-auto px-6 lg:px-12 max-w-xl">
-          <div className="p-8 lg:p-12 bg-card border border-border rounded-sm">
+        <div className="container mx-auto px-6 lg:px-12 max-w-xl luxury-text-glow">
+          <div className="p-8 lg:p-12 bg-card">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}

@@ -117,7 +117,11 @@ const Index = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group p-8 bg-card border border-border rounded-sm hover:border-gold/30 transition-all duration-500"
+                className="group p-8 bg-card border border-border rounded-sm
+                  transition-all duration-500 ease-out
+                  hover:border-gold
+                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+                  hover:-translate-y-1"
               >
                 <feature.icon className="w-8 h-8 text-gold mb-6 group-hover:scale-110 transition-transform duration-300" />
                 <h3 className="text-xl font-serif text-cream mb-3">
@@ -165,9 +169,13 @@ const Index = () => {
               <Link
                 key={index}
                 to="/properties"
-                className="group block overflow-hidden rounded-sm"
+                className="group block overflow-hidden rounded-sm
+    transition-all duration-500 ease-out
+    hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+    hover:-translate-y-1"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden border border-border
+  group-hover:border-gold transition-colors duration-500">
                   <img
                     src={property.image}
                     alt={property.name}
@@ -225,7 +233,11 @@ const Index = () => {
             ].map((review, index) => (
               <div
                 key={index}
-                className="p-8 bg-card border border-border rounded-sm"
+                className="p-8 bg-card border border-border rounded-sm
+                  transition-all duration-500 ease-out
+                  hover:border-gold
+                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+                  hover:-translate-y-1"
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(review.rating)].map((_, i) => (

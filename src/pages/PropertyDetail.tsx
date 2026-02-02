@@ -211,7 +211,11 @@ const PropertyDetail = () => {
                   </span>
                 </div>
 
-                <h1 className="text-3xl md:text-4xl font-serif text-cream mb-4">
+                <h1
+                  className="text-3xl md:text-4xl font-serif text-cream mb-4
+                    drop-shadow-[0_0_12px_rgba(212,175,55,0.55)]
+                    animate-[pulse_3s_ease-in-out_infinite]"
+                >
                   {property.name}
                 </h1>
 
@@ -243,7 +247,7 @@ const PropertyDetail = () => {
                   {property.amenities.map((amenity: any, index: number) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 p-4 bg-card border border-border rounded-sm"
+                      className="flex items-center gap-3 p-4 bg-card border border-border rounded-sm luxury-text-glow"
                     >
                       <amenity.icon className="w-5 h-5 text-gold" />
                       <span className="text-cream text-sm">{amenity.name}</span>
@@ -261,7 +265,7 @@ const PropertyDetail = () => {
                   {property.reviews.map((review: any, index: number) => (
                     <div
                       key={index}
-                      className="p-6 bg-card border border-border rounded-sm"
+                      className="p-6 bg-card border border-border rounded-sm luxury-text-glow"
                     >
                       <div className="flex items-center gap-1 mb-3">
                         {[...Array(review.rating)].map((_, i) => (
@@ -316,6 +320,7 @@ const PropertyDetail = () => {
                   <p className="text-cream-muted text-sm text-center mb-4">
                     Book securely on:
                   </p>
+                  <span className="text-cream/50 font-medium luxury-text-glow">
                   <a
                     href={property.airbnbUrl}
                     target="_blank"
@@ -325,6 +330,8 @@ const PropertyDetail = () => {
                     <span className="text-cream text-sm">Airbnb</span>
                     <ExternalLink className="w-4 h-4 text-cream-muted" />
                   </a>
+                  </span>
+                  <span className="text-cream/50 font-medium luxury-text-glow">
                   <a
                     href={property.vrboUrl}
                     target="_blank"
@@ -334,6 +341,8 @@ const PropertyDetail = () => {
                     <span className="text-cream text-sm">VRBO</span>
                     <ExternalLink className="w-4 h-4 text-cream-muted" />
                   </a>
+                  </span>
+                  <span className="text-cream/50 font-medium luxury-text-glow">
                   <a
                     href={property.bookingUrl}
                     target="_blank"
@@ -343,6 +352,7 @@ const PropertyDetail = () => {
                     <span className="text-cream text-sm">Booking.com</span>
                     <ExternalLink className="w-4 h-4 text-cream-muted" />
                   </a>
+                  </span>
                 </div>
 
                 <p className="text-cream-muted text-xs text-center">
