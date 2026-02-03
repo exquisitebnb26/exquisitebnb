@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   Star,
@@ -11,6 +11,7 @@ import {
   Coffee,
   UtensilsCrossed,
   ChevronLeft,
+  ChevronRight,
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -149,6 +150,8 @@ const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [showCalendar, setShowCalendar] = useState(false);
   const [date, setDate] = useState<Date | undefined>(undefined);
+  const [activeImage, setActiveImage] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   const property = propertiesData[id || "gilded-loft"];
 
@@ -161,6 +164,48 @@ const PropertyDetail = () => {
       </Layout>
     );
   }
+
+  // Luxury image slider auto-slide (optional, luxury pacing) with transition lock
+  useEffect(() => {
+    if (isTransitioning) return;
+
+    const timer = setInterval(() => {
+      setIsTransitioning(true);
+      setActiveImage((prev) => (prev + 1) % property.images.length);
+
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 1400);
+    }, 6000);
+
+    return () => clearInterval(timer);
+  }, [property.images.length, isTransitioning]);
+
+  const handlePrevImage = () => {
+    if (isTransitioning) return;
+
+    setIsTransitioning(true);
+    setActiveImage((prev) =>
+      prev === 0 ? property.images.length - 1 : prev - 1
+    );
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 1400);
+  };
+
+  const handleNextImage = () => {
+    if (isTransitioning) return;
+
+    setIsTransitioning(true);
+    setActiveImage((prev) =>
+      prev === property.images.length - 1 ? 0 : prev + 1
+    );
+
+    setTimeout(() => {
+      setIsTransitioning(false);
+    }, 1400);
+  };
 
   return (
     <Layout>
@@ -177,16 +222,73 @@ const PropertyDetail = () => {
         </div>
       </div>
 
-      {/* Hero Image */}
+      {/* Luxury Hero Image Slider */}
       <section className="bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 py-8">
-          <div className="relative aspect-[21/9] rounded-sm overflow-hidden">
-            <img
-              src={property.images[0]}
-              alt={property.name}
-              className="w-full h-full object-cover"
-            />
+          <div className="relative aspect-[21/9] rounded-sm overflow-hidden group">
+            {property.images.map((img, index) => (
+              <img
+                key={index}
+                src={img}
+                alt={`${property.name} image ${index + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-[1400ms] ease-out
+                  ${index === activeImage
+                    ? "opacity-100 scale-105"
+                    : "opacity-0 scale-100"}
+                `}
+              />
+            ))}
+            {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+            {/* Left Arrow */}
+            <button
+              onClick={handlePrevImage}
+              aria-label="Previous image"
+              disabled={isTransitioning}
+              className="absolute left-4 top-1/2 -translate-y-1/2
+                w-10 h-10 flex items-center justify-center
+                rounded-full bg-charcoal/60 backdrop-blur-sm
+                border border-gold/30 text-gold
+                hover:bg-charcoal/80 hover:border-gold
+                transition-all duration-300
+                opacity-0 group-hover:opacity-100
+                disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            {/* Right Arrow */}
+            <button
+              onClick={handleNextImage}
+              aria-label="Next image"
+              disabled={isTransitioning}
+              className="absolute right-4 top-1/2 -translate-y-1/2
+                w-10 h-10 flex items-center justify-center
+                rounded-full bg-charcoal/60 backdrop-blur-sm
+                border border-gold/30 text-gold
+                hover:bg-charcoal/80 hover:border-gold
+                transition-all duration-300
+                opacity-0 group-hover:opacity-100
+                disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+            {/* Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+              {property.images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveImage(index)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all duration-500
+                    ${index === activeImage
+                      ? "bg-gold scale-125 shadow-[0_0_12px_rgba(212,175,55,0.8)]"
+                      : "bg-cream/40 hover:bg-cream/70"}
+                  `}
+                  aria-label={`Go to image ${index + 1}`}
+                  type="button"
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>

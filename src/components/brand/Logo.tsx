@@ -11,7 +11,7 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
     size === "sm" ? "w-8 h-8" : size === "lg" ? "w-12 h-12" : "w-10 h-10";
 
   const fullIconSize =
-    size === "sm" ? "w-7 h-7" : size === "lg" ? "w-11 h-11" : "w-9 h-9";
+    size === "sm" ? "w-7 h-7" : size === "lg" ? "w-13 h-13" : "w-11 h-11";
 
   const textSize =
     size === "sm"
@@ -27,7 +27,7 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
           <img
             src={LOGO_SRC}
             alt="Exquisitebnb logo"
-            className={`${iconSize} object-contain scale-90`}
+            className={`${fullIconSize} object-contain scale-90`}
           />
         </div>
       </div>

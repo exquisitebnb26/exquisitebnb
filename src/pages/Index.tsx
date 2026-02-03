@@ -24,7 +24,7 @@ const Index = () => {
         {/* Hero Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <div className="max-w-3xl mx-auto space-y-8 animate-fade-in">
-            <p className="text-gold text-sm tracking-[0.3em] uppercase">
+            <p className="text-sm tracking-[0.3em] uppercase luxury-text-glow">
               Boutique Hospitality
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-cream leading-tight">
@@ -40,7 +40,7 @@ const Index = () => {
               <Button variant="heroGold" size="lg" asChild>
                 <Link to="/properties">View Properties</Link>
               </Button>
-              <Button variant="hero" size="lg" asChild>
+              <Button variant="hero" size="lg" asChild className="luxury-text-glow">
                 <Link to="/book">Book on Trusted Platforms</Link>
               </Button>
             </div>

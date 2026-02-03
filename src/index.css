@@ -209,18 +209,62 @@
   }
 
   /* === Luxury Gold Glow System === */
+
+
+@keyframes luxuryGoldPulse {
+  0% {
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.18),
+                0 0 12px rgba(212, 175, 55, 0.15);
+    opacity: 0.75;
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(212, 175, 55, 0.85),
+                0 0 48px rgba(212, 175, 55, 0.65);
+    opacity: 1;
+  }
+
+  100% {
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.18),
+                0 0 12px rgba(212, 175, 55, 0.15);
+    opacity: 0.75;
+  }
+}
+
 .luxury-glow {
-  transition: all 0.5s ease-out;
+  animation: luxuryGoldPulse 4s ease-in-out infinite;
+  transition: all 0.4s ease-out;
 }
 
 .luxury-glow:hover {
+  animation: none; /* stop pulse on hover */
   border-color: #d4af37;
-  box-shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.55);
   transform: translateY(-4px);
 }
 
-/* Text-only glow (for platforms & links) */
+@keyframes luxuryTextGlowPulse {
+  0% {
+    color: hsl(var(--gold) / 0.6);
+    filter: drop-shadow(0 0 4px rgba(212, 175, 55, 0.25));
+    opacity: 0.75;
+  }
+
+  50% {
+    color: hsl(var(--gold));
+    filter: drop-shadow(0 0 30px rgba(212, 175, 55, 0.85));
+    opacity: 1;
+  }
+
+  100% {
+    color: hsl(var(--gold) / 0.6);
+    filter: drop-shadow(0 0 60px rgba(212, 175, 55, 0.25));
+    opacity: 0.75;
+  }
+}
+
 .luxury-text-glow {
+  animation: luxuryTextGlowPulse 3.8s ease-in-out infinite;
   transition: all 0.3s ease-out;
 }
 
@@ -234,4 +278,33 @@
 .luxury-icon-glow:hover {
   filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
 }
+
+@keyframes luxuryLogoGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.18));
+    opacity: 0.8;
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(212, 175, 55, 0.6));
+    opacity: 1;
+  }
+
+  100% {
+    filter: drop-shadow(0 0 3px rgba(212, 175, 55, 0.18));
+    opacity: 0.8;
+  }
+}
+
+.luxury-logo-glow {
+  animation: luxuryLogoGlowPulse 5.2s ease-in-out infinite;
+  transition: filter 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.luxury-logo-glow:hover {
+  animation: none;
+  filter: drop-shadow(0 0 18px rgba(212, 175, 55, 0.75));
+  transform: scale(1.05);
+}
+
 }
