@@ -13,7 +13,6 @@ export default defineConfig(({ mode }) => ({
       overlay: false,
     },
   },
-  base: "/exquisitebnb/",
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
     alias: {

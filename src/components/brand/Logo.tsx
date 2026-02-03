@@ -1,4 +1,4 @@
-const LOGO_SRC = "/public/Exquisitebnb.png";
+import LogoImage from "@/assets/Exquisitebnb.png";
 
 interface LogoProps {
   variant?: "full" | "icon";
@@ -25,7 +25,7 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
       <div className={`flex items-center justify-center ${className}`}>
         <div className="bg-white rounded-full p-2 w-fit h-fit flex items-center justify-center">
           <img
-            src={LOGO_SRC}
+            src={LogoImage}
             alt="Exquisitebnb logo"
             className={`${fullIconSize} object-contain scale-90`}
           />
@@ -39,7 +39,7 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
       {/* Icon */}
       <div className="bg-white rounded-full p-2 w-fit h-fit flex items-center justify-center flex-shrink-0">
         <img
-          src={LOGO_SRC}
+          src={LogoImage}
           alt="Exquisitebnb logo"
           className={`${fullIconSize} object-contain scale-90`}
         />
