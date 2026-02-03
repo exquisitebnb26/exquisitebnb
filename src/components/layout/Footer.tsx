@@ -15,7 +15,7 @@ const officeLocation = {
   name: "Exquisitebnb Office",
   address: "123 Luxury Ave, Austin, TX 78701",
   phone: "+1 (512) 555-0199",
-  email: "contact@exquisitebnb.com",
+  email: "support@exquisitebnb.com",
   mapEmbedUrl:
     "https://www.google.com/maps?q=123+Luxury+Ave,+Austin,+TX+78701&output=embed",
 };
