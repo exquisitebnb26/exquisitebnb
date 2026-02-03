@@ -1,6 +1,6 @@
 import { Sparkles, Heart, Shield, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import bedroomImage from "@/assets/property-bedroom.jpg";
+import Exquisitebnb from "@/assets/exquisitebnb-logo-gold.png";
 
 const About = () => {
   return (
@@ -26,13 +26,19 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
-            <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
-              <img
-                src={bedroomImage}
-                alt="Luxury bedroom interior"
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent" />
+            <div className="flex items-center justify-center">
+              <div className="relative w-72 h-72 lg:w-96 lg:h-96
+                bg-white rounded-full
+                border border-gold/30
+                shadow-[0_30px_90px_rgba(0,0,0,0.3)]
+                flex items-center justify-center luxury-logo-glow
+              ">
+                <img
+                  src={Exquisitebnb}
+                  alt="Exquisitebnb logo"
+                  className="w-48 h-48 lg:w-64 lg:h-64 object-contain "
+                />
+              </div>
             </div>
 
             {/* Content */}
