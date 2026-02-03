@@ -349,7 +349,7 @@ const PropertyDetail = () => {
                   {property.amenities.map((amenity: any, index: number) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 p-4 bg-card border border-border rounded-sm luxury-text-glow"
+                      className="flex items-center gap-3 p-4 bg-card border border-border rounded-sm luxury-static-glow"
                     >
                       <amenity.icon className="w-5 h-5 text-gold" />
                       <span className="text-cream text-sm">{amenity.name}</span>
@@ -367,7 +367,7 @@ const PropertyDetail = () => {
                   {property.reviews.map((review: any, index: number) => (
                     <div
                       key={index}
-                      className="p-6 bg-card border border-border rounded-sm luxury-text-glow"
+                      className="p-6 bg-card border border-border rounded-sm luxury-static-glow"
                     >
                       <div className="flex items-center gap-1 mb-3">
                         {[...Array(review.rating)].map((_, i) => (
@@ -422,34 +422,34 @@ const PropertyDetail = () => {
                   <p className="text-cream-muted text-sm text-center mb-4">
                     Book securely on:
                   </p>
-                  <span className="text-cream/50 font-medium luxury-text-glow">
+                  <span className="text-cream/50 font-medium">
                   <a
                     href={property.airbnbUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm hover:border-gold/30 transition-colors"
+                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm luxury-static-glow"
                   >
                     <span className="text-cream text-sm">Airbnb</span>
                     <ExternalLink className="w-4 h-4 text-cream-muted" />
                   </a>
                   </span>
-                  <span className="text-cream/50 font-medium luxury-text-glow">
+                  <span className="text-cream/50 font-medium">
                   <a
                     href={property.vrboUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm hover:border-gold/30 transition-colors"
+                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm luxury-static-glow"
                   >
                     <span className="text-cream text-sm">VRBO</span>
                     <ExternalLink className="w-4 h-4 text-cream-muted" />
                   </a>
                   </span>
-                  <span className="text-cream/50 font-medium luxury-text-glow">
+                  <span className="text-cream/50 font-medium">
                   <a
                     href={property.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm hover:border-gold/30 transition-colors"
+                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm luxury-static-glow"
                   >
                     <span className="text-cream text-sm">Booking.com</span>
                     <ExternalLink className="w-4 h-4 text-cream-muted" />
