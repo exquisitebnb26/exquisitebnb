@@ -46,11 +46,7 @@ const properties = [
     image: bathroomImage,
   },
 ];
-
 const Properties = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   return (
     <Layout>
       {/* Header */}

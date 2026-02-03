@@ -8,15 +8,18 @@ const navLinks = [
   { name: "Home", path: "/" },
   { name: "Properties", path: "/properties" },
   { name: "About", path: "/about" },
-  { name: "FAQs", path: "/faqs" },
-  { name: "Book", path: "/book" },
   { name: "Contact", path: "/contact" },
+  { name: "FAQs", path: "/faqs" }
 ];
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,19 +29,15 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    setIsMobileMenuOpen(false);
-  }, [location]);
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-charcoal/95 backdrop-blur-md border-b border-border"
+          ? "bg-charcoal/95 border-b border-border"
           : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 lg:px-12">
+      <div className="container mx-auto px-6 lg:px-12 relative">
         <nav className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link
@@ -48,20 +47,43 @@ const Header = () => {
             <Logo />
           </Link>
 
-          {/* Desktop Navigation (disabled – using hamburger for all sizes) */}
-          <div className="hidden">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-sm tracking-wider uppercase transition-colors duration-300 ${
-                  location.pathname === link.path
-                    ? "text-gold"
-                    : "text-cream/70 hover:text-cream"
-                }`}
-              >
-                {link.name}
-              </Link>
+          {/* Hamburger-Controlled Inline Navigation */}
+          <div
+            className={`hidden lg:flex absolute right-24 top-1/2 -translate-y-1/2
+              max-w-[calc(100%-6rem)]
+              flex items-center gap-5 sm:gap-4
+              transition-all duration-500 ease-out
+              ${
+                isMenuOpen
+                  ? "opacity-100 translate-x-0 pointer-events-auto"
+                  : "opacity-0 translate-x-2 pointer-events-none"
+              }
+            `}
+          >
+            {navLinks.map((link, index) => (
+              <div key={link.path} className="flex items-center gap-4">
+                <Link
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`relative text-sm sm:text-xs tracking-[0.18em] uppercase transition-colors duration-300
+                    after:absolute after:left-0 after:-bottom-1
+                    after:h-[1px] after:w-0 after:bg-gold
+                    after:transition-all after:duration-300
+                    hover:after:w-full
+                    ${
+                      location.pathname === link.path
+                        ? "text-gold after:w-full"
+                        : "text-cream/70 hover:text-cream"
+                    }
+                  `}
+                >
+                  {link.name}
+                </Link>
+
+                {index !== navLinks.length - 1 && (
+                  <span className="text-cream/40 select-none"></span>
+                )}
+              </div>
             ))}
           </div>
 
@@ -69,39 +91,60 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="relative z-50 text-cream"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="relative z-50 text-cream transition-transform duration-300 hover:scale-105"
+            aria-label="Menu"
+            onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <span className="relative w-6 h-6 block">
+              <Menu
+                size={24}
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isMenuOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
+                }`}
+              />
+              <X
+                size={24}
+                className={`absolute inset-0 transition-all duration-300 ${
+                  isMenuOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
+                }`}
+              />
+            </span>
           </Button>
         </nav>
-      </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 bg-charcoal/98 backdrop-blur-lg transition-all duration-500 ${
-          isMobileMenuOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
-      >
-        <div className="flex flex-col items-center justify-center h-full gap-8">
-          {navLinks.map((link, index) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`text-2xl font-serif tracking-wider transition-all duration-300 ${
-                location.pathname === link.path
-                  ? "text-gold"
-                  : "text-cream/70 hover:text-cream"
-              }`}
-              style={{
-                animationDelay: `${index * 50}ms`,
-              }}
-            >
-              {link.name}
-            </Link>
-          ))}
+        {/* Mobile Flyout Menu */}
+        <div
+          className={`lg:hidden absolute inset-x-0 top-full
+            transition-all duration-500 ease-out
+            ${
+              isMenuOpen
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 -translate-y-3 pointer-events-none"
+            }
+          `}
+        >
+          <div className="flex flex-col items-center gap-6 py-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                className={`relative text-sm tracking-[0.3em] uppercase transition-colors duration-300
+                  after:absolute after:left-0 after:-bottom-2
+                  after:h-[1px] after:w-0 after:bg-gold
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                  ${
+                    location.pathname === link.path
+                      ? "text-gold after:w-full"
+                      : "text-cream/80 hover:text-cream"
+                  }
+                `}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
     </header>

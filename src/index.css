@@ -307,4 +307,13 @@
   transform: scale(1.05);
 }
 
+.luxury-static-glow {
+  transition: all 0.5s ease-out;
+}
+
+.luxury-static-glow:hover {
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+  transform: translateY(-0.25rem);
+}
+
 }
