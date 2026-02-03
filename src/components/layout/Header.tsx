@@ -6,10 +6,10 @@ import Logo from "@/components/brand/Logo";
 
 const navLinks = [
   { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-  { name: "FAQs", path: "/faqs" },
   { name: "Properties", path: "/properties" },
+  { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
+  { name: "FAQs", path: "/faqs" }
 ];
 
 const Header = () => {
@@ -49,9 +49,9 @@ const Header = () => {
 
           {/* Hamburger-Controlled Inline Navigation */}
           <div
-            className={`absolute right-24 top-1/2 -translate-y-1/2
+            className={`hidden lg:flex absolute right-24 top-1/2 -translate-y-1/2
               max-w-[calc(100%-6rem)]
-              flex items-center gap-4
+              flex items-center gap-5 sm:gap-4
               transition-all duration-500 ease-out
               ${
                 isMenuOpen
@@ -65,11 +65,17 @@ const Header = () => {
                 <Link
                   to={link.path}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-sm tracking-wider uppercase transition-colors duration-300 ${
-                    location.pathname === link.path
-                      ? "text-gold"
-                      : "text-cream/70 hover:text-cream"
-                  }`}
+                  className={`relative text-sm sm:text-xs tracking-[0.18em] uppercase transition-colors duration-300
+                    after:absolute after:left-0 after:-bottom-1
+                    after:h-[1px] after:w-0 after:bg-gold
+                    after:transition-all after:duration-300
+                    hover:after:w-full
+                    ${
+                      location.pathname === link.path
+                        ? "text-gold after:w-full"
+                        : "text-cream/70 hover:text-cream"
+                    }
+                  `}
                 >
                   {link.name}
                 </Link>
@@ -85,7 +91,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="relative z-50 text-cream"
+            className="relative z-50 text-cream transition-transform duration-300 hover:scale-105"
             aria-label="Menu"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
@@ -105,6 +111,41 @@ const Header = () => {
             </span>
           </Button>
         </nav>
+
+        {/* Mobile Flyout Menu */}
+        <div
+          className={`lg:hidden absolute inset-x-0 top-full
+            transition-all duration-500 ease-out
+            ${
+              isMenuOpen
+                ? "opacity-100 translate-y-0 pointer-events-auto"
+                : "opacity-0 -translate-y-3 pointer-events-none"
+            }
+          `}
+        >
+          <div className="flex flex-col items-center gap-6 py-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsMenuOpen(false)}
+                className={`relative text-sm tracking-[0.3em] uppercase transition-colors duration-300
+                  after:absolute after:left-0 after:-bottom-2
+                  after:h-[1px] after:w-0 after:bg-gold
+                  after:transition-all after:duration-300
+                  hover:after:w-full
+                  ${
+                    location.pathname === link.path
+                      ? "text-gold after:w-full"
+                      : "text-cream/80 hover:text-cream"
+                  }
+                `}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );
