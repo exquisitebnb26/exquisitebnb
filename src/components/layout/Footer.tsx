@@ -30,8 +30,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand Column */}
           <div className="space-y-6">
-            <div className="inline-block transition-all duration-500 ease-out
-  hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]">
+            <div className="inline-block luxury-logo-glow">
               <Logo />
             </div>
             <p className="text-cream-muted text-sm leading-relaxed max-w-sm">

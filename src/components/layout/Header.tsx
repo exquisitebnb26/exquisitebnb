@@ -43,8 +43,7 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="relative z-50 transition-all duration-500 ease-out
-    hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]"
+            className="relative z-50 luxury-logo-glow"
           >
             <Logo />
           </Link>
