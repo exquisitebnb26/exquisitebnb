@@ -1,5 +1,4 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -16,7 +15,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
 
 const contactSchema = z.object({
   firstName: z
@@ -45,7 +43,6 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const { toast } = useToast();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -57,33 +54,22 @@ const Contact = () => {
     },
   });
 
-  const onSubmit = async (data: ContactFormData) => {
-    try {
-      await emailjs.send(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        {
-          first_name: data.firstName,
-          last_name: data.lastName,
-          email: data.email,
-          message: data.message,
-        },
-        "YOUR_PUBLIC_KEY"
-      );
+  const onSubmit = (data: ContactFormData) => {
+    const subject = encodeURIComponent(
+      `Inquiry from ${data.firstName} ${data.lastName}`
+    );
 
-      setIsSubmitted(true);
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. We'll get back to you soon.",
-      });
-    } catch (error) {
-      console.error("Email send failed:", error);
-      toast({
-        title: "Something went wrong",
-        description: "Please try again later or email us directly.",
-        variant: "destructive",
-      });
-    }
+    const body = encodeURIComponent(
+      `Name: ${data.firstName} ${data.lastName}\n` +
+      `Email: ${data.email}\n\n` +
+      `Message:\n${data.message}`
+    );
+
+    const mailtoLink = `mailto:support@exqusitebnb.com?subject=${subject}&body=${body}`;
+
+    window.location.href = mailtoLink;
+
+    setIsSubmitted(true);
   };
 
   if (isSubmitted) {
@@ -232,16 +218,12 @@ const Contact = () => {
                   variant="luxuryGold"
                   size="lg"
                   className="w-full"
-                  disabled={form.formState.isSubmitting}
+                  disabled={false}
                 >
-                  {form.formState.isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </>
-                  )}
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Open Email App
+                  </>
                 </Button>
               </form>
             </Form>
