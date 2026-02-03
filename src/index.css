@@ -207,4 +207,31 @@
   .border-gold-strong {
     border-color: hsl(var(--gold) / 0.6);
   }
+
+  /* === Luxury Gold Glow System === */
+.luxury-glow {
+  transition: all 0.5s ease-out;
+}
+
+.luxury-glow:hover {
+  border-color: #d4af37;
+  box-shadow: 0 0 35px rgba(212, 175, 55, 0.45);
+  transform: translateY(-4px);
+}
+
+/* Text-only glow (for platforms & links) */
+.luxury-text-glow {
+  transition: all 0.3s ease-out;
+}
+
+.luxury-text-glow:hover {
+  color: #d4af37;
+  filter: drop-shadow(0 0 12px rgba(212, 175, 55, 0.65));
+  transform: translateY(-2px);
+}
+
+/* Icon glow */
+.luxury-icon-glow:hover {
+  filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+}
 }

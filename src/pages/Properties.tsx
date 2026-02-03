@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Users, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -47,6 +48,9 @@ const properties = [
 ];
 
 const Properties = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Layout>
       {/* Header */}
@@ -72,11 +76,16 @@ const Properties = () => {
             {properties.map((property, index) => (
               <div
                 key={property.id}
-                className="group bg-card border border-border rounded-sm overflow-hidden hover:border-gold/30 transition-all duration-500"
+                className="group bg-card border border-border rounded-sm overflow-hidden
+                  transition-all duration-500 ease-out
+                  hover:border-gold
+                  hover:shadow-[0_0_40px_rgba(212,175,55,0.45)]
+                  hover:-translate-y-1"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 {/* Image */}
-                <div className="relative aspect-[16/10] overflow-hidden">
+                <div className="relative aspect-[16/10] overflow-hidden border border-transparent
+                  group-hover:border-gold transition-colors duration-500">
                   <img
                     src={property.image}
                     alt={property.name}
@@ -89,11 +98,13 @@ const Properties = () => {
                 <div className="p-8">
                   <div className="flex items-center gap-4 text-cream-muted text-sm mb-4">
                     <span className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-gold" />
+                      <MapPin className="w-4 h-4 text-gold transition-all duration-300
+                        group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
                       {property.location}
                     </span>
                     <span className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-gold" />
+                      <Users className="w-4 h-4 text-gold transition-all duration-300
+                        group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
                       {property.guests} guests
                     </span>
                   </div>
@@ -107,7 +118,12 @@ const Properties = () => {
                   </p>
 
                   <div className="flex items-center justify-between">
-                    <Button variant="luxuryOutline" asChild>
+                    <Button
+                      variant="luxuryOutline"
+                      asChild
+                      className="transition-all duration-300
+                        hover:shadow-[0_0_15px_rgba(212,175,55,0.5)]"
+                    >
                       <Link to={`/properties/${property.id}`}>View Details</Link>
                     </Button>
                     <div className="flex items-center gap-3 text-cream/40 text-xs">
@@ -129,9 +145,33 @@ const Properties = () => {
             All bookings are securely handled through trusted platforms
           </p>
           <div className="flex items-center justify-center gap-8">
-            <span className="text-cream/50 font-medium">Airbnb</span>
-            <span className="text-cream/50 font-medium">VRBO</span>
-            <span className="text-cream/50 font-medium">Booking.com</span>
+            <span
+              className="text-cream/50 font-medium
+                transition-all duration-300 ease-out
+                hover:text-gold
+                hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]
+                hover:-translate-y-0.5"
+            >
+              Airbnb
+            </span>
+            <span
+              className="text-cream/50 font-medium
+                transition-all duration-300 ease-out
+                hover:text-gold
+                hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]
+                hover:-translate-y-0.5"
+            >
+              VRBO
+            </span>
+            <span
+              className="text-cream/50 font-medium
+                transition-all duration-300 ease-out
+                hover:text-gold
+                hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]
+                hover:-translate-y-0.5"
+            >
+              Booking.com
+            </span>
           </div>
         </div>
       </section>

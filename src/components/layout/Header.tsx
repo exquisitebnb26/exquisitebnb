@@ -41,12 +41,16 @@ const Header = () => {
       <div className="container mx-auto px-6 lg:px-12">
         <nav className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
-          <Link to="/" className="relative z-50">
+          <Link
+            to="/"
+            className="relative z-50 transition-all duration-500 ease-out
+    hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)]"
+          >
             <Logo />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-10">
+          {/* Desktop Navigation (disabled – using hamburger for all sizes) */}
+          <div className="hidden">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -66,7 +70,7 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="lg:hidden relative z-50 text-cream"
+            className="relative z-50 text-cream"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -76,7 +80,7 @@ const Header = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-charcoal/98 backdrop-blur-lg lg:hidden transition-all duration-500 ${
+        className={`fixed inset-0 bg-charcoal/98 backdrop-blur-lg transition-all duration-500 ${
           isMobileMenuOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
