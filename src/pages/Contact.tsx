@@ -1,4 +1,5 @@
 import { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -57,16 +58,32 @@ const Contact = () => {
   });
 
   const onSubmit = async (data: ContactFormData) => {
-    // Simulate form submission
-    // In production, this would send to an edge function or email service
-    console.log("Form submitted:", data);
-    
-    // Show success
-    setIsSubmitted(true);
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. We'll get back to you soon.",
-    });
+    try {
+      await emailjs.send(
+        "YOUR_SERVICE_ID",
+        "YOUR_TEMPLATE_ID",
+        {
+          first_name: data.firstName,
+          last_name: data.lastName,
+          email: data.email,
+          message: data.message,
+        },
+        "YOUR_PUBLIC_KEY"
+      );
+
+      setIsSubmitted(true);
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. We'll get back to you soon.",
+      });
+    } catch (error) {
+      console.error("Email send failed:", error);
+      toast({
+        title: "Something went wrong",
+        description: "Please try again later or email us directly.",
+        variant: "destructive",
+      });
+    }
   };
 
   if (isSubmitted) {
