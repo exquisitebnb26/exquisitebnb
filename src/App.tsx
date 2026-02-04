@@ -10,8 +10,8 @@ import About from "./pages/About";
 import FAQs from "./pages/FAQs";
 import Book from "./pages/Book";
 import Contact from "./pages/Contact";
+import Partnership from "./pages/Partnership";
 import NotFound from "./pages/NotFound";
-import { Scroll } from "lucide-react";
 import ScrollToTop from "./components/utils/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -31,6 +31,7 @@ const App = () => (
           <Route path="/faqs" element={<FAQs />} />
           <Route path="/book" element={<Book />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/partnership" element={<Partnership />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
