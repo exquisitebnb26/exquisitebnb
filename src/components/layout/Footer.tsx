@@ -3,12 +3,13 @@ import Logo from "@/components/brand/Logo";
 import { Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
 
 const footerLinks = [
-  { name: "Home", path: "/" },
+   { name: "Home", path: "/" },
   { name: "Properties", path: "/properties" },
+  {name: "Book", path: "/book"},
   { name: "About", path: "/about" },
-  { name: "FAQs", path: "/faqs" },
-  { name: "Book", path: "/book" },
+  { name: "Partnership", path: "/partnership" },
   { name: "Contact", path: "/contact" },
+  { name: "FAQs", path: "/faqs" }
 ];
 
 const officeLocation = {
