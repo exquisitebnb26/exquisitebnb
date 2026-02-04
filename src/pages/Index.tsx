@@ -9,7 +9,7 @@ import kitchenImage from "@/assets/property-kitchen.jpg";
 const Index = () => {
   return (
     <Layout>
-      {/* Hero Section */}
+      {/* Hero Section - Dark with image */}
       <section className="relative min-h-screen flex items-center justify-center">
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -18,7 +18,7 @@ const Index = () => {
             alt="Luxury living room interior"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal/80" />
         </div>
 
         {/* Hero Content */}
@@ -27,12 +27,12 @@ const Index = () => {
             <p className="text-sm tracking-[0.3em] uppercase luxury-text-glow">
               Boutique Hospitality
             </p>
-            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-cream leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-ivory leading-tight">
               A refined stay.
               <br />
-              <span className="italic text-cream/80">Thoughtfully hosted.</span>
+              <span className="italic text-ivory/80">Thoughtfully hosted.</span>
             </h1>
-            <p className="text-cream-muted text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+            <p className="text-ivory/70 text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
               Experience the comfort of home with the elegance of a boutique
               hotel. Every detail curated, every stay memorable.
             </p>
@@ -40,7 +40,7 @@ const Index = () => {
               <Button variant="heroGold" size="lg" asChild>
                 <Link to="/properties">View Properties</Link>
               </Button>
-              <Button variant="hero" size="lg" asChild className="luxury-text-glow">
+              <Button variant="hero" size="lg" asChild>
                 <Link to="/book">Book on Trusted Platforms</Link>
               </Button>
             </div>
@@ -49,23 +49,23 @@ const Index = () => {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <div className="w-px h-12 bg-gradient-to-b from-cream/50 to-transparent" />
+          <div className="w-px h-12 bg-gradient-to-b from-ivory/50 to-transparent" />
         </div>
       </section>
 
-      {/* Brand Introduction */}
-      <section className="py-24 lg:py-32 bg-charcoal">
+      {/* Brand Introduction - Light warm section */}
+      <section className="py-24 lg:py-32 bg-ivory">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase">
+            <p className="text-gold text-sm tracking-[0.25em] uppercase font-medium">
               Our Philosophy
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-charcoal">
               Where comfort meets
-              <span className="italic text-gold"> elegance</span>
+              <span className="italic text-forest"> elegance</span>
             </h2>
             <div className="luxury-divider" />
-            <p className="text-cream-muted text-lg leading-relaxed">
+            <p className="text-charcoal/70 text-lg leading-relaxed">
               Exquisitebnb is not just a place to stay—it's an experience.
               We believe that every guest deserves spaces that feel like home,
               yet exceed the standards of the finest hotels. Our properties are
@@ -76,14 +76,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why Exquisitebnb */}
-      <section className="py-24 lg:py-32 bg-charcoal-light">
+      {/* Why Exquisitebnb - Stone/cream section */}
+      <section className="py-24 lg:py-32 bg-cream">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4 font-medium">
               The Experience
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-charcoal">
               Why Exquisitebnb
             </h2>
           </div>
@@ -117,17 +117,14 @@ const Index = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group p-8 bg-card border border-border rounded-sm
-                  transition-all duration-500 ease-out
-                  hover:border-gold
-                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
-                  hover:-translate-y-1"
+                className="group p-8 bg-ivory border border-stone-warm rounded-sm
+                  transition-all duration-500 ease-out luxury-card-hover"
               >
                 <feature.icon className="w-8 h-8 text-gold mb-6 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-xl font-serif text-cream mb-3">
+                <h3 className="text-xl font-serif text-charcoal mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-cream-muted text-sm leading-relaxed">
+                <p className="text-charcoal/60 text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -136,14 +133,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Properties Preview */}
-      <section className="py-24 lg:py-32 bg-charcoal">
+      {/* Featured Properties Preview - Light ivory section */}
+      <section className="py-24 lg:py-32 bg-ivory">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4 font-medium">
               Featured Stays
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-charcoal">
               Discover Our Properties
             </h2>
           </div>
@@ -170,23 +167,21 @@ const Index = () => {
                 key={index}
                 to="/properties"
                 className="group block overflow-hidden rounded-sm
-    transition-all duration-500 ease-out
-    hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
-    hover:-translate-y-1"
+                  transition-all duration-500 ease-out luxury-card-hover
+                  bg-card border border-stone-warm"
               >
-                <div className="relative aspect-[4/3] overflow-hidden border border-border
-  group-hover:border-gold transition-colors duration-500">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <img
                     src={property.image}
                     alt={property.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-xl font-serif text-cream mb-1">
+                    <h3 className="text-xl font-serif text-ivory mb-1">
                       {property.name}
                     </h3>
-                    <p className="text-cream-muted text-sm">{property.location}</p>
+                    <p className="text-ivory/70 text-sm">{property.location}</p>
                   </div>
                 </div>
               </Link>
@@ -201,14 +196,14 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Trust Signals */}
-      <section className="py-24 lg:py-32 bg-charcoal-light">
+      {/* Trust Signals - Dark accent section */}
+      <section className="py-24 lg:py-32 bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
             <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
               Trusted by Guests
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-ivory">
               What Our Guests Say
             </h2>
           </div>
@@ -233,11 +228,10 @@ const Index = () => {
             ].map((review, index) => (
               <div
                 key={index}
-                className="p-8 bg-card border border-border rounded-sm
+                className="p-8 bg-charcoal-light border border-charcoal-light rounded-sm
                   transition-all duration-500 ease-out
-                  hover:border-gold
-                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
-                  hover:-translate-y-1"
+                  hover:border-gold/30
+                  hover:shadow-[0_0_30px_rgba(180,145,45,0.15)]"
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(review.rating)].map((_, i) => (
@@ -247,27 +241,27 @@ const Index = () => {
                     />
                   ))}
                 </div>
-                <p className="text-cream-muted italic mb-4 leading-relaxed">
+                <p className="text-ivory/70 italic mb-4 leading-relaxed">
                   "{review.text}"
                 </p>
-                <p className="text-cream text-sm font-medium">{review.author}</p>
+                <p className="text-ivory text-sm font-medium">{review.author}</p>
               </div>
             ))}
           </div>
 
           {/* Booking Platform Logos */}
           <div className="text-center">
-            <p className="text-cream-muted text-sm mb-6">
+            <p className="text-ivory/60 text-sm mb-6">
               Book securely through trusted platforms
             </p>
             <div className="flex items-center justify-center gap-12">
-              <span className="text-cream/40 text-lg font-medium tracking-wide">
+              <span className="text-ivory/40 text-lg font-medium tracking-wide hover:text-gold transition-colors duration-300">
                 Airbnb
               </span>
-              <span className="text-cream/40 text-lg font-medium tracking-wide">
+              <span className="text-ivory/40 text-lg font-medium tracking-wide hover:text-gold transition-colors duration-300">
                 VRBO
               </span>
-              <span className="text-cream/40 text-lg font-medium tracking-wide">
+              <span className="text-ivory/40 text-lg font-medium tracking-wide hover:text-gold transition-colors duration-300">
                 Booking.com
               </span>
             </div>
@@ -275,17 +269,17 @@ const Index = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-charcoal relative overflow-hidden">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-forest rounded-full blur-[200px]" />
+      {/* CTA Section - Warm champagne section */}
+      <section className="py-24 lg:py-32 bg-champagne relative overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gold/20 rounded-full blur-[200px]" />
         </div>
         <div className="relative container mx-auto px-6 lg:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-cream mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-charcoal mb-6">
             Ready to experience
-            <span className="italic text-gold"> exquisite</span>?
+            <span className="italic text-forest"> exquisite</span>?
           </h2>
-          <p className="text-cream-muted text-lg max-w-xl mx-auto mb-8">
+          <p className="text-charcoal/60 text-lg max-w-xl mx-auto mb-8">
             Browse our collection of thoughtfully curated properties and find
             your perfect stay.
           </p>

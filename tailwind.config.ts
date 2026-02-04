@@ -51,21 +51,36 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Warm light palette
+        ivory: {
+          DEFAULT: "hsl(var(--ivory))",
+          warm: "hsl(var(--ivory-warm))",
+        },
+        cream: {
+          DEFAULT: "hsl(var(--cream))",
+          muted: "hsl(var(--cream-muted))",
+        },
+        stone: {
+          DEFAULT: "hsl(var(--stone))",
+          warm: "hsl(var(--stone-warm))",
+        },
+        champagne: {
+          DEFAULT: "hsl(var(--champagne))",
+        },
+        // Accent colors
         gold: {
           DEFAULT: "hsl(var(--gold))",
           muted: "hsl(var(--gold-muted))",
+          light: "hsl(var(--gold-light))",
         },
         forest: {
           DEFAULT: "hsl(var(--forest))",
           dark: "hsl(var(--forest-dark))",
         },
+        // Dark accent backgrounds
         charcoal: {
           DEFAULT: "hsl(var(--charcoal))",
           light: "hsl(var(--charcoal-light))",
-        },
-        cream: {
-          DEFAULT: "hsl(var(--cream))",
-          muted: "hsl(var(--cream-muted))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
