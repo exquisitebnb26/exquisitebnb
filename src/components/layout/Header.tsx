@@ -7,6 +7,7 @@ import Logo from "@/components/brand/Logo";
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "Properties", path: "/properties" },
+  {name: "Book", path: "/book"},
   { name: "About", path: "/about" },
   { name: "Contact", path: "/contact" },
   { name: "FAQs", path: "/faqs" }
@@ -139,8 +140,7 @@ const Header = () => {
                       ? "text-gold after:w-full"
                       : "text-cream/80 hover:text-cream"
                   }
-                `}
-              >
+                `}>
                 {link.name}
               </Link>
             ))}
