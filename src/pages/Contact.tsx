@@ -76,16 +76,16 @@ const Contact = () => {
   if (isSubmitted) {
     return (
       <Layout>
-        <section className="min-h-screen flex items-center justify-center bg-ivory">
+        <section className="min-h-screen flex items-center justify-center bg-charcoal">
           <div className="container mx-auto px-6 lg:px-12 text-center max-w-lg">
             <div className="animate-fade-in space-y-6">
-              <div className="w-16 h-16 mx-auto rounded-full bg-forest/20 flex items-center justify-center">
-                <CheckCircle className="w-8 h-8 text-forest" />
+              <div className="w-16 h-16 mx-auto rounded-full bg-forest/30 flex items-center justify-center">
+                <CheckCircle className="w-8 h-8 text-gold" />
               </div>
-              <h1 className="text-3xl md:text-4xl font-serif text-charcoal">
+              <h1 className="text-3xl md:text-4xl font-serif text-cream">
                 Message Received
               </h1>
-              <p className="text-charcoal/70 leading-relaxed">
+              <p className="text-cream-muted leading-relaxed">
                 Thank you for reaching out! We've received your message and will
                 get back to you as soon as possible. In the meantime, feel free
                 to browse our properties or check out our FAQs.
@@ -107,26 +107,26 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Header - Dark accent */}
+      {/* Header */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4 animate-fade-in">
             Get in Touch
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-ivory mb-6 animate-fade-in">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 animate-fade-in">
             Contact Us
           </h1>
-          <p className="text-ivory/70 text-lg max-w-2xl mx-auto animate-fade-in">
+          <p className="text-cream-muted text-lg max-w-2xl mx-auto animate-fade-in">
             Have a question or special request? We'd love to hear from you. Fill
             out the form below and we'll get back to you shortly.
           </p>
         </div>
       </section>
 
-      {/* Contact Form - Light */}
-      <section className="py-16 lg:py-24 bg-ivory">
-        <div className="container mx-auto px-6 lg:px-12 max-w-xl">
-          <div className="p-8 lg:p-12 bg-card border border-stone-warm rounded-sm shadow-soft">
+      {/* Contact Form */}
+      <section className="py-16 lg:py-24 bg-charcoal-light">
+        <div className="container mx-auto px-6 lg:px-12 max-w-xl luxury-text-glow">
+          <div className="p-8 lg:p-12 bg-card">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -138,17 +138,17 @@ const Contact = () => {
                     name="firstName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-charcoal text-sm">
+                        <FormLabel className="text-cream text-sm">
                           First Name
                         </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="John"
                             {...field}
-                            className="bg-ivory border-stone-warm text-charcoal placeholder:text-charcoal/40 focus:border-gold"
+                            className="bg-charcoal-light border-border text-cream placeholder:text-cream-muted/50 focus:border-gold"
                           />
                         </FormControl>
-                        <FormMessage className="text-destructive text-xs" />
+                        <FormMessage className="text-red-400 text-xs" />
                       </FormItem>
                     )}
                   />
@@ -158,17 +158,17 @@ const Contact = () => {
                     name="lastName"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="text-charcoal text-sm">
+                        <FormLabel className="text-cream text-sm">
                           Last Name
                         </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="Doe"
                             {...field}
-                            className="bg-ivory border-stone-warm text-charcoal placeholder:text-charcoal/40 focus:border-gold"
+                            className="bg-charcoal-light border-border text-cream placeholder:text-cream-muted/50 focus:border-gold"
                           />
                         </FormControl>
-                        <FormMessage className="text-destructive text-xs" />
+                        <FormMessage className="text-red-400 text-xs" />
                       </FormItem>
                     )}
                   />
@@ -179,16 +179,16 @@ const Contact = () => {
                   name="email"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-charcoal text-sm">Email</FormLabel>
+                      <FormLabel className="text-cream text-sm">Email</FormLabel>
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="john@example.com"
                           {...field}
-                          className="bg-ivory border-stone-warm text-charcoal placeholder:text-charcoal/40 focus:border-gold"
+                          className="bg-charcoal-light border-border text-cream placeholder:text-cream-muted/50 focus:border-gold"
                         />
                       </FormControl>
-                      <FormMessage className="text-destructive text-xs" />
+                      <FormMessage className="text-red-400 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -198,7 +198,7 @@ const Contact = () => {
                   name="message"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-charcoal text-sm">
+                      <FormLabel className="text-cream text-sm">
                         Message
                       </FormLabel>
                       <FormControl>
@@ -206,10 +206,10 @@ const Contact = () => {
                           placeholder="How can we help you?"
                           rows={5}
                           {...field}
-                          className="bg-ivory border-stone-warm text-charcoal placeholder:text-charcoal/40 focus:border-gold resize-none"
+                          className="bg-charcoal-light border-border text-cream placeholder:text-cream-muted/50 focus:border-gold resize-none"
                         />
                       </FormControl>
-                      <FormMessage className="text-destructive text-xs" />
+                      <FormMessage className="text-red-400 text-xs" />
                     </FormItem>
                   )}
                 />
@@ -229,7 +229,7 @@ const Contact = () => {
               </form>
             </Form>
 
-            <p className="text-charcoal/50 text-xs text-center mt-6">
+            <p className="text-cream-muted text-xs text-center mt-6">
               For booking inquiries, please complete your reservation through
               our partner platforms (Airbnb, VRBO, or Booking.com).
             </p>

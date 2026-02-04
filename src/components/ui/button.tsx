@@ -15,15 +15,11 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80 rounded-sm",
         ghost: "hover:bg-secondary hover:text-secondary-foreground",
         link: "text-gold underline-offset-4 hover:underline",
-        // Luxury variants - for light backgrounds
-        luxury: "bg-forest border border-forest text-ivory hover:bg-forest-dark tracking-wider uppercase text-xs rounded-sm",
-        luxuryOutline: "bg-transparent border border-gold/50 text-gold hover:bg-gold/10 hover:border-gold tracking-wider uppercase text-xs rounded-sm",
+        // Luxury variants
+        luxury: "bg-forest border border-gold/20 text-cream hover:bg-forest-dark hover:border-gold/40 tracking-wider uppercase text-xs rounded-sm",
+        luxuryOutline: "bg-transparent border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold tracking-wider uppercase text-xs rounded-sm",
         luxuryGold: "bg-gold text-charcoal hover:bg-gold-muted tracking-wider uppercase text-xs font-semibold rounded-sm",
-        // Dark section variants
-        luxuryOutlineDark: "bg-transparent border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold tracking-wider uppercase text-xs rounded-sm",
-        luxuryGoldDark: "bg-gold text-charcoal hover:bg-gold-muted tracking-wider uppercase text-xs font-semibold rounded-sm",
-        // Hero variants for dark overlays
-        hero: "bg-transparent border-2 border-ivory/30 text-ivory hover:bg-ivory/10 hover:border-ivory/60 tracking-widest uppercase text-xs px-8 py-6 rounded-none",
+        hero: "bg-transparent border-2 border-cream/30 text-cream hover:bg-cream/10 hover:border-cream/60 tracking-widest uppercase text-xs px-8 py-6 rounded-none",
         heroGold: "bg-gold/90 border-2 border-gold text-charcoal hover:bg-gold tracking-widest uppercase text-xs px-8 py-6 font-semibold rounded-none",
       },
       size: {
