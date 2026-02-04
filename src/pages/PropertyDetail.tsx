@@ -15,12 +15,12 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-living-room.jpg";
 import bedroomImage from "@/assets/property-bedroom.jpg";
 import kitchenImage from "@/assets/property-kitchen.jpg";
 import bathroomImage from "@/assets/property-bathroom.jpg";
+
 
 const propertiesData: Record<string, any> = {
   "gilded-loft": {
@@ -148,8 +148,6 @@ const propertiesData: Record<string, any> = {
 
 const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(undefined);
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -390,31 +388,8 @@ const PropertyDetail = () => {
             <div className="lg:col-span-1">
               <div className="sticky top-28 p-8 bg-card border border-border rounded-sm space-y-6">
                 <h3 className="text-xl font-serif text-cream text-center">
-                  Book This Property
+                  Where to Book
                 </h3>
-
-                <Button
-                  variant="luxuryGold"
-                  className="w-full"
-                  size="lg"
-                  onClick={() => setShowCalendar(!showCalendar)}
-                >
-                  Check Availability
-                </Button>
-
-                {showCalendar && (
-                  <div className="animate-fade-in">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      className="rounded-sm border border-border bg-charcoal-light"
-                    />
-                    <p className="text-cream-muted text-xs text-center mt-4">
-                      Select your dates, then book through our partner platforms
-                    </p>
-                  </div>
-                )}
 
                 <div className="luxury-divider" />
 
@@ -458,8 +433,8 @@ const PropertyDetail = () => {
                 </div>
 
                 <p className="text-cream-muted text-xs text-center">
-                  Bookings and payments are completed securely through trusted
-                  partner platforms.
+                  Availability, pricing, and payments are handled securely by our trusted
+                  booking partners.
                 </p>
               </div>
             </div>

@@ -16,9 +16,9 @@ const Index = () => {
           <img
             src={heroImage}
             alt="Luxury living room interior"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover brightness-125 contrast-95 saturate-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/50 to-charcoal" />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
         </div>
 
         {/* Hero Content */}
