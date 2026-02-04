@@ -1,7 +1,7 @@
 import LogoImage from "@/assets/Exquisitebnb.png";
 
 interface LogoProps {
-  variant?: "full" | "icon";
+  variant?: "full" | "icon" | "light" | "dark";
   size?: "sm" | "md" | "lg";
   className?: string;
 }
@@ -20,7 +20,11 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
       ? "text-3xl"
       : "text-xl lg:text-2xl";
 
-  if (variant === "icon") {
+  // Determine text color based on variant
+  const textColorClass = variant === "dark" ? "text-charcoal" : "text-ivory";
+  const isIconOnly = variant === "icon";
+
+  if (isIconOnly) {
     return (
       <div className={`flex items-center justify-center ${className}`}>
         <div className="bg-white rounded-full p-2 w-fit h-fit flex items-center justify-center">
@@ -47,7 +51,7 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
 
       {/* Text */}
       <div className="flex flex-col">
-        <span className={`${textSize} font-serif text-cream tracking-wide`}>
+        <span className={`${textSize} font-serif ${textColorClass} tracking-wide`}>
           Exquisite<span className="text-gold">bnb</span>
         </span>
       </div>

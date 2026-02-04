@@ -31,12 +31,17 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Determine if we're on the homepage (with dark hero)
+  const isHomePage = location.pathname === "/";
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-charcoal/95 border-b border-border"
-          : "bg-transparent"
+          ? "bg-ivory/95 backdrop-blur-sm border-b border-stone-warm shadow-soft"
+          : isHomePage
+          ? "bg-transparent"
+          : "bg-charcoal/95 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-6 lg:px-12 relative">
@@ -44,9 +49,11 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="relative z-50 luxury-logo-glow"
+            className={`relative z-50 transition-all duration-300 ${
+              isScrolled ? "" : "luxury-logo-glow"
+            }`}
           >
-            <Logo />
+            <Logo variant={isScrolled ? "dark" : "light"} />
           </Link>
 
           {/* Hamburger-Controlled Inline Navigation */}
@@ -75,7 +82,9 @@ const Header = () => {
                     ${
                       location.pathname === link.path
                         ? "text-gold after:w-full"
-                        : "text-cream/70 hover:text-cream"
+                        : isScrolled
+                        ? "text-charcoal/70 hover:text-charcoal"
+                        : "text-ivory/70 hover:text-ivory"
                     }
                   `}
                 >
@@ -93,7 +102,9 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="relative z-50 text-cream transition-transform duration-300 hover:scale-105"
+            className={`relative z-50 transition-transform duration-300 hover:scale-105 ${
+              isScrolled ? "text-charcoal" : "text-ivory"
+            }`}
             aria-label="Menu"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
@@ -125,7 +136,9 @@ const Header = () => {
             }
           `}
         >
-          <div className="flex flex-col items-center gap-6 py-8">
+          <div className={`flex flex-col items-center gap-6 py-8 ${
+            isScrolled ? "bg-ivory/95 backdrop-blur-sm" : "bg-charcoal/95 backdrop-blur-sm"
+          }`}>
             {navLinks.map((link) => (
               <Link
                 key={link.path}
@@ -139,7 +152,9 @@ const Header = () => {
                   ${
                     location.pathname === link.path
                       ? "text-gold after:w-full"
-                      : "text-cream/80 hover:text-cream"
+                      : isScrolled
+                      ? "text-charcoal/70 hover:text-charcoal"
+                      : "text-ivory/80 hover:text-ivory"
                   }
                 `}>
                 {link.name}

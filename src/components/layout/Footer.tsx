@@ -24,16 +24,16 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-charcoal border-t border-border">
+    <footer className="bg-charcoal border-t border-charcoal-light">
       <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-20">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
           {/* Brand Column */}
           <div className="space-y-6">
             <div className="inline-block luxury-logo-glow">
-              <Logo />
+              <Logo variant="light" />
             </div>
-            <p className="text-cream-muted text-sm leading-relaxed max-w-sm">
+            <p className="text-ivory/60 text-sm leading-relaxed max-w-sm">
               A boutique hospitality experience. Thoughtfully designed spaces,
               hotel-level cleanliness, and warm personal hosting.
             </p>
@@ -42,10 +42,10 @@ const Footer = () => {
                 href="https://instagram.com/exquisitebnb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cream/50 transition-all duration-300
-  hover:text-gold
-  hover:-translate-y-0.5
-  hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]"
+                className="text-ivory/50 transition-all duration-300
+                  hover:text-gold
+                  hover:-translate-y-0.5
+                  hover:drop-shadow-[0_0_10px_rgba(180,145,45,0.5)]"
                 aria-label="Instagram"
               >
                 <Instagram size={18} />
@@ -54,10 +54,10 @@ const Footer = () => {
                 href="https://twitter.com/exquisitebnb"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-cream/50 transition-all duration-300
-  hover:text-gold
-  hover:-translate-y-0.5
-  hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]"
+                className="text-ivory/50 transition-all duration-300
+                  hover:text-gold
+                  hover:-translate-y-0.5
+                  hover:drop-shadow-[0_0_10px_rgba(180,145,45,0.5)]"
                 aria-label="Twitter"
               >
                 <Twitter size={18} />
@@ -75,7 +75,7 @@ const Footer = () => {
                 <Link
                   key={link.path}
                   to={link.path}
-                  className="text-cream/60 hover:text-cream text-sm transition-colors duration-300"
+                  className="text-ivory/60 hover:text-ivory text-sm transition-colors duration-300"
                 >
                   {link.name}
                 </Link>
@@ -89,10 +89,9 @@ const Footer = () => {
               Office Location
             </h4>
 
-            <div className="text-cream-muted text-sm leading-relaxed space-y-3">
+            <div className="text-ivory/60 text-sm leading-relaxed space-y-3">
               <p className="flex items-start gap-2 lg:justify-end">
-                <MapPin className="text-gold w-4 h-4 shrink-0 mt-1 transition-all duration-300
-  hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
+                <MapPin className="text-gold w-4 h-4 shrink-0 mt-1" />
                 <span>
                   {officeLocation.name}
                   <br />
@@ -101,22 +100,20 @@ const Footer = () => {
               </p>
 
               <p className="flex items-start gap-2 lg:justify-end">
-                <Phone className="text-gold w-4 h-4 shrink-0 mt-1 transition-all duration-300
-  hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
+                <Phone className="text-gold w-4 h-4 shrink-0 mt-1" />
                 <a
                   href={`tel:${officeLocation.phone}`}
-                  className="hover:text-cream transition-colors"
+                  className="hover:text-ivory transition-colors"
                 >
                   {officeLocation.phone}
                 </a>
               </p>
 
               <p className="flex items-start gap-2 lg:justify-end">
-                <Mail className="text-gold w-4 h-4 shrink-0 mt-1 transition-all duration-300
-  hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.6)]" />
+                <Mail className="text-gold w-4 h-4 shrink-0 mt-1" />
                 <a
                   href={`mailto:${officeLocation.email}`}
-                  className="hover:text-cream transition-colors"
+                  className="hover:text-ivory transition-colors"
                 >
                   {officeLocation.email}
                 </a>
@@ -124,11 +121,11 @@ const Footer = () => {
             </div>
 
             <div className="w-full lg:max-w-sm lg:ml-auto h-40 rounded-xl overflow-hidden
-  border-[5px] border-gold
-  shadow-[0_0_12px_rgba(212,175,55,0.35)]
-  transition-all duration-500 ease-out
-  hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]
-  hover:-translate-y-1">
+              border-2 border-gold/40
+              shadow-[0_0_12px_rgba(180,145,45,0.2)]
+              transition-all duration-500 ease-out
+              hover:shadow-[0_0_25px_rgba(180,145,45,0.4)]
+              hover:-translate-y-1">
               <iframe
                 title="Office Location Map"
                 src={officeLocation.mapEmbedUrl}
@@ -143,10 +140,10 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="luxury-divider my-12" />
+        <div className="luxury-divider-dark my-12" />
 
         {/* Bottom Footer */}
-        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 text-cream/40 text-xs">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 text-ivory/40 text-xs">
           <p>© {currentYear} Exquisitebnb. All rights reserved.</p>
           <p className="italic font-serif">A refined stay. Thoughtfully hosted.</p>
         </div>
