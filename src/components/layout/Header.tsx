@@ -125,26 +125,28 @@ const Header = () => {
             }
           `}
         >
-          <div className="flex flex-col items-center gap-6 py-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={`relative text-sm tracking-[0.3em] uppercase transition-colors duration-300
-                  after:absolute after:left-0 after:-bottom-2
-                  after:h-[1px] after:w-0 after:bg-gold
-                  after:transition-all after:duration-300
-                  hover:after:w-full
-                  ${
-                    location.pathname === link.path
-                      ? "text-gold after:w-full"
-                      : "text-cream/80 hover:text-cream"
-                  }
-                `}>
-                {link.name}
-              </Link>
-            ))}
+          <div className="mx-6 mt-4 rounded-xl bg-charcoal/95 backdrop-blur-md border border-border shadow-lg">
+            <div className="flex flex-col items-center gap-5 py-8">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={`relative text-sm tracking-[0.3em] uppercase transition-colors duration-300
+                    after:absolute after:left-0 after:-bottom-2
+                    after:h-[1px] after:w-0 after:bg-gold
+                    after:transition-all after:duration-300
+                    hover:after:w-full
+                    ${
+                      location.pathname === link.path
+                        ? "text-gold after:w-full"
+                        : "text-cream/80 hover:text-cream"
+                    }
+                  `}>
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>
