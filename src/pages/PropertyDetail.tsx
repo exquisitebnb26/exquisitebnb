@@ -15,7 +15,6 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-living-room.jpg";
 import bedroomImage from "@/assets/property-bedroom.jpg";
@@ -23,10 +22,6 @@ import kitchenImage from "@/assets/property-kitchen.jpg";
 import bathroomImage from "@/assets/property-bathroom.jpg";
 
 
-// Mock unavailable dates (later can come from backend / Airbnb sync)
-const unavailableRanges = [
-  { from: new Date(2026, 1, 10), to: new Date(2026, 1, 14) },
-];
 const propertiesData: Record<string, any> = {
   "gilded-loft": {
     name: "The Gilded Loft",
@@ -153,8 +148,6 @@ const propertiesData: Record<string, any> = {
 
 const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const [showCalendar, setShowCalendar] = useState(false);
-  const [date, setDate] = useState<Date | undefined>(undefined);
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
@@ -395,40 +388,8 @@ const PropertyDetail = () => {
             <div className="lg:col-span-1">
               <div className="sticky top-28 p-8 bg-card border border-border rounded-sm space-y-6">
                 <h3 className="text-xl font-serif text-cream text-center">
-                  Book This Property
+                  Where to Book
                 </h3>
-
-                <Button
-                  type="button"
-                  variant="luxuryGold"
-                  className="w-full"
-                  size="lg"
-                  onClick={() => setShowCalendar((prev) => !prev)}
-                >
-                  Check Availability
-                </Button>
-
-                {showCalendar && (
-                  <div className="animate-fade-in">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      disabled={unavailableRanges}
-                      modifiers={{
-                        unavailable: unavailableRanges,
-                      }}
-                      modifiersClassNames={{
-                        unavailable:
-                          "line-through text-cream/30 cursor-not-allowed opacity-50",
-                      }}
-                      className="rounded-sm border border-border bg-charcoal-light"
-                    />
-                    <p className="text-cream-muted text-xs text-center mt-4">
-                      Select your dates, then book through our partner platforms
-                    </p>
-                  </div>
-                )}
 
                 <div className="luxury-divider" />
 
@@ -472,8 +433,8 @@ const PropertyDetail = () => {
                 </div>
 
                 <p className="text-cream-muted text-xs text-center">
-                  Bookings and payments are completed securely through trusted
-                  partner platforms.
+                  Availability, pricing, and payments are handled securely by our trusted
+                  booking partners.
                 </p>
               </div>
             </div>
