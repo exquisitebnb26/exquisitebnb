@@ -7,6 +7,7 @@ import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { Link } from "react-router-dom";
 import {
   Form,
   FormControl,
@@ -91,10 +92,10 @@ const Contact = () => {
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                 <Button variant="luxuryOutline" asChild>
-                  <a href="/properties">View Properties</a>
+                  <Link to="/properties">View Properties</Link>
                 </Button>
                 <Button variant="ghost" className="text-gold" asChild>
-                  <a href="/faqs">Read FAQs</a>
+                  <Link to="/faqs">Read FAQs</Link>
                 </Button>
               </div>
             </div>
