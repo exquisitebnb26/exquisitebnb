@@ -22,6 +22,11 @@ import bedroomImage from "@/assets/property-bedroom.jpg";
 import kitchenImage from "@/assets/property-kitchen.jpg";
 import bathroomImage from "@/assets/property-bathroom.jpg";
 
+
+// Mock unavailable dates (later can come from backend / Airbnb sync)
+const unavailableRanges = [
+  { from: new Date(2026, 1, 10), to: new Date(2026, 1, 14) },
+];
 const propertiesData: Record<string, any> = {
   "gilded-loft": {
     name: "The Gilded Loft",
@@ -394,10 +399,11 @@ const PropertyDetail = () => {
                 </h3>
 
                 <Button
+                  type="button"
                   variant="luxuryGold"
                   className="w-full"
                   size="lg"
-                  onClick={() => setShowCalendar(!showCalendar)}
+                  onClick={() => setShowCalendar((prev) => !prev)}
                 >
                   Check Availability
                 </Button>
@@ -408,6 +414,14 @@ const PropertyDetail = () => {
                       mode="single"
                       selected={date}
                       onSelect={setDate}
+                      disabled={unavailableRanges}
+                      modifiers={{
+                        unavailable: unavailableRanges,
+                      }}
+                      modifiersClassNames={{
+                        unavailable:
+                          "line-through text-cream/30 cursor-not-allowed opacity-50",
+                      }}
                       className="rounded-sm border border-border bg-charcoal-light"
                     />
                     <p className="text-cream-muted text-xs text-center mt-4">
