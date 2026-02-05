@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 import {
   Accordion,
   AccordionContent,
@@ -124,7 +125,7 @@ const FAQs = () => {
           <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted mb-4">
             Still have questions? We're here to help.
           </p>
-          <a
+          <Link
             href="/contact"
             className="text-[hsl(var(--forest-dark))]
               hover:text-[hsl(var(--forest-dark))]
@@ -136,7 +137,7 @@ const FAQs = () => {
               transition-all duration-300"
           >
             Contact Us →
-          </a>
+          </Link>
         </div>
       </section>
     </Layout>
