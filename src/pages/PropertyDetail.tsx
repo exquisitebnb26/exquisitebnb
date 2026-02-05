@@ -340,13 +340,16 @@ const PropertyDetail = () => {
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 fill-[hsl(var(--forest-dark))] text-[hsl(var(--forest-dark))] dark:fill-gold dark:text-gold" />
                   <span className="text-[hsl(var(--forest-dark))] dark:text-cream font-medium">{property.rating}</span>
-                  <span className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted">
+                  <span className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted">
                     ({property.reviewCount} reviews)
                   </span>
                 </div>
               </div>
 
-              <div className="luxury-divider" />
+               <div
+  className="h-px
+    bg-gradient-emerald-divider
+    dark:bg-gradient-to-r dark:from-transparent dark:via-gold/40 dark:to-transparent"/>
 
               {/* Description */}
               <div>
@@ -434,10 +437,13 @@ const PropertyDetail = () => {
                   Where to Book
                 </h3>
 
-                <div className="luxury-divider" />
+                 <div
+  className="h-px 
+    bg-gradient-emerald-divider
+    dark:bg-gradient-to-r dark:from-transparent dark:via-gold/40 dark:to-transparent"/>
 
                 <div className="space-y-3">
-                  <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-sm text-center mb-4">
+                  <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-sm text-center mb-4">
                     Book securely on:
                   </p>
                   <span>
