@@ -66,14 +66,6 @@ export default {
         cream: {
           DEFAULT: "hsl(var(--cream))",
           muted: "hsl(var(--cream-muted))",
-          warm: "hsl(var(--cream-warm))",
-          soft: "hsl(var(--cream-soft))",
-        },
-        emerald: {
-          DEFAULT: "hsl(var(--emerald))",
-          light: "hsl(var(--emerald-light))",
-          dark: "hsl(var(--emerald-dark))",
-          foreground: "hsl(var(--emerald-foreground))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
