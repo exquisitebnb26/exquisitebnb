@@ -47,7 +47,12 @@ const Logo = ({ variant = "full", size = "md", className = "" }: LogoProps) => {
 
       {/* Text */}
       <div className="flex flex-col">
-        <span className={`${textSize} font-serif text-cream tracking-wide`}>
+        <span
+          className={`${textSize} font-serif tracking-wide
+            dark:text-cream
+            light:text-emerald-green
+          `}
+        >
           Exquisite<span className="text-gold">bnb</span>
         </span>
       </div>

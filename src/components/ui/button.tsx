@@ -17,10 +17,36 @@ const buttonVariants = cva(
         link: "text-gold underline-offset-4 hover:underline",
         // Luxury variants
         luxury: "bg-forest border border-gold/20 text-cream hover:bg-forest-dark hover:border-gold/40 tracking-wider uppercase text-xs rounded-sm",
-        luxuryOutline: "bg-transparent border border-gold/40 text-gold hover:bg-gold/10 hover:border-gold tracking-wider uppercase text-xs rounded-sm",
-        luxuryGold: "bg-gold text-charcoal hover:bg-gold-muted tracking-wider uppercase text-xs font-semibold rounded-sm",
-        hero: "bg-transparent border-2 border-cream/30 text-cream hover:bg-cream/10 hover:border-cream/60 tracking-widest uppercase text-xs px-8 py-6 rounded-none",
-        heroGold: "bg-gold/90 border-2 border-gold text-charcoal hover:bg-gold tracking-widest uppercase text-xs px-8 py-6 font-semibold rounded-none",
+        luxuryOutline:
+  "border transition-all duration-500 ease-out " +
+  "border-[hsl(var(--forest-dark))] text-[hsl(var(--forest-dark))] " +
+  "hover:shadow-[0_0_35px_hsl(var(--forest-dark)_/_0.45)] " +
+  "hover:-translate-y-0.5 " +
+  "dark:border-gold dark:text-gold " +
+  "dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]",
+  luxuryGold: "border-2 tracking-widest uppercase text-xs px-8 py-6 font-semibold rounded-none " +
+          /* LIGHT MODE (DEFAULT) */
+          "bg-[hsl(var(--forest-dark))] border-[hsl(var(--forest-dark))] text-cream " +
+          "hover:bg-[hsl(var(--forest-dark))]/90 " +
+
+          /* DARK MODE */
+          "dark:bg-gold/90 dark:border-gold dark:text-charcoal " +
+          "dark:hover:bg-gold-muted",
+           hero:
+          "bg-transparent border-2 tracking-widest uppercase text-xs px-8 py-6 rounded-none " +
+          "border-[hsl(var(--forest-dark))] text-[hsl(var(--forest-dark))] " +
+          "hover:bg-[hsl(var(--forest-dark))]/10 hover:border-[hsl(var(--forest-dark))] " +
+          "transition-all duration-500 ease-out " +
+          "dark:border-cream/30 dark:text-cream dark:hover:bg-cream/10 dark:hover:border-cream/60",
+        heroGold:
+                    "border-2 tracking-widest uppercase text-xs px-8 py-6 font-semibold rounded-none " +
+          /* LIGHT MODE (DEFAULT) */
+          "bg-[hsl(var(--forest-dark))] border-[hsl(var(--forest-dark))] text-cream " +
+          "hover:bg-[hsl(var(--forest-dark))]/90 " +
+
+          /* DARK MODE */
+          "dark:bg-gold/90 dark:border-gold dark:text-charcoal " +
+          "dark:hover:bg-gold-muted",
       },
       size: {
         default: "h-10 px-4 py-2",

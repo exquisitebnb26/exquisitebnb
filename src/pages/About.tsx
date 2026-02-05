@@ -6,15 +6,15 @@ const About = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-charcoal">
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4 animate-fade-in">
+          <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4 animate-fade-in">
             Our Story
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 animate-fade-in">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6 animate-fade-in">
             About Exquisitebnb
           </h1>
-          <p className="text-cream-muted text-lg max-w-2xl mx-auto animate-fade-in">
+          <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto animate-fade-in">
             More than a place to stay—an experience crafted with intention, care,
             and a genuine love for hospitality.
           </p>
@@ -22,17 +22,21 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 lg:py-24 bg-charcoal-light">
+      <section className="py-16 lg:py-24 bg-cream-warm dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
             <div className="flex items-center justify-center">
-              <div className="relative w-72 h-72 lg:w-96 lg:h-96
-                bg-white rounded-full
-                border border-gold/30
-                shadow-[0_30px_90px_rgba(0,0,0,0.3)]
+              <div
+                className="relative w-72 h-72 lg:w-96 lg:h-96
+                bg-cream rounded-full
+                border border-[hsl(var(--forest-dark))]/30
+                shadow-[0_20px_60px_hsl(var(--forest-dark)_/_0.25)]
+                dark:border-gold/30
+                dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)]
                 flex items-center justify-center luxury-logo-glow
-              ">
+              "
+              >
                 <img
                   src={Exquisitebnb}
                   alt="Exquisitebnb logo"
@@ -43,12 +47,12 @@ const About = () => {
 
             {/* Content */}
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-serif text-cream">
+              <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
                 Why We Created
-                <span className="italic text-gold"> Exquisitebnb</span>
+                <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold"> Exquisitebnb</span>
               </h2>
 
-              <div className="space-y-4 text-cream-muted leading-relaxed">
+              <div className="space-y-4 text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed">
                 <p>
                   Exquisitebnb was born from a simple belief: every guest
                   deserves to feel truly welcomed, comfortable, and cared for.
@@ -75,13 +79,13 @@ const About = () => {
       </section>
 
       {/* Philosophy Section */}
-      <section className="py-16 lg:py-24 bg-charcoal">
+      <section className="py-16 lg:py-24 bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
               Our Philosophy
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
               What We Stand For
             </h2>
           </div>
@@ -115,16 +119,18 @@ const About = () => {
             ].map((value, index) => (
               <div
                 key={index}
-                className="p-8 bg-card border border-border rounded-sm
+                className="p-8 bg-card border border-[hsl(var(--forest-dark))]
                   transition-all duration-500 ease-out
-                  hover:border-gold
-                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]"
+                  hover:-translate-y-0.5
+                  hover:shadow-[0_0_30px_hsl(var(--forest-dark)_/_0.45)]
+                  dark:border-border
+                  dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]"
               >
-                <value.icon className="w-8 h-8 text-gold mb-6" />
-                <h3 className="text-xl font-serif text-cream mb-3">
+                <value.icon className="w-8 h-8 text-[hsl(var(--forest-dark))] dark:text-gold mb-6" />
+                <h3 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-3">
                   {value.title}
                 </h3>
-                <p className="text-cream-muted text-sm leading-relaxed">
+                <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-sm leading-relaxed">
                   {value.description}
                 </p>
               </div>
@@ -134,19 +140,19 @@ const About = () => {
       </section>
 
       {/* Closing Section */}
-      <section className="py-16 lg:py-24 bg-charcoal-light">
+      <section className="py-16 lg:py-24 bg-cream-grey dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12 text-center max-w-2xl">
-          <h2 className="text-3xl md:text-4xl font-serif text-cream mb-6">
+          <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
             A Personal Touch,
             <br />
-            <span className="italic text-gold">Every Time</span>
+            <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold">Every Time</span>
           </h2>
-          <p className="text-cream-muted leading-relaxed mb-8">
+          <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted leading-relaxed mb-8">
             When you book with Exquisitebnb, you're not just renting a space—
             you're experiencing hospitality the way it was meant to be. Personal,
             warm, and consistently excellent. We look forward to welcoming you.
           </p>
-          <p className="text-gold font-serif italic text-xl">
+          <p className="text-[hsl(var(--forest-dark))] dark:text-gold font-serif italic text-xl">
             — The Exquisitebnb Team
           </p>
         </div>
