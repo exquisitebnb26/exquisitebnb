@@ -1,5 +1,6 @@
 import { ExternalLink, Shield, CreditCard, Calendar } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import { Link } from "react-router-dom";
 
 const platforms = [
   {
@@ -147,12 +148,12 @@ const Book = () => {
             Explore our collection first and find the perfect space for your
             stay.
           </p>
-          <a
-            href="/properties"
+          <Link
+            to="/properties"
             className="inline-flex items-center gap-2 text-[hsl(var(--forest-dark))] hover:text-[hsl(var(--forest-dark))] dark:text-gold dark:hover:text-gold-muted transition-colors font-serif text-lg"
           >
             Browse Properties →
-          </a>
+          </Link>
         </div>
       </section>
     </Layout>
