@@ -33,7 +33,7 @@ const Partnership = () => {
               A Different Approach
             </p>
             <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
-              Why Partner With Exquisitebnb
+              Why Partner With Exquisite<span className="text-gold">bnb</span>
             </h2>
             <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted leading-relaxed">
               Exquisitebnb is built on a brand-first philosophy. We believe that 

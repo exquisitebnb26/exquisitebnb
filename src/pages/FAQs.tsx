@@ -126,7 +126,7 @@ const FAQs = () => {
             Still have questions? We're here to help.
           </p>
           <Link
-            href="/contact"
+            to="/contact"
             className="text-[hsl(var(--forest-dark))]
               hover:text-[hsl(var(--forest-dark))]
               hover:drop-shadow-[0_0_10px_hsl(var(--forest-dark)_/_0.6)]

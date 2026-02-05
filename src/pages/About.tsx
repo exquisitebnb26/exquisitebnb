@@ -12,7 +12,7 @@ const About = () => {
             Our Story
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6 animate-fade-in">
-            About Exquisitebnb
+            About Exquisite<span className="text-gold">bnb</span>
           </h1>
           <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto animate-fade-in">
             More than a place to stay—an experience crafted with intention, care,
@@ -49,7 +49,7 @@ const About = () => {
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
                 Why We Created
-                <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold"> Exquisitebnb</span>
+                <span className="italic text-[hsl(var(--forest-dark))] dark:text-cream"> Exquisite<span className="text-gold">bnb</span></span>
               </h2>
 
               <div className="space-y-4 text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed">
@@ -152,8 +152,8 @@ const About = () => {
             you're experiencing hospitality the way it was meant to be. Personal,
             warm, and consistently excellent. We look forward to welcoming you.
           </p>
-          <p className="text-[hsl(var(--forest-dark))] dark:text-gold font-serif italic text-xl">
-            — The Exquisitebnb Team
+          <p className="text-[hsl(var(--forest-dark))] dark:text-cream font-serif italic text-xl">
+            — The Exquisite<span className="text-gold">bnb</span> Team
           </p>
         </div>
       </section>
