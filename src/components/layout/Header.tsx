@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/brand/Logo";
+import ThemeToggle from "@/components/ui/theme-toggle";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -35,7 +36,7 @@ const Header = () => {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? "bg-charcoal/95 border-b border-border"
+          ? "bg-background/95 backdrop-blur-md border-b border-border"
           : "bg-transparent"
       }`}
     >
@@ -75,7 +76,7 @@ const Header = () => {
                     ${
                       location.pathname === link.path
                         ? "text-gold after:w-full"
-                        : "text-cream/70 hover:text-cream"
+                        : "text-foreground/70 hover:text-foreground"
                     }
                   `}
                 >
@@ -83,35 +84,38 @@ const Header = () => {
                 </Link>
 
                 {index !== navLinks.length - 1 && (
-                  <span className="text-cream/40 select-none"></span>
+                  <span className="text-foreground/40 select-none"></span>
                 )}
               </div>
             ))}
           </div>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="relative z-50 text-cream transition-transform duration-300 hover:scale-105"
-            aria-label="Menu"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-          >
-            <span className="relative w-6 h-6 block">
-              <Menu
-                size={24}
-                className={`absolute inset-0 transition-all duration-300 ${
-                  isMenuOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
-                }`}
-              />
-              <X
-                size={24}
-                className={`absolute inset-0 transition-all duration-300 ${
-                  isMenuOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
-                }`}
-              />
-            </span>
-          </Button>
+          <div className="flex items-center gap-2">
+            <ThemeToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative z-50 text-foreground transition-transform duration-300 hover:scale-105"
+              aria-label="Menu"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+            >
+              <span className="relative w-6 h-6 block">
+                <Menu
+                  size={24}
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    isMenuOpen ? "opacity-0 rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
+                  }`}
+                />
+                <X
+                  size={24}
+                  className={`absolute inset-0 transition-all duration-300 ${
+                    isMenuOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-75"
+                  }`}
+                />
+              </span>
+            </Button>
+          </div>
         </nav>
 
         {/* Mobile Flyout Menu */}
@@ -125,7 +129,7 @@ const Header = () => {
             }
           `}
         >
-          <div className="mx-6 mt-4 rounded-xl bg-charcoal/95 backdrop-blur-md border border-border shadow-lg">
+          <div className="mx-6 mt-4 rounded-xl bg-card/95 backdrop-blur-md border border-border shadow-lg">
             <div className="flex flex-col items-center gap-5 py-8">
               {navLinks.map((link) => (
                 <Link
@@ -140,7 +144,7 @@ const Header = () => {
                     ${
                       location.pathname === link.path
                         ? "text-gold after:w-full"
-                        : "text-cream/80 hover:text-cream"
+                        : "text-foreground/80 hover:text-foreground"
                     }
                   `}>
                   {link.name}
