@@ -34,25 +34,26 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-md border-b border-border"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500
+        ${
+          isScrolled
+                       ? "dark:bg-background/95 dark:backdrop-blur-md dark:border-b dark:border-border bg-cream-warm"
+            : "dark:bg-transparent bg-cream-warm"
+        }
+      `}
     >
       <div className="container mx-auto px-6 lg:px-12 relative">
         <nav className="flex items-center justify-between h-20 lg:h-24">
           {/* Logo */}
           <Link
             to="/"
-            className="relative z-50 luxury-logo-glow"
-          >
+            className="relative z-50 luxury-logo-theme-glow">
             <Logo />
           </Link>
 
           {/* Hamburger-Controlled Inline Navigation */}
           <div
-            className={`hidden lg:flex absolute right-24 top-1/2 -translate-y-1/2
+            className={`hidden lg:flex absolute right-36 top-1/2 -translate-y-1/2
               max-w-[calc(100%-6rem)]
               flex items-center gap-5 sm:gap-4
               transition-all duration-500 ease-out
@@ -70,14 +71,14 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={`relative text-sm sm:text-xs tracking-[0.18em] uppercase transition-colors duration-300
                     after:absolute after:left-0 after:-bottom-1
-                    after:h-[1px] after:w-0 after:bg-gold
+                    after:h-[1px] after:w-0 after:bg-[hsl(var(--forest-dark))] dark:after:bg-gold
                     after:transition-all after:duration-300
                     hover:after:w-full
                     ${
                       location.pathname === link.path
-                        ? "text-gold after:w-full"
-                        : "text-foreground/70 hover:text-foreground"
-                    }
+                                                ? "dark:text-gold after:w-full text-[hsl(var(--forest-dark))]"
+                        : "dark:text-foreground/70 dark:hover:text-foreground text-[hsl(var(--forest-dark))] hover:text-[hsl(var(--forest-dark))]"
+                      }
                   `}
                 >
                   {link.name}
@@ -91,8 +92,7 @@ const Header = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex items-center gap-2">
-            <ThemeToggle />
+          <div className="flex items-center gap-3">
             <Button
               variant="ghost"
               size="icon"
@@ -115,6 +115,7 @@ const Header = () => {
                 />
               </span>
             </Button>
+            <ThemeToggle />
           </div>
         </nav>
 
@@ -144,7 +145,7 @@ const Header = () => {
                     ${
                       location.pathname === link.path
                         ? "text-gold after:w-full"
-                        : "text-foreground/80 hover:text-foreground"
+                        : "dark:text-foreground/80 dark:hover:text-foreground light:text-black/80 light:hover:text-black"
                     }
                   `}>
                   {link.name}

@@ -17,7 +17,7 @@
     --popover-foreground: 30 15% 18%;
 
     /* Warm Forest Green */
-    --primary: 155 30% 28%;
+    --primary: 155 45% 22%;
     --primary-foreground: 40 30% 96%;
 
     /* Soft Linen surfaces */
@@ -36,15 +36,15 @@
 
     --border: 40 20% 85%;
     --input: 40 20% 88%;
-    --ring: 155 30% 35%;
+    --ring: 155 45% 26%;
 
     --radius: 0.25rem;
 
     /* Custom luxury tokens - Light Mode */
     --gold: 43 45% 42%;
     --gold-muted: 43 30% 50%;
-    --forest: 155 30% 32%;
-    --forest-dark: 155 30% 25%;
+    --forest: 155 50% 20%;
+    --forest-dark: 155 55% 16%;
     --charcoal: 30 15% 18%;
     --charcoal-light: 30 12% 25%;
     --cream: 40 30% 96%;
@@ -72,12 +72,19 @@
 
     --sidebar-background: 40 25% 97%;
     --sidebar-foreground: 30 15% 18%;
-    --sidebar-primary: 155 30% 32%;
+    --sidebar-primary: 155 45% 22%;
     --sidebar-primary-foreground: 40 30% 96%;
     --sidebar-accent: 40 20% 92%;
     --sidebar-accent-foreground: 30 15% 20%;
     --sidebar-border: 40 20% 85%;
     --sidebar-ring: 155 30% 35%;
+
+    /* Pearl Green (Brand Accent) */
+    --pearl-green: 155 28% 45%;
+    --pearl-green-muted: 155 22% 55%;
+    
+    --cream-warm: 40 35% 94%;
+    --cream-soft: 42 45% 85%;
   }
 
   .dark {
@@ -116,8 +123,8 @@
     /* Custom luxury tokens - Dark Mode */
     --gold: 43 40% 50%;
     --gold-muted: 43 30% 40%;
-    --forest: 155 35% 22%;
-    --forest-dark: 155 35% 15%;
+    --forest: 155 35% 10%;
+    --forest-dark: 150 70% 14%;
     --charcoal: 0 0% 8%;
     --charcoal-light: 0 0% 12%;
     --cream: 40 20% 92%;
@@ -264,8 +271,67 @@
   .border-gold-strong {
     border-color: hsl(var(--gold) / 0.6);
   }
+  .bg-cream-warm {
+    background-color: hsl(var(--cream-warm));
+  }
+  
+  .bg-cream-soft {
+    background-color: hsl(var(--cream-soft));
+  }
+
+  .text-emerald-foreground {
+    color: hsl(var(--emerald-foreground));
+  }
+  
+  .border-emerald {
+    border-color: hsl(var(--emerald) / 0.3);
+  }
+  .bg-gradient-emerald-divider {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      hsl(var(--forest) / 0.6),
+      transparent
+    );
+  }
+}
 
   /* === Luxury Effect System (Glow in dark, Satin in light) === */
+@keyframes luxuryLogoDarkGreenGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 4px rgba(20, 60, 50, 0.35));
+    opacity: 0.9;
+  }
+
+  50% {
+    filter: drop-shadow(0 0 18px rgba(20, 60, 50, 0.75));
+    opacity: 1;
+  }
+
+  100% {
+    filter: drop-shadow(0 0 4px rgba(20, 60, 50, 0.35));
+    opacity: 0.9;
+  }
+}
+
+.luxury-logo-theme-glow {
+  transition: filter 0.35s ease-out, transform 0.35s ease-out;
+}
+
+/* DARK MODE → GOLD GLOW */
+.dark .luxury-logo-theme-glow {
+  animation: luxuryLogoGlowPulse 5.2s ease-in-out infinite;
+}
+
+/* LIGHT MODE → DARK GREEN GLOW */
+.light .luxury-logo-theme-glow {
+  animation: luxuryLogoDarkGreenGlowPulse 5.2s ease-in-out infinite;
+}
+
+/* Hover refinement */
+.luxury-logo-theme-glow:hover {
+  transform: scale(1.05);
+}
 
 @keyframes luxuryGoldPulse {
   0% {
@@ -380,7 +446,22 @@
     opacity: 0.8;
   }
 }
+/* === Forest Green Ambient Glow (Light Mode) === */
+@keyframes forestGlow {
+  0% {
+    box-shadow: 0 0 18px hsl(var(--forest-dark) / 0.35);
+  }
+  50% {
+    box-shadow: 0 0 36px hsl(var(--forest-dark) / 0.6);
+  }
+  100% {
+    box-shadow: 0 0 18px hsl(var(--forest-dark) / 0.35);
+  }
+}
 
+.animate-forestGlow {
+  animation: forestGlow 2.8s ease-in-out infinite;
+}
 .luxury-logo-glow {
   transition: filter 0.3s ease-out, transform 0.3s ease-out;
 }
@@ -400,6 +481,42 @@
   transform: scale(1.03);
 }
 
+.luxury-logo-green-glow {
+  transition: filter 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.dark .luxury-logo-green-glow {
+  animation: luxuryLogoGreenGlowPulse 5.6s ease-in-out infinite;
+}
+
+.dark .luxury-logo-green-glow:hover {
+  animation: none;
+  filter: drop-shadow(0 0 18px hsl(var(--pearl-green) / 0.75));
+  transform: scale(1.05);
+}
+
+.luxury-logo-green-glow:hover {
+  filter: drop-shadow(0 2px 4px hsl(var(--pearl-green) / 0.35));
+  transform: scale(1.03);
+}
+
+@keyframes luxuryLogoGreenGlowPulse {
+  0% {
+    filter: drop-shadow(0 0 3px hsl(var(--pearl-green) / 0.25));
+    opacity: 0.85;
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px hsl(var(--pearl-green) / 0.55));
+    opacity: 1;
+  }
+
+  100% {
+    filter: drop-shadow(0 0 3px hsl(var(--pearl-green) / 0.25));
+    opacity: 0.85;
+  }
+}
+
 .luxury-static-glow {
   transition: all 0.5s ease-out;
 }
@@ -412,6 +529,4 @@
 .luxury-static-glow:hover {
   box-shadow: var(--shadow-elevated);
   transform: translateY(-0.25rem);
-}
-
 }

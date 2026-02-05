@@ -63,15 +63,15 @@ const FAQs = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-charcoal">
+      <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-cream-warm dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4 animate-fade-in">
+          <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4 animate-fade-in">
             Questions Answered
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-cream mb-6 animate-fade-in">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6 animate-fade-in">
             Frequently Asked Questions
           </h1>
-          <p className="text-cream-muted text-lg max-w-2xl mx-auto animate-fade-in">
+          <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto animate-fade-in">
             Everything you need to know about staying with Exquisitebnb. Can't
             find your answer? Feel free to reach out—we're happy to help.
           </p>
@@ -79,30 +79,37 @@ const FAQs = () => {
       </section>
 
       {/* FAQs */}
-      <section className="py-16 lg:py-24 bg-charcoal-light">
+      <section className="py-16 lg:py-24 bg-cream-soft dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <AccordionItem
                 key={index}
                 value={`item-${index}`}
-                className="bg-card border border-border rounded-sm px-6
+                className="bg-card border border-[hsl(var(--forest-dark))] rounded-sm px-6
                   transition-all duration-500 ease-out
-                  hover:border-gold
-                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
                   hover:-translate-y-1
-                  data-[state=open]:border-gold"
+                  hover:shadow-[0_0_30px_hsl(var(--forest-dark)_/_0.45)]
+                  data-[state=open]:border-[hsl(var(--forest-dark))]
+                  dark:border-border
+                  dark:hover:border-gold
+                  dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+                  dark:data-[state=open]:border-gold"
               >
                 <AccordionTrigger
-                  className="text-left font-serif text-cream py-6
+                  className="text-left font-serif text-[hsl(var(--forest-dark))]
+                    hover:text-[hsl(var(--forest-dark))]
+                    hover:drop-shadow-[0_0_6px_hsl(var(--forest-dark)_/_0.6)]
+                    dark:text-cream
+                    dark:hover:text-gold
+                    dark:hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]
+                    py-6
                     transition-all duration-300
-                    hover:text-gold
-                    hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]
                     hover:no-underline"
                 >
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-cream-muted leading-relaxed pb-6">
+                <AccordionContent className="text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed pb-6">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
@@ -112,17 +119,21 @@ const FAQs = () => {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-16 bg-charcoal">
+      <section className="py-16 bg-cream-warm dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <p className="text-cream-muted mb-4">
+          <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted mb-4">
             Still have questions? We're here to help.
           </p>
           <a
             href="/contact"
-            className="text-gold font-serif text-lg
-              transition-all duration-300
-              hover:text-gold-muted
-              hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]"
+            className="text-[hsl(var(--forest-dark))]
+              hover:text-[hsl(var(--forest-dark))]
+              hover:drop-shadow-[0_0_10px_hsl(var(--forest-dark)_/_0.6)]
+              dark:text-gold
+              dark:hover:text-gold-muted
+              dark:hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]
+              font-serif text-lg
+              transition-all duration-300"
           >
             Contact Us →
           </a>

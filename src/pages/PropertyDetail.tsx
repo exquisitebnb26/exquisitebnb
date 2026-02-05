@@ -208,11 +208,11 @@ const PropertyDetail = () => {
   return (
     <Layout>
       {/* Back Link */}
-      <div className="pt-24 lg:pt-28 bg-charcoal">
+      <div className="pt-24 lg:pt-28 bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <Link
             to="/properties"
-            className="inline-flex items-center gap-2 text-cream-muted hover:text-cream transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-[hsl(var(--forest-dark))] hover:text-[hsl(var(--forest-dark))] transition-colors text-sm dark:text-cream-muted dark:hover:text-cream"
           >
             <ChevronLeft className="w-4 h-4" />
             Back to Properties
@@ -221,7 +221,7 @@ const PropertyDetail = () => {
       </div>
 
       {/* Luxury Hero Image Slider */}
-      <section className="bg-charcoal">
+      <section className="bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 py-8">
           <div className="relative aspect-[21/9] rounded-sm overflow-hidden group">
             {property.images.map((img, index) => (
@@ -237,20 +237,30 @@ const PropertyDetail = () => {
               />
             ))}
             {/* Gradient overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-transparent to-transparent dark:from-charcoal/60" />
             {/* Left Arrow */}
             <button
               onClick={handlePrevImage}
               aria-label="Previous image"
               disabled={isTransitioning}
-              className="absolute left-4 top-1/2 -translate-y-1/2
+              className="
+                absolute left-4 top-1/2 -translate-y-1/2
                 w-10 h-10 flex items-center justify-center
-                rounded-full bg-charcoal/60 backdrop-blur-sm
-                border border-gold/30 text-gold
-                hover:bg-charcoal/80 hover:border-gold
-                transition-all duration-300
+                rounded-full backdrop-blur-sm
+                border transition-all duration-300
                 opacity-0 group-hover:opacity-100
-                disabled:opacity-40 disabled:cursor-not-allowed"
+                disabled:opacity-40 disabled:cursor-not-allowed
+                border-[hsl(var(--forest-dark))]
+                text-[hsl(var(--forest-dark))]
+                bg-cream/70 hover:bg-cream
+                hover:shadow-[0_0_18px_hsl(var(--forest-dark)_/_0.6)]
+                dark:border-gold
+                dark:text-gold
+                dark:bg-charcoal/60
+                dark:hover:bg-charcoal/80
+                dark:hover:border-gold
+                dark:hover:shadow-[0_0_18px_rgba(212,175,55,0.6)]
+              "
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
@@ -260,14 +270,24 @@ const PropertyDetail = () => {
               onClick={handleNextImage}
               aria-label="Next image"
               disabled={isTransitioning}
-              className="absolute right-4 top-1/2 -translate-y-1/2
+              className="
+                absolute right-4 top-1/2 -translate-y-1/2
                 w-10 h-10 flex items-center justify-center
-                rounded-full bg-charcoal/60 backdrop-blur-sm
-                border border-gold/30 text-gold
-                hover:bg-charcoal/80 hover:border-gold
-                transition-all duration-300
+                rounded-full backdrop-blur-sm
+                border transition-all duration-300
                 opacity-0 group-hover:opacity-100
-                disabled:opacity-40 disabled:cursor-not-allowed"
+                disabled:opacity-40 disabled:cursor-not-allowed
+                border-[hsl(var(--forest-dark))]
+                text-[hsl(var(--forest-dark))]
+                bg-cream/70 hover:bg-cream
+                hover:shadow-[0_0_18px_hsl(var(--forest-dark)_/_0.6)]
+                dark:border-gold
+                dark:text-gold
+                dark:bg-charcoal/60
+                dark:hover:bg-charcoal/80
+                dark:hover:border-gold
+                dark:hover:shadow-[0_0_18px_rgba(212,175,55,0.6)]
+              "
             >
               <ChevronRight className="w-5 h-5" />
             </button>
@@ -279,8 +299,8 @@ const PropertyDetail = () => {
                   onClick={() => setActiveImage(index)}
                   className={`w-2.5 h-2.5 rounded-full transition-all duration-500
                     ${index === activeImage
-                      ? "bg-gold scale-125 shadow-[0_0_12px_rgba(212,175,55,0.8)]"
-                      : "bg-cream/40 hover:bg-cream/70"}
+                      ? "bg-[hsl(var(--forest-dark))] shadow-[0_0_12px_hsl(var(--forest-dark)_/_0.8)] dark:bg-gold dark:shadow-[0_0_12px_rgba(212,175,55,0.8)] scale-125"
+                      : "bg-forest/30 hover:bg-forest/60 dark:bg-cream/40 dark:hover:bg-cream/70"}
                   `}
                   aria-label={`Go to image ${index + 1}`}
                   type="button"
@@ -292,37 +312,35 @@ const PropertyDetail = () => {
       </section>
 
       {/* Property Info */}
-      <section className="py-12 lg:py-16 bg-charcoal">
+      <section className="py-12 lg:py-16 bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Main Content */}
             <div className="lg:col-span-2 space-y-10">
               {/* Header */}
               <div>
-                <div className="flex items-center gap-4 text-cream-muted text-sm mb-4">
+                <div className="text-sm mb-4 text-[hsl(var(--forest-dark))] dark:text-cream-muted flex items-center gap-4">
                   <span className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-gold" />
+                    <MapPin className="w-4 h-4 text-[hsl(var(--forest-dark))] dark:text-gold" />
                     {property.location}
                   </span>
                   <span className="flex items-center gap-2">
-                    <Users className="w-4 h-4 text-gold" />
+                    <Users className="w-4 h-4 text-[hsl(var(--forest-dark))] dark:text-gold" />
                     {property.guests} guests · {property.bedrooms} beds ·{" "}
                     {property.bathrooms} baths
                   </span>
                 </div>
 
                 <h1
-                  className="text-3xl md:text-4xl font-serif text-cream mb-4
-                    drop-shadow-[0_0_12px_rgba(212,175,55,0.55)]
-                    animate-[pulse_3s_ease-in-out_infinite]"
+                  className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-4 drop-shadow-none dark:drop-shadow-[0_0_12px_rgba(212,175,55,0.55)]"
                 >
                   {property.name}
                 </h1>
 
                 <div className="flex items-center gap-2">
-                  <Star className="w-5 h-5 fill-gold text-gold" />
-                  <span className="text-cream font-medium">{property.rating}</span>
-                  <span className="text-cream-muted">
+                  <Star className="w-5 h-5 fill-[hsl(var(--forest-dark))] text-[hsl(var(--forest-dark))] dark:fill-gold dark:text-gold" />
+                  <span className="text-[hsl(var(--forest-dark))] dark:text-cream font-medium">{property.rating}</span>
+                  <span className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted">
                     ({property.reviewCount} reviews)
                   </span>
                 </div>
@@ -332,25 +350,32 @@ const PropertyDetail = () => {
 
               {/* Description */}
               <div>
-                <h2 className="text-xl font-serif text-cream mb-4">
+                <h2 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-4">
                   About This Space
                 </h2>
-                <p className="text-cream-muted leading-relaxed">
+                <p className="text-[hsl(var(--forest-dark))]/80 dark:text-cream-muted leading-relaxed">
                   {property.description}
                 </p>
               </div>
 
               {/* Amenities */}
               <div>
-                <h2 className="text-xl font-serif text-cream mb-6">Amenities</h2>
+                <h2 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">Amenities</h2>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {property.amenities.map((amenity: any, index: number) => (
                     <div
                       key={index}
-                      className="flex items-center gap-3 p-4 bg-card border border-border rounded-sm luxury-static-glow"
+                      className="
+                        flex items-center gap-3 p-4 bg-card border border-border transition-all duration-500 hover:-translate-y-0.5
+                        border-[hsl(var(--forest-dark))]
+                        hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)]
+                        dark:border-border
+                        dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]
+                        rounded-sm
+                      "
                     >
-                      <amenity.icon className="w-5 h-5 text-gold" />
-                      <span className="text-cream text-sm">{amenity.name}</span>
+                      <amenity.icon className="w-5 h-5 text-[hsl(var(--forest-dark))] dark:text-gold" />
+                      <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm">{amenity.name}</span>
                     </div>
                   ))}
                 </div>
@@ -358,24 +383,31 @@ const PropertyDetail = () => {
 
               {/* Reviews */}
               <div>
-                <h2 className="text-xl font-serif text-cream mb-6">
+                <h2 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
                   Guest Reviews
                 </h2>
                 <div className="space-y-6">
                   {property.reviews.map((review: any, index: number) => (
                     <div
                       key={index}
-                      className="p-6 bg-card border border-border rounded-sm luxury-static-glow"
+                      className="
+                        p-6 bg-card border border-border transition-all duration-500 hover:-translate-y-0.5
+                        border-[hsl(var(--forest-dark))]
+                        hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)]
+                        dark:border-border
+                        dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]
+                        rounded-sm
+                      "
                     >
                       <div className="flex items-center gap-1 mb-3">
                         {[...Array(review.rating)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-gold text-gold" />
+                          <Star key={i} className="w-4 h-4 fill-[hsl(var(--forest-dark))] text-[hsl(var(--forest-dark))] dark:fill-gold dark:text-gold" />
                         ))}
                       </div>
-                      <p className="text-cream-muted italic mb-3">
+                      <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted italic mb-3">
                         "{review.text}"
                       </p>
-                      <p className="text-cream text-sm font-medium">
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm font-medium">
                         {review.author}
                       </p>
                     </div>
@@ -386,53 +418,91 @@ const PropertyDetail = () => {
 
             {/* Sidebar */}
             <div className="lg:col-span-1">
-              <div className="sticky top-28 p-8 bg-card border border-border rounded-sm space-y-6">
-                <h3 className="text-xl font-serif text-cream text-center">
+              <div
+                className="sticky top-28 p-8 rounded-sm space-y-6
+    bg-cream-warm border border-[hsl(var(--forest-dark))]
+    dark:bg-card dark:border-border
+
+    transition-all duration-700 ease-out
+    will-change-[background-color,box-shadow,transform]
+
+    hover:-translate-y-0.5
+    hover:shadow-[0_0_28px_hsl(var(--forest-dark)_/_0.35)]
+    dark:hover:shadow-[0_0_28px_rgba(212,175,55,0.35)]"
+              >
+                <h3 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream text-center">
                   Where to Book
                 </h3>
 
                 <div className="luxury-divider" />
 
                 <div className="space-y-3">
-                  <p className="text-cream-muted text-sm text-center mb-4">
+                  <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-sm text-center mb-4">
                     Book securely on:
                   </p>
-                  <span className="text-cream/50 font-medium">
+                  <span>
                   <a
                     href={property.airbnbUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm luxury-static-glow"
+                    className="flex items-center justify-between p-4 rounded-sm
+  bg-cream border border-[hsl(var(--forest-dark))]
+  dark:bg-charcoal-light dark:border-border
+
+  transition-all duration-500 ease-out
+  will-change-[background-color,box-shadow,transform]
+
+  hover:-translate-y-0.5
+  hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)]
+  dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]"
                   >
-                    <span className="text-cream text-sm">Airbnb</span>
-                    <ExternalLink className="w-4 h-4 text-cream-muted" />
+                    <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm">Airbnb</span>
+                    <ExternalLink className="w-4 h-4 text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted" />
                   </a>
                   </span>
-                  <span className="text-cream/50 font-medium">
+                  <span>
                   <a
                     href={property.vrboUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm luxury-static-glow"
+                    className="flex items-center justify-between p-4 rounded-sm
+  bg-cream border border-[hsl(var(--forest-dark))]
+  dark:bg-charcoal-light dark:border-border
+
+  transition-all duration-500 ease-out
+  will-change-[background-color,box-shadow,transform]
+
+  hover:-translate-y-0.5
+  hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)]
+  dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]"
                   >
-                    <span className="text-cream text-sm">VRBO</span>
-                    <ExternalLink className="w-4 h-4 text-cream-muted" />
+                    <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm">VRBO</span>
+                    <ExternalLink className="w-4 h-4 text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted" />
                   </a>
                   </span>
-                  <span className="text-cream/50 font-medium">
+                  <span>
                   <a
                     href={property.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between p-4 bg-charcoal-light border border-border rounded-sm luxury-static-glow"
+                    className="flex items-center justify-between p-4 rounded-sm
+  bg-cream border border-[hsl(var(--forest-dark))]
+  dark:bg-charcoal-light dark:border-border
+
+  transition-all duration-500 ease-out
+  will-change-[background-color,box-shadow,transform]
+
+  hover:-translate-y-0.5
+  hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)]
+  dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]"
                   >
-                    <span className="text-cream text-sm">Booking.com</span>
-                    <ExternalLink className="w-4 h-4 text-cream-muted" />
+                    <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm">Booking.com</span>
+                    <ExternalLink className="w-4 h-4 text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted" />
                   </a>
                   </span>
                 </div>
 
-                <p className="text-cream-muted text-xs text-center">
+                <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-xs text-center">
                   Availability, pricing, and payments are handled securely by our trusted
                   booking partners.
                 </p>
