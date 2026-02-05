@@ -57,13 +57,17 @@ const Contact = () => {
 
   const onSubmit = (data: ContactFormData) => {
     const subject = encodeURIComponent(
-      `Inquiry from ${data.firstName} ${data.lastName}`
+      `New Inquiry — ${data.firstName} ${data.lastName}`
     );
 
     const body = encodeURIComponent(
-      `Name: ${data.firstName} ${data.lastName}\n` +
-      `Email: ${data.email}\n\n` +
-      `Message:\n${data.message}`
+      `Hello Exquisitebnb Team,\n\n` +
+      `I hope this message finds you well.\n\n` +
+      `My name is ${data.firstName} ${data.lastName}, and I’m reaching out regarding the following:\n\n` +
+      `${data.message}\n\n` +
+      `You can reach me at ${data.email}.\n\n` +
+      `Kind regards,\n` +
+      `${data.firstName} ${data.lastName}`
     );
 
     const mailtoLink = `mailto:support@exqusitebnb.com?subject=${subject}&body=${body}`;
