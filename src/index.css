@@ -49,6 +49,16 @@
     --charcoal-light: 30 12% 25%;
     --cream: 40 30% 96%;
     --cream-muted: 30 10% 45%;
+    
+    /* Cream variations for sections */
+    --cream-warm: 40 35% 94%;
+    --cream-soft: 40 28% 92%;
+    
+    /* Emerald green for cards */
+    --emerald: 160 45% 35%;
+    --emerald-light: 160 40% 40%;
+    --emerald-dark: 160 50% 28%;
+    --emerald-foreground: 40 30% 96%;
 
     /* Light mode satin highlight system */
     --satin-border: 43 25% 75%;
@@ -122,6 +132,16 @@
     --charcoal-light: 0 0% 12%;
     --cream: 40 20% 92%;
     --cream-muted: 40 10% 70%;
+    
+    /* Cream variations for sections (dark mode - use charcoal variations) */
+    --cream-warm: 0 0% 10%;
+    --cream-soft: 0 0% 12%;
+    
+    /* Emerald green for cards (dark mode) */
+    --emerald: 160 45% 30%;
+    --emerald-light: 160 40% 35%;
+    --emerald-dark: 160 50% 22%;
+    --emerald-foreground: 40 20% 92%;
 
     /* Dark mode glow system */
     --satin-border: 43 40% 50%;
@@ -255,6 +275,34 @@
 
   .bg-forest-dark {
     background-color: hsl(var(--forest-dark));
+  }
+  
+  .bg-cream-warm {
+    background-color: hsl(var(--cream-warm));
+  }
+  
+  .bg-cream-soft {
+    background-color: hsl(var(--cream-soft));
+  }
+  
+  .bg-emerald {
+    background-color: hsl(var(--emerald));
+  }
+  
+  .bg-emerald-light {
+    background-color: hsl(var(--emerald-light));
+  }
+  
+  .bg-emerald-dark {
+    background-color: hsl(var(--emerald-dark));
+  }
+  
+  .text-emerald-foreground {
+    color: hsl(var(--emerald-foreground));
+  }
+  
+  .border-emerald {
+    border-color: hsl(var(--emerald) / 0.3);
   }
 
   .border-gold {

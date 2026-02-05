@@ -54,18 +54,18 @@ const Index = () => {
       </section>
 
       {/* Brand Introduction */}
-      <section className="py-24 lg:py-32 bg-charcoal">
+      <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center space-y-6">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase">
+            <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase">
               Our Philosophy
             </p>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-charcoal dark:text-cream">
               Where comfort meets
-              <span className="italic text-gold"> elegance</span>
+              <span className="italic text-emerald dark:text-gold"> elegance</span>
             </h2>
-            <div className="luxury-divider" />
-            <p className="text-cream-muted text-lg leading-relaxed">
+            <div className="h-px bg-gradient-to-r from-transparent via-emerald/30 dark:via-gold/30 to-transparent" />
+            <p className="text-charcoal-light dark:text-cream-muted text-lg leading-relaxed">
               Exquisitebnb is not just a place to stay—it's an experience.
               We believe that every guest deserves spaces that feel like home,
               yet exceed the standards of the finest hotels. Our properties are
@@ -77,13 +77,13 @@ const Index = () => {
       </section>
 
       {/* Why Exquisitebnb */}
-      <section className="py-24 lg:py-32 bg-charcoal-light">
+      <section className="py-24 lg:py-32 bg-cream-soft dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
               The Experience
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-charcoal dark:text-cream">
               Why Exquisitebnb
             </h2>
           </div>
@@ -117,17 +117,17 @@ const Index = () => {
             ].map((feature, index) => (
               <div
                 key={index}
-                className="group p-8 bg-card border border-border rounded-sm
+                className="group p-8 bg-emerald dark:bg-card border border-emerald/20 dark:border-border rounded-sm
                   transition-all duration-500 ease-out
-                  hover:border-gold
-                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+                  hover:border-emerald-light dark:hover:border-gold
+                  hover:shadow-[0_8px_30px_rgba(16,95,76,0.25)] dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
                   hover:-translate-y-1"
               >
-                <feature.icon className="w-8 h-8 text-gold mb-6 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-xl font-serif text-cream mb-3">
+                <feature.icon className="w-8 h-8 text-cream dark:text-gold mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl font-serif text-cream dark:text-cream mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-cream-muted text-sm leading-relaxed">
+                <p className="text-cream/80 dark:text-cream-muted text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -137,13 +137,13 @@ const Index = () => {
       </section>
 
       {/* Featured Properties Preview */}
-      <section className="py-24 lg:py-32 bg-charcoal">
+      <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
               Featured Stays
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-charcoal dark:text-cream">
               Discover Our Properties
             </h2>
           </div>
@@ -171,22 +171,22 @@ const Index = () => {
                 to="/properties"
                 className="group block overflow-hidden rounded-sm
     transition-all duration-500 ease-out
-    hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+    hover:shadow-[0_8px_30px_rgba(16,95,76,0.25)] dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
     hover:-translate-y-1"
               >
-                <div className="relative aspect-[4/3] overflow-hidden border border-border
-  group-hover:border-gold transition-colors duration-500">
+                <div className="relative aspect-[4/3] overflow-hidden border border-emerald/20 dark:border-border
+  group-hover:border-emerald dark:group-hover:border-gold transition-colors duration-500 bg-emerald dark:bg-transparent">
                   <img
                     src={property.image}
                     alt={property.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-emerald-dark dark:from-charcoal via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-6">
                     <h3 className="text-xl font-serif text-cream mb-1">
                       {property.name}
                     </h3>
-                    <p className="text-cream-muted text-sm">{property.location}</p>
+                    <p className="text-cream/80 dark:text-cream-muted text-sm">{property.location}</p>
                   </div>
                 </div>
               </Link>
@@ -202,13 +202,13 @@ const Index = () => {
       </section>
 
       {/* Trust Signals */}
-      <section className="py-24 lg:py-32 bg-charcoal-light">
+      <section className="py-24 lg:py-32 bg-cream-soft dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <p className="text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
               Trusted by Guests
             </p>
-            <h2 className="text-3xl md:text-4xl font-serif text-cream">
+            <h2 className="text-3xl md:text-4xl font-serif text-charcoal dark:text-cream">
               What Our Guests Say
             </h2>
           </div>
@@ -233,41 +233,41 @@ const Index = () => {
             ].map((review, index) => (
               <div
                 key={index}
-                className="p-8 bg-card border border-border rounded-sm
+                className="p-8 bg-emerald dark:bg-card border border-emerald/20 dark:border-border rounded-sm
                   transition-all duration-500 ease-out
-                  hover:border-gold
-                  hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
+                  hover:border-emerald-light dark:hover:border-gold
+                  hover:shadow-[0_8px_30px_rgba(16,95,76,0.25)] dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
                   hover:-translate-y-1"
               >
                 <div className="flex items-center gap-1 mb-4">
                   {[...Array(review.rating)].map((_, i) => (
                     <Star
                       key={i}
-                      className="w-4 h-4 fill-gold text-gold"
+                      className="w-4 h-4 fill-cream dark:fill-gold text-cream dark:text-gold"
                     />
                   ))}
                 </div>
-                <p className="text-cream-muted italic mb-4 leading-relaxed">
+                <p className="text-cream/80 dark:text-cream-muted italic mb-4 leading-relaxed">
                   "{review.text}"
                 </p>
-                <p className="text-cream text-sm font-medium">{review.author}</p>
+                <p className="text-cream dark:text-cream text-sm font-medium">{review.author}</p>
               </div>
             ))}
           </div>
 
           {/* Booking Platform Logos */}
           <div className="text-center">
-            <p className="text-cream-muted text-sm mb-6">
+            <p className="text-charcoal-light dark:text-cream-muted text-sm mb-6">
               Book securely through trusted platforms
             </p>
             <div className="flex items-center justify-center gap-12">
-              <span className="text-cream/40 text-lg font-medium tracking-wide">
+              <span className="text-charcoal/40 dark:text-cream/40 text-lg font-medium tracking-wide">
                 Airbnb
               </span>
-              <span className="text-cream/40 text-lg font-medium tracking-wide">
+              <span className="text-charcoal/40 dark:text-cream/40 text-lg font-medium tracking-wide">
                 VRBO
               </span>
-              <span className="text-cream/40 text-lg font-medium tracking-wide">
+              <span className="text-charcoal/40 dark:text-cream/40 text-lg font-medium tracking-wide">
                 Booking.com
               </span>
             </div>
