@@ -467,7 +467,7 @@ Error generating stack: `+a.message+`
                     dark:hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]
                     py-6
                     transition-all duration-300
-                    hover:no-underline`,children:e.question}),c.jsx(qx,{className:"text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed pb-6",children:e.answer})]},t))})})}),c.jsx("section",{className:"py-16 bg-cream-warm dark:bg-charcoal",children:c.jsxs("div",{className:"container mx-auto px-6 lg:px-12 text-center",children:[c.jsx("p",{className:"text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted mb-4",children:"Still have questions? We're here to help."}),c.jsx(Ge,{href:"/contact",className:`text-[hsl(var(--forest-dark))]
+                    hover:no-underline`,children:e.question}),c.jsx(qx,{className:"text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed pb-6",children:e.answer})]},t))})})}),c.jsx("section",{className:"py-16 bg-cream-warm dark:bg-charcoal",children:c.jsxs("div",{className:"container mx-auto px-6 lg:px-12 text-center",children:[c.jsx("p",{className:"text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted mb-4",children:"Still have questions? We're here to help."}),c.jsx(Ge,{to:"/contact",className:`text-[hsl(var(--forest-dark))]
               hover:text-[hsl(var(--forest-dark))]
               hover:drop-shadow-[0_0_10px_hsl(var(--forest-dark)_/_0.6)]
               dark:text-gold
