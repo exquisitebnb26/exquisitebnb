@@ -6,61 +6,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
-const faqs = [
-  {
-    question: "How do I book a stay?",
-    answer:
-      "Booking is easy! Browse our properties, choose your favorite, and click 'Check Availability' to see dates. Then, complete your booking securely through one of our trusted partner platforms: Airbnb, VRBO, or Booking.com. Each platform handles reservations, payments, and provides their own protection policies.",
-  },
-  {
-    question: "Which platforms do you use for bookings?",
-    answer:
-      "We list our properties on Airbnb, VRBO, and Booking.com. These trusted platforms handle all reservations, payments, and provide guest protection. You can choose whichever platform you prefer—availability and pricing are synced across all three.",
-  },
-  {
-    question: "How is cleanliness handled?",
-    answer:
-      "Cleanliness is our top priority. Every property undergoes thorough professional cleaning between guests using hotel-level protocols. Fresh linens, sanitized surfaces, and careful attention to every detail ensure you arrive to a sparkling, welcoming space. We also provide premium toiletries and supplies.",
-  },
-  {
-    question: "What is the check-in and check-out process?",
-    answer:
-      "We offer seamless self check-in with detailed instructions sent before your arrival. Most properties feature smart locks or secure lockboxes for easy access at any hour. Check-in is typically 3 PM and check-out is 11 AM, though we're happy to accommodate early arrivals or late departures when possible.",
-  },
-  {
-    question: "What amenities are included?",
-    answer:
-      "All properties include high-speed WiFi, premium linens and towels, fully-equipped kitchens, quality toiletries, coffee and tea, and streaming services. Many also offer parking, air conditioning, washer/dryer, and workspace setups. Specific amenities vary by property and are detailed on each listing.",
-  },
-  {
-    question: "What is the cancellation policy?",
-    answer:
-      "Cancellation policies are set on each booking platform (Airbnb, VRBO, Booking.com) and may vary slightly by property. Generally, we offer flexible or moderate cancellation terms. Full details are always visible before you confirm your booking on the respective platform.",
-  },
-  {
-    question: "How can I reach the host during my stay?",
-    answer:
-      "We're always just a message away! You can reach us through the booking platform's messaging system, and we aim to respond within 30 minutes during daytime hours. For urgent matters, we provide a direct phone number after booking. We genuinely want to ensure you have everything you need.",
-  },
-  {
-    question: "Are pets allowed?",
-    answer:
-      "Pet policies vary by property. Some of our spaces are pet-friendly (with a small pet fee), while others are pet-free to accommodate guests with allergies. Check the specific property listing for pet policy details, and feel free to reach out with any questions.",
-  },
-  {
-    question: "Is parking available?",
-    answer:
-      "Many of our properties include free parking—this is noted on each listing. For properties without dedicated parking, we provide detailed information about nearby parking options, including street parking and local garages.",
-  },
-  {
-    question: "Can I host events or gatherings?",
-    answer:
-      "Some of our larger properties can accommodate small, quiet gatherings with prior approval. However, parties and events are generally not permitted to ensure the comfort of neighbors and the integrity of the space. Please reach out to discuss your specific needs.",
-  },
-];
+import { useContent } from "@/lib/content";
 
 const FAQs = () => {
+  const { faqs } = useContent();
+
   return (
     <Layout>
       {/* Header */}
@@ -68,18 +18,17 @@ const FAQs = () => {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <ScrollReveal variant="fade-in" duration={900} delay={100}>
             <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
-              Questions Answered
+              {faqs.header.label}
             </p>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={1000} delay={250}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
-              Frequently Asked Questions
+              {faqs.header.title}
             </h1>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={900} delay={400}>
             <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">
-              Everything you need to know about staying with Exquisitebnb. Can't
-              find your answer? Feel free to reach out—we're happy to help.
+              {faqs.header.subtitle}
             </p>
           </ScrollReveal>
         </div>
@@ -89,31 +38,13 @@ const FAQs = () => {
       <section className="py-16 lg:py-24 bg-cream-soft dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12 max-w-3xl">
           <Accordion type="single" collapsible className="space-y-4">
-            {faqs.map((faq, index) => (
+            {faqs.items.map((faq, index) => (
               <ScrollReveal key={index} variant="fade-up" delay={100 + index * 80} duration={700}>
                 <AccordionItem
                   value={`item-${index}`}
-                  className="bg-card border border-[hsl(var(--forest-dark))] rounded-sm px-6
-                    transition-all duration-500 ease-out
-                    hover:-translate-y-1
-                    hover:shadow-[0_0_30px_hsl(var(--forest-dark)_/_0.45)]
-                    data-[state=open]:border-[hsl(var(--forest-dark))]
-                    dark:border-border
-                    dark:hover:border-gold
-                    dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)]
-                    dark:data-[state=open]:border-gold"
+                  className="bg-card border border-[hsl(var(--forest-dark))] rounded-sm px-6 transition-all duration-500 ease-out hover:-translate-y-1 hover:shadow-[0_0_30px_hsl(var(--forest-dark)_/_0.45)] data-[state=open]:border-[hsl(var(--forest-dark))] dark:border-border dark:hover:border-gold dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)] dark:data-[state=open]:border-gold"
                 >
-                  <AccordionTrigger
-                    className="text-left font-serif text-[hsl(var(--forest-dark))]
-                      hover:text-[hsl(var(--forest-dark))]
-                      hover:drop-shadow-[0_0_6px_hsl(var(--forest-dark)_/_0.6)]
-                      dark:text-cream
-                      dark:hover:text-gold
-                      dark:hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)]
-                      py-6
-                      transition-all duration-300
-                      hover:no-underline"
-                  >
+                  <AccordionTrigger className="text-left font-serif text-[hsl(var(--forest-dark))] hover:text-[hsl(var(--forest-dark))] hover:drop-shadow-[0_0_6px_hsl(var(--forest-dark)_/_0.6)] dark:text-cream dark:hover:text-gold dark:hover:drop-shadow-[0_0_6px_rgba(212,175,55,0.6)] py-6 transition-all duration-300 hover:no-underline">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed pb-6">
@@ -131,20 +62,10 @@ const FAQs = () => {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <ScrollReveal variant="fade-in" duration={800}>
             <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted mb-4">
-              Still have questions? We're here to help.
+              {faqs.contactCta.text}
             </p>
-            <a
-              href="/contact"
-              className="text-[hsl(var(--forest-dark))]
-                hover:text-[hsl(var(--forest-dark))]
-                hover:drop-shadow-[0_0_10px_hsl(var(--forest-dark)_/_0.6)]
-                dark:text-gold
-                dark:hover:text-gold-muted
-                dark:hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)]
-                font-serif text-lg
-                transition-all duration-300"
-            >
-              Contact Us →
+            <a href="/contact" className="text-[hsl(var(--forest-dark))] hover:text-[hsl(var(--forest-dark))] hover:drop-shadow-[0_0_10px_hsl(var(--forest-dark)_/_0.6)] dark:text-gold dark:hover:text-gold-muted dark:hover:drop-shadow-[0_0_10px_rgba(212,175,55,0.6)] font-serif text-lg transition-all duration-300">
+              {faqs.contactCta.linkText}
             </a>
           </ScrollReveal>
         </div>
