@@ -3,8 +3,11 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
 const TestimonialsSection = () => {
-  const { home } = useContent();
-  const t = home.testimonials;
+  const { content, isLoading, error } = useContent();
+  if (isLoading || !content?.home?.testimonials) {
+    return null;
+  }
+  const t = content.home.testimonials;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-soft dark:bg-charcoal-light">
