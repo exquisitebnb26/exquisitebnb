@@ -51,7 +51,7 @@ const About = () => {
                   <img
                     src={Exquisitebnb}
                     alt="Exquisitebnb logo"
-                    className="w-48 h-48 lg:w-64 lg:h-64 object-contain pointer-events-none"
+                    className="w-48 h-48 lg:w-64 lg:h-64 object-contain about-logo-spin"
                   />
                 </div>
               </div>
