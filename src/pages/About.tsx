@@ -30,9 +30,33 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="flex items-center justify-center">
-              <div className="relative w-72 h-72 lg:w-96 lg:h-96 bg-cream rounded-full border border-[hsl(var(--forest-dark))]/30 shadow-[0_20px_60px_hsl(var(--forest-dark)_/_0.25)] dark:border-gold/30 dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)] flex items-center justify-center luxury-logo-glow animate-[fadeScaleIn_0.9s_ease-out_forwards] group [perspective:1200px]">
-                <div className="transition-transform duration-[1200ms] ease-in-out group-hover:[transform:rotateY(360deg)] will-change-transform" style={{ transformStyle: "preserve-3d" }}>
-                  <img src={Exquisitebnb} alt="Exquisitebnb logo" className="w-48 h-48 lg:w-64 lg:h-64 object-contain pointer-events-none" />
+              <div
+                className="
+                  relative w-72 h-72 lg:w-96 lg:h-96
+                  bg-cream rounded-full
+                  border border-[hsl(var(--forest-dark))]/30
+                  shadow-[0_20px_60px_hsl(var(--forest-dark)_/_0.25)]
+                  dark:border-gold/30
+                  dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)]
+                  flex items-center justify-center
+                  luxury-logo-glow
+                  animate-[fadeScaleIn_0.9s_ease-out_forwards]
+                  group [perspective:1200px]
+                "
+              >
+                <div
+                  className="
+                    transition-transform duration-[1200ms] ease-in-out
+                    group-hover:[transform:rotateY(360deg)]
+                    will-change-transform
+                  "
+                  style={{ transformStyle: "preserve-3d" }}
+                >
+                  <img
+                    src={Exquisitebnb}
+                    alt="Exquisitebnb logo"
+                    className="w-48 h-48 lg:w-64 lg:h-64 object-contain about-logo-spin"
+                  />
                 </div>
               </div>
             </div>
