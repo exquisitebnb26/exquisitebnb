@@ -262,7 +262,10 @@ const PropertyDetail = () => {
                 </div>
               </ScrollReveal>
 
-              <div className="luxury-divider" />
+               <div
+  className="h-px
+    bg-gradient-emerald-divider
+    dark:bg-gradient-to-r dark:from-transparent dark:via-gold/40 dark:to-transparent"/>
 
               {/* Description */}
               <ScrollReveal variant="fade-up" duration={800} delay={150}>
