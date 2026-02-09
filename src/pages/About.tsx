@@ -1,6 +1,5 @@
 import { Sparkles, Heart, Shield, Users } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import Exquisitebnb from "@/assets/exquisitebnb-logo-gold.png";
 
 const About = () => {
@@ -9,22 +8,15 @@ const About = () => {
       {/* Header */}
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 text-center">
-          <ScrollReveal variant="fade-in" duration={900} delay={100}>
-            <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
+           <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
               Our Story
             </p>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-up" duration={1000} delay={250}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
               About Exquisitebnb
-            </h1>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-up" duration={900} delay={400}>
-            <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">
+            </h1> <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">
               More than a place to stay—an experience crafted with intention, care,
               and a genuine love for hospitality.
             </p>
-          </ScrollReveal>
         </div>
       </section>
 
@@ -33,37 +25,44 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Image */}
-            <ScrollReveal variant="scale-in" duration={1000} delay={200}>
-              <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center">
+              <div
+                className="
+                  relative w-72 h-72 lg:w-96 lg:h-96
+                  bg-cream rounded-full
+                  border border-[hsl(var(--forest-dark))]/30
+                  shadow-[0_20px_60px_hsl(var(--forest-dark)_/_0.25)]
+                  dark:border-gold/30
+                  dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)]
+                  flex items-center justify-center
+                  luxury-logo-glow
+                  animate-[fadeScaleIn_0.9s_ease-out_forwards]
+                  group [perspective:1200px]
+                "
+              >
                 <div
-                  className="relative w-72 h-72 lg:w-96 lg:h-96
-                    bg-cream rounded-full
-                    border border-[hsl(var(--forest-dark))]/30
-                    shadow-[0_20px_60px_hsl(var(--forest-dark)_/_0.25)]
-                    dark:border-gold/30
-                    dark:shadow-[0_30px_90px_rgba(0,0,0,0.3)]
-                    flex items-center justify-center luxury-logo-glow"
+                  className="
+                    transition-transform duration-[1200ms] ease-in-out
+                    group-hover:[transform:rotateY(360deg)]
+                    will-change-transform
+                  "
+                  style={{ transformStyle: "preserve-3d" }}
                 >
                   <img
                     src={Exquisitebnb}
                     alt="Exquisitebnb logo"
-                    className="w-48 h-48 lg:w-64 lg:h-64 object-contain"
+                    className="w-48 h-48 lg:w-64 lg:h-64 object-contain pointer-events-none"
                   />
                 </div>
               </div>
-            </ScrollReveal>
+            </div>
 
             {/* Content */}
             <div className="space-y-6">
-              <ScrollReveal variant="fade-up" duration={900} delay={300}>
-                <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
+              <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
                   Why We Created
                   <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold"> Exquisitebnb</span>
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal variant="fade-up" duration={800} delay={450}>
-                <div className="space-y-4 text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed">
+                </h2><div className="space-y-4 text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed">
                   <p>
                     Exquisitebnb was born from a simple belief: every guest
                     deserves to feel truly welcomed, comfortable, and cared for.
@@ -84,7 +83,6 @@ const About = () => {
                     consistency, cleanliness, and care.
                   </p>
                 </div>
-              </ScrollReveal>
             </div>
           </div>
         </div>
@@ -94,16 +92,11 @@ const About = () => {
       <section className="py-16 lg:py-24 bg-cream-soft dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="text-center mb-16">
-            <ScrollReveal variant="fade-in" duration={800}>
-              <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
+            <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
                 Our Philosophy
-              </p>
-            </ScrollReveal>
-            <ScrollReveal variant="fade-up" duration={900} delay={150}>
-              <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
+              </p><h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
                 What We Stand For
               </h2>
-            </ScrollReveal>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -133,8 +126,7 @@ const About = () => {
                   "Your comfort drives every decision. From premium amenities to seamless check-in, we anticipate your needs before you even ask.",
               },
             ].map((value, index) => (
-              <ScrollReveal key={index} variant="fade-up" delay={200 + index * 130} duration={800}>
-                <div
+              <div
                   className="p-8 bg-card border border-[hsl(var(--forest-dark))]
                     transition-all duration-500 ease-out
                     hover:-translate-y-0.5
@@ -151,8 +143,7 @@ const About = () => {
                     {value.description}
                   </p>
                 </div>
-              </ScrollReveal>
-            ))}
+              ))}
           </div>
         </div>
       </section>
@@ -160,26 +151,18 @@ const About = () => {
       {/* Closing Section */}
       <section className="py-16 lg:py-24 bg-cream-warm dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12 text-center max-w-2xl">
-          <ScrollReveal variant="fade-up" duration={1000}>
-            <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
+         <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
               A Personal Touch,
               <br />
               <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold">Every Time</span>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-up" duration={900} delay={200}>
-            <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted leading-relaxed mb-8">
+            </h2><p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted leading-relaxed mb-8">
               When you book with Exquisitebnb, you're not just renting a space—
               you're experiencing hospitality the way it was meant to be. Personal,
               warm, and consistently excellent. We look forward to welcoming you.
-            </p>
-          </ScrollReveal>
-          <ScrollReveal variant="fade-in" duration={800} delay={400}>
-            <p className="text-[hsl(var(--forest-dark))] dark:text-gold font-serif italic text-xl">
+            </p> <p className="text-[hsl(var(--forest-dark))] dark:text-gold font-serif italic text-xl">
               — The Exquisitebnb Team
             </p>
-          </ScrollReveal>
-        </div>
+            </div>
       </section>
     </Layout>
   );
