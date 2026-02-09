@@ -1,0 +1,64 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { ScrollReveal } from "@/components/ui/scroll-reveal";
+import heroImage from "@/assets/hero-living-room.jpg";
+
+const HeroSection = () => {
+  return (
+    <section className="relative min-h-screen flex items-center justify-center">
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img
+          src={heroImage}
+          alt="Luxury living room interior"
+          className="w-full h-full object-cover brightness-125 contrast-95 saturate-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
+      </div>
+
+      {/* Hero Content */}
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
+        <div className="max-w-3xl mx-auto space-y-8">
+          <ScrollReveal variant="fade-in" duration={900} delay={200}>
+            <p className="text-sm tracking-[0.3em] uppercase luxury-text-glow">
+              Boutique Hospitality
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fade-up" duration={1000} delay={400}>
+            <h1 className="text-4xl md:text-5xl lg:text-7xl font-serif text-cream leading-tight">
+              A refined stay.
+              <br />
+              <span className="italic text-cream/80">Thoughtfully hosted.</span>
+            </h1>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fade-up" duration={900} delay={650}>
+            <p className="text-cream dark:text-gold text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+              Experience the comfort of home with the elegance of a boutique
+              hotel. Every detail curated, every stay memorable.
+            </p>
+          </ScrollReveal>
+
+          <ScrollReveal variant="fade-up" duration={800} delay={850}>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+              <Button variant="heroGold" size="lg" asChild>
+                <Link to="/properties">View Properties</Link>
+              </Button>
+              <Button variant="hero" size="lg" asChild className="luxury-text-glow">
+                <Link to="/book">Book on Trusted Platforms</Link>
+              </Button>
+            </div>
+          </ScrollReveal>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-px h-12 bg-gradient-to-b from-cream/50 to-transparent" />
+      </div>
+    </section>
+  );
+};
+
+export default HeroSection;
