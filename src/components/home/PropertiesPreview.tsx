@@ -13,10 +13,13 @@ const imageMap: Record<string, string> = {
 };
 
 const PropertiesPreview = () => {
-  const { home, properties } = useContent();
-  const pp = home.propertiesPreview;
+  const { content, isLoading, error } = useContent();
+  if (isLoading || !content?.home?.propertiesPreview) {
+    return null;
+  }
+  const pp = content.home.propertiesPreview;
   // Show first 3 properties
-  const previewItems = properties.items.slice(0, 3);
+  const previewItems = content.properties.items.slice(0, 3);
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">

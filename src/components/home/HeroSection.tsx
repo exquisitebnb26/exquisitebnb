@@ -5,8 +5,15 @@ import heroImage from "@/assets/hero-living-room.jpg";
 import { useContent } from "@/lib/content";
 
 const HeroSection = () => {
-  const { home } = useContent();
-  const hero = home.hero;
+  const { content, isLoading, error } = useContent();
+
+if (isLoading) return null;
+if (error) return null;
+
+const home = content?.home;
+if (!home) return null;
+
+const hero = home.hero;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center">

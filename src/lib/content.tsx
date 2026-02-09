@@ -169,14 +169,10 @@ export function ContentProvider({ children }: { children: ReactNode }) {
 
 // ── Hook ───────────────────────────────────────────────────────────
 
-export function useContent(): SiteContent {
-  const { content } = useContext(ContentContext);
-  if (!content) throw new Error("Content not loaded yet");
-  return content;
-}
 
-export function useContentContext() {
-  return useContext(ContentContext);
+export function useContent() {
+  const ctx = useContext(ContentContext);
+  return ctx;
 }
 
 // ── GitHub API helpers (for admin) ─────────────────────────────────

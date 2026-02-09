@@ -17,7 +17,7 @@ const imageMap: Record<string, string> = {
 };
 
 const Properties = () => {
-  const content = useContent();
+  const { content, isLoading } = useContent();
   const { header, bookingNote, platforms, items } = content.properties;
 
   return (
