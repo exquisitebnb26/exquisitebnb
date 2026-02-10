@@ -12,7 +12,6 @@ import LogoImage from "@/assets/Exquisitebnb.png";
 import { Eye, EyeOff } from "lucide-react";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
-console.log("Admin password from env:", ADMIN_PASSWORD);
 // ── Auth Gate ──────────────────────────────────────────────────────
 
 function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
