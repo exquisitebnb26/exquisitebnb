@@ -37,9 +37,27 @@ const DesignedForRealLifeSection = () => {
             if (!Icon) return null;
             return (
               <ScrollReveal key={index} variant="fade-up" delay={200 + index * 100} duration={800}>
-                <div className="text-center p-6 space-y-4">
-                  <div className="w-12 h-12 mx-auto rounded-full bg-[hsl(var(--forest-dark))]/10 dark:bg-gold/10 flex items-center justify-center">
-                    <Icon className="w-5 h-5 text-[hsl(var(--forest-dark))] dark:text-gold" />
+                <div className="group text-center p-6 space-y-4 transition-all duration-500 ease-out hover:-translate-y-1">
+                  <div
+                    className="
+                      w-12 h-12 mx-auto rounded-full
+                      bg-[hsl(var(--forest-dark))]/10 dark:bg-gold/10
+                      flex items-center justify-center
+                      transition-all duration-500 ease-out
+                      group-hover:scale-110
+                      group-hover:shadow-[0_0_18px_hsl(var(--forest-dark))]
+                      dark:group-hover:shadow-[0_0_18px_rgba(212,175,55,0.65)]
+                    "
+                  >
+                    <Icon
+                      className="
+                        w-5 h-5
+                        text-[hsl(var(--forest-dark))] dark:text-gold
+                        transition-all duration-500 ease-out
+                        group-hover:drop-shadow-[0_0_8px_hsl(var(--forest-dark))]
+                        dark:group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.85)]
+                      "
+                    />
                   </div>
                   <h3 className="text-sm font-serif font-medium text-[hsl(var(--forest-dark))] dark:text-cream">
                     {feature.title}

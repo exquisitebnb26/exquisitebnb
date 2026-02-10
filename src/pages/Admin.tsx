@@ -9,9 +9,9 @@ import {
 } from "@/lib/content";
 import AdminLayout from "@/components/admin/AdminLayout";
 import LogoImage from "@/assets/Exquisitebnb.png";
+import { Eye, EyeOff } from "lucide-react";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
-
 // ── Auth Gate ──────────────────────────────────────────────────────
 
 function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
@@ -174,6 +174,7 @@ const Admin = () => {
     sessionStorage.getItem("cms_token")
   );
 
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleAuth = (t: string) => {
   const cleanToken = t.trim();
@@ -220,19 +221,24 @@ const Admin = () => {
           </div>
 
           <div className="space-y-4">
-            <Input
-              type="password"
-              placeholder="Enter admin password"
-              value={adminPasswordInput}
-              onChange={(e) => setAdminPasswordInput(e.target.value)}
-              className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)]"
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  handleAdminUnlock();
-                }
-              }}
-            />
+            <div className="relative">
+  <Input
+    type={showPassword ? "text" : "password"}
+    value={adminPasswordInput}
+    onChange={(e) => setAdminPasswordInput(e.target.value)}
+    placeholder="Enter admin password"
+    className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] pr-10 focus-visible:ring-[hsl(43_40%_50%)]"
+  />
+
+  <button
+    type="button"
+    onClick={() => setShowPassword((prev) => !prev)}
+    className="absolute right-3 top-1/2 -translate-y-1/2
+               text-[hsl(40_10%_55%)] hover:text-[hsl(43_40%_50%)] transition-colors"
+  >
+    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+  </button>
+</div>
             <button
               className="w-full py-3 bg-[hsl(43_40%_50%)] hover:bg-[hsl(43_35%_45%)] text-[hsl(0_0%_8%)] font-medium tracking-widest uppercase text-xs rounded-sm transition-colors disabled:opacity-50"
               onClick={handleAdminUnlock}
