@@ -26,20 +26,17 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-    const { content, isLoading } = useContent();
-  if (isLoading || !content?.contact || !content.site) {
-    return null;
-  }
-  const contact = content.contact;
-  const site = content.site;
-
+  const { content, isLoading } = useContent();
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
     defaultValues: { inquiryType: "General Inquiry", firstName: "", lastName: "", email: "", message: "" },
   });
+
   const contact = content?.contact;
   const site = content?.site;
-  if (!contact || !site) return null;
+  if (isLoading || !contact || !site) {
+    return null;
+  }
 
   const onSubmit = (data: ContactFormData) => {
     const subject = encodeURIComponent(`${data.inquiryType} — ${data.firstName} ${data.lastName}`);
