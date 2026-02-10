@@ -111,7 +111,7 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
     }
   };
 
-  const update = (path: string, value: any) => {
+  const update = (path: string, value: unknown) => {
     if (!content) return;
     const newContent = JSON.parse(JSON.stringify(content));
     const keys = path.split(".");

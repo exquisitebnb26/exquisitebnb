@@ -84,6 +84,30 @@
         }
       ]
     },
+    "designedForRealLife": {
+      "label": "Built for Real Life",
+      "title": "Designed for",
+      "titleItalic": "Real Life",
+      "subtitle": "Every detail considered — for guests who need more than just a bed.",
+      "items": [
+        { "icon": "Wifi", "title": "Reliable Wi-Fi", "description": "Consistent, high-speed connectivity for work calls, streaming, and everything in between." },
+        { "icon": "TreePine", "title": "Quiet Settings", "description": "Residential neighborhoods — calm, private, and free from hotel traffic." },
+        { "icon": "Monitor", "title": "Work-Ready Spaces", "description": "Dedicated desk setups designed for focused, productive days." },
+        { "icon": "KeyRound", "title": "Self Check-In", "description": "Arrive when it suits you — clear instructions, no waiting." },
+        { "icon": "SprayCan", "title": "Professionally Cleaned", "description": "Consistent, thorough cleaning between every stay. Always." }
+      ]
+    },
+    "whyNotHotel": {
+      "label": "A Considered Alternative",
+      "title": "Why not",
+      "titleItalic": "a hotel",
+      "items": [
+        { "point": "Room to live and work", "detail": "Full kitchens, living areas, and dedicated workspaces — not a single room with a minibar." },
+        { "point": "Residential quiet", "detail": "Calm neighborhoods instead of busy lobbies, elevators, and hallway noise." },
+        { "point": "Privacy with support", "detail": "Your own space, with a responsive host just a message away when you need something." },
+        { "point": "Character, not conformity", "detail": "Considered interiors with personality — each space has its own feel." }
+      ]
+    },
     "cta": {
       "title": "Ready to find your",
       "titleItalic": "next stay",
