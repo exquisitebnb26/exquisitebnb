@@ -5,7 +5,7 @@
     "description": "A boutique hospitality experience. Thoughtfully designed spaces, hotel-level cleanliness, and warm personal hosting.",
     "supportEmail": "support@exquisitebnb.com",
     "phone": "+1 (512)-888-9900",
-    "address": "123 Luxury Ave, Austin, TX 78701",
+    "address": "123 Luxury Ave, Houston, TX 78701",
     "officeName": "Exquisitebnb Office",
     "mapEmbedUrl": "https://www.google.com/maps?q=123+Luxury+Ave,+Austin,+TX+78701&output=embed",
     "instagram": "https://instagram.com/exquisitebnb",
@@ -38,7 +38,7 @@
         {
           "icon": "Sparkles",
           "title": "Thoughtful Design",
-          "description": "Every space is curated with intentionÃÂÃÂ¢ÃÂÃÂÃÂÃÂbeautiful furnishings, ambient lighting, and refined details."
+          "description": "Every space is curated with intentionÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂbeautiful furnishings, ambient lighting, and refined details."
         },
         {
           "icon": "Shield",
@@ -69,7 +69,7 @@
       "items": [
         {
           "rating": 5,
-          "text": "Absolutely stunning space. Every detail was perfectÃÂ¢ÃÂÃÂfrom the lighting to the linens. Felt like a five-star hotel with the warmth of home.",
+          "text": "Absolutely stunning space. Every detail was perfectÃÂÃÂ¢ÃÂÃÂÃÂÃÂfrom the lighting to the linens. Felt like a five-star hotel with the warmth of home.",
           "author": "Sarah M."
         },
         {
@@ -106,7 +106,7 @@
         "primary": "Exquisite",
         "accent": "bnb"
       },
-      "subtitle": "More than a place to stayÃÂÃÂ¢ÃÂÃÂÃÂÃÂan experience crafted with intention, care, and a genuine love for hospitality."
+      "subtitle": "More than a place to stayÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂan experience crafted with intention, care, and a genuine love for hospitality."
     },
     "story": {
       "title": "Why We Created",
@@ -116,8 +116,8 @@
       },
       "paragraphs": [
         "Exquisitebnb was born from a simple belief: every guest deserves to feel truly welcomed, comfortable, and cared for. Not just a clean room and a key, but an experience that feels like coming home to something even better than home.",
-        "We've stayed in countless rentalsÃÂÃÂ¢ÃÂÃÂÃÂÃÂsome forgettable, some uncomfortable, and a rare few that made us think, \"This is how it should always be.\" Those exceptional stays inspired us to create something different.",
-        "Each of our properties is thoughtfully designed with intention. We obsess over the details: the softness of the linens, the quality of the lighting, the freshness of the space. We believe that great hospitality isn't about grand gesturesÃÂÃÂ¢ÃÂÃÂÃÂÃÂit's about consistency, cleanliness, and care."
+        "We've stayed in countless rentalsÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂsome forgettable, some uncomfortable, and a rare few that made us think, \"This is how it should always be.\" Those exceptional stays inspired us to create something different.",
+        "Each of our properties is thoughtfully designed with intention. We obsess over the details: the softness of the linens, the quality of the lighting, the freshness of the space. We believe that great hospitality isn't about grand gesturesÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂit's about consistency, cleanliness, and care."
       ]
     },
     "philosophy": {
@@ -132,7 +132,7 @@
         {
           "icon": "Shield",
           "title": "Uncompromising Cleanliness",
-          "description": "Hotel-level cleanliness isn't optionalÃÂÃÂ¢ÃÂÃÂÃÂÃÂit's our standard. Rigorous protocols ensure every surface sparkles, every linen is fresh, every corner is pristine."
+          "description": "Hotel-level cleanliness isn't optionalÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂit's our standard. Rigorous protocols ensure every surface sparkles, every linen is fresh, every corner is pristine."
         },
         {
           "icon": "Heart",
@@ -149,7 +149,7 @@
     "closing": {
       "title": "A Personal Touch,",
       "titleItalic": "Every Time",
-      "text": "When you book with Exquisitebnb, you're not just renting a spaceÃÂÃÂ¢ÃÂÃÂÃÂÃÂyou're experiencing hospitality the way it was meant to be. Personal, warm, and consistently excellent. We look forward to welcoming you.",
+      "text": "When you book with Exquisitebnb, you're not just renting a spaceÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂyou're experiencing hospitality the way it was meant to be. Personal, warm, and consistently excellent. We look forward to welcoming you.",
       "signature": "-The Exquisitebnb Team"
     }
   },
@@ -176,7 +176,7 @@
         "rating": 4.96,
         "reviewCount": 128,
         "description": "A sophisticated urban retreat with floor-to-ceiling windows, designer furnishings, and stunning city views. Perfect for couples or small families seeking refined comfort.",
-        "fullDescription": "Welcome to The Gilded LoftÃÂÃÂ¢ÃÂÃÂÃÂÃÂa sophisticated urban retreat where modern luxury meets timeless elegance. Floor-to-ceiling windows frame stunning city views, while designer furnishings and curated artwork create an atmosphere of refined comfort. Every detail has been thoughtfully considered, from the premium bedding to the fully-equipped chef's kitchen.",
+        "fullDescription": "Welcome to The Gilded LoftÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂa sophisticated urban retreat where modern luxury meets timeless elegance. Floor-to-ceiling windows frame stunning city views, while designer furnishings and curated artwork create an atmosphere of refined comfort. Every detail has been thoughtfully considered, from the premium bedding to the fully-equipped chef's kitchen.",
         "imageKey": "hero",
         "galleryKeys": [
           "hero",
@@ -341,7 +341,7 @@
     "header": {
       "label": "Questions Answered",
       "title": "Frequently Asked Questions",
-      "subtitle": "Everything you need to know about staying with Exquisitebnb. Can't find your answer? Feel free to reach outÃÂÃÂ¢ÃÂÃÂÃÂÃÂwe're happy to help."
+      "subtitle": "Everything you need to know about staying with Exquisitebnb. Can't find your answer? Feel free to reach outÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂwe're happy to help."
     },
     "items": [
       {
@@ -350,7 +350,7 @@
       },
       {
         "question": "Which platforms do you use for bookings?",
-        "answer": "We list our properties on Airbnb, VRBO, and Booking.com. These trusted platforms handle all reservations, payments, and provide guest protection. You can choose whichever platform you preferÃÂÃÂ¢ÃÂÃÂÃÂÃÂavailability and pricing are synced across all three."
+        "answer": "We list our properties on Airbnb, VRBO, and Booking.com. These trusted platforms handle all reservations, payments, and provide guest protection. You can choose whichever platform you preferÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂavailability and pricing are synced across all three."
       },
       {
         "question": "How is cleanliness handled?",
@@ -378,7 +378,7 @@
       },
       {
         "question": "Is parking available?",
-        "answer": "Many of our properties include free parkingÃÂÃÂ¢ÃÂÃÂÃÂÃÂthis is noted on each listing. For properties without dedicated parking, we provide detailed information about nearby parking options, including street parking and local garages."
+        "answer": "Many of our properties include free parkingÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂthis is noted on each listing. For properties without dedicated parking, we provide detailed information about nearby parking options, including street parking and local garages."
       },
       {
         "question": "Can I host events or gatherings?",
@@ -387,7 +387,7 @@
     ],
     "contactCta": {
       "text": "Still have questions? We're here to help.",
-      "linkText": "Contact Us ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ"
+      "linkText": "Contact Us ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ"
     }
   },
   "contact": {
@@ -452,19 +452,19 @@
     "browseCta": {
       "title": "Not sure which property to book?",
       "subtitle": "Explore our collection first and find the perfect space for your stay.",
-      "linkText": "Browse Properties ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ"
+      "linkText": "Browse Properties ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ"
     }
   },
   "partnership": {
     "hero": {
       "label": "Partnership Opportunities",
       "title": "Elevate Your Property. Partner With Purpose.",
-      "subtitle": "We don't manage properties ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ we curate experiences. If you own a remarkable space and value thoughtful hospitality, let's explore what we can build together."
+      "subtitle": "We don't manage properties ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ we curate experiences. If you own a remarkable space and value thoughtful hospitality, let's explore what we can build together."
     },
     "whyPartner": {
       "label": "A Different Approach",
       "title": "Why Partner With Exquisitebnb",
-      "text": "Exquisitebnb is built on a brand-first philosophy. We believe that exceptional stays are created through intention ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ not volume. Our partnerships are selective because quality cannot be scaled without care.",
+      "text": "Exquisitebnb is built on a brand-first philosophy. We believe that exceptional stays are created through intention ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ not volume. Our partnerships are selective because quality cannot be scaled without care.",
       "cards": [
         {
           "icon": "Shield",
@@ -474,7 +474,7 @@
         {
           "icon": "Sparkles",
           "title": "Long-Term Value",
-          "description": "Our focus is sustainable success ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ protecting your asset's reputation while building a legacy of memorable guest experiences."
+          "description": "Our focus is sustainable success ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ protecting your asset's reputation while building a legacy of memorable guest experiences."
         }
       ]
     },
@@ -496,7 +496,7 @@
         },
         {
           "title": "Thoughtful Operations",
-          "description": "Every detail ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ from communication to turnover ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ reflects our standard of care."
+          "description": "Every detail ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ from communication to turnover ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ reflects our standard of care."
         }
       ]
     },
@@ -522,7 +522,7 @@
         {
           "icon": "Users",
           "title": "Respectful Guests",
-          "description": "Our brand attracts travelers who appreciate quality ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ guests who treat your home with respect."
+          "description": "Our brand attracts travelers who appreciate quality ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ guests who treat your home with respect."
         }
       ]
     },
@@ -539,7 +539,7 @@
         "label": "A Gentle Note",
         "title": "This May Not Be the Right Fit If...",
         "text1": "Our approach is intentional, which means it's not for everyone. If your primary focus is maximizing nightly rates at any cost, or if guest experience feels secondary to revenue optimization, we may not be aligned.",
-        "text2": "We work best with partners who see their property as more than an investment ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ but as a space that deserves care."
+        "text2": "We work best with partners who see their property as more than an investment ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ but as a space that deserves care."
       }
     },
     "process": {
