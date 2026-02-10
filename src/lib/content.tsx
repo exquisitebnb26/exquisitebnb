@@ -24,6 +24,14 @@ export interface SiteContent {
       label: string; title: string; titleAccent: string;
       items: Array<{ icon: string; title: string; description: string }>;
     };
+    designedForRealLife?: {
+      label: string; title: string; titleItalic: string; subtitle: string;
+      items: Array<{ icon: string; title: string; description: string }>;
+    };
+    whyNotHotel?: {
+      label: string; title: string; titleItalic: string;
+      items: Array<{ point: string; detail: string }>;
+    };
     propertiesPreview: { label: string; title: string; ctaText: string };
     testimonials: {
       label: string; title: string; platformNote: string;
