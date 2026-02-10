@@ -28,13 +28,14 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # ✅ THIS FIXES YOUR ERROR
+
       - name: Configure Git identity
         run: |
           git config --global user.name "exquisitebnb"
           git config --global user.email "exquisitebnb26@gmail.com"
 
-      - name: Deploy to gh-pages
-        run: npm run deploy
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
