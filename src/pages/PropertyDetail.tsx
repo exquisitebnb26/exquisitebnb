@@ -148,11 +148,11 @@ const PropertyDetail = () => {
               {/* Booking Clarity */}
               <ScrollReveal variant="fade-up" duration={800} delay={200}>
                 <div className="p-6 bg-[hsl(var(--forest-dark))]/5 dark:bg-gold/5 rounded-sm space-y-4">
-                  <h2 className="text-lg font-serif text-[hsl(var(--forest-dark))] dark:text-cream">Stay Details</h2>
+                  <h2 className="text-lg font-serif text-[hsl(var(--forest-dark))] dark:text-cream">What to Know Before You Book</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                     <div>
                       <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Check-in</p>
-                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">3:00 PM — Self check-in</p>
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">From 3:00 PM — self check-in with clear instructions</p>
                     </div>
                     <div>
                       <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Check-out</p>
@@ -160,15 +160,15 @@ const PropertyDetail = () => {
                     </div>
                     <div>
                       <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Ideal for</p>
-                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">Business travel, extended stays, families</p>
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">Professionals, remote workers, families, extended stays</p>
                     </div>
                     <div>
                       <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Not suited for</p>
                       <p className="text-[hsl(var(--forest-dark))] dark:text-cream">Events or parties</p>
                     </div>
                   </div>
-                  <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs">
-                    Extended stays welcomed — reach out for multi-week availability. Cancellation terms are fair and transparent, detailed on each booking platform.
+                   <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs">
+                    Extended stays are welcome — reach out for multi-week availability. Cancellation terms are fair and clearly stated on each booking platform.
                   </p>
                 </div>
               </ScrollReveal>
@@ -236,8 +236,8 @@ const PropertyDetail = () => {
                       </a>
                     ))}
                   </div>
-                  <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-xs text-center">
-                    Availability, pricing, and payments are handled securely by our trusted booking partners.
+                   <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-xs text-center">
+                    Availability, pricing, and payments are managed securely by each platform.
                   </p>
                 </div>
               </ScrollReveal>

@@ -2,11 +2,11 @@ import { Wifi, TreePine, Monitor, KeyRound, SprayCanIcon } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const features = [
-  { icon: Wifi, title: "Reliable High-Speed Wi-Fi", description: "Work calls, streaming, and connectivity you can count on." },
-  { icon: TreePine, title: "Quiet, Residential Settings", description: "Calm neighborhoods away from hotel lobbies and traffic." },
-  { icon: Monitor, title: "Dedicated Workspaces", description: "Thoughtful desk setups for focused, productive days." },
-  { icon: KeyRound, title: "Seamless Self Check-In", description: "Arrive on your schedule — no front desk, no waiting." },
-  { icon: SprayCanIcon, title: "Professionally Cleaned", description: "Hotel-level protocols between every single stay." },
+  { icon: Wifi, title: "Reliable Wi-Fi", description: "Consistent, high-speed connectivity for work calls, streaming, and everything in between." },
+  { icon: TreePine, title: "Quiet Settings", description: "Residential neighborhoods — calm, private, and free from hotel traffic." },
+  { icon: Monitor, title: "Work-Ready Spaces", description: "Dedicated desk setups designed for focused, productive days." },
+  { icon: KeyRound, title: "Self Check-In", description: "Arrive when it suits you — clear instructions, no waiting." },
+  { icon: SprayCanIcon, title: "Professionally Cleaned", description: "Consistent, thorough cleaning between every stay. Always." },
 ];
 
 const DesignedForRealLifeSection = () => {
@@ -16,7 +16,7 @@ const DesignedForRealLifeSection = () => {
         <div className="text-center mb-16">
           <ScrollReveal variant="fade-in" duration={800}>
             <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
-              Practical by Design
+              Built for Real Life
             </p>
           </ScrollReveal>
 
@@ -28,7 +28,7 @@ const DesignedForRealLifeSection = () => {
 
           <ScrollReveal variant="fade-up" duration={800} delay={250}>
             <p className="text-charcoal-light dark:text-cream-muted text-lg max-w-2xl mx-auto">
-              Every detail considered for guests who need more than a place to sleep.
+              Every detail considered — for guests who need more than just a bed.
             </p>
           </ScrollReveal>
         </div>

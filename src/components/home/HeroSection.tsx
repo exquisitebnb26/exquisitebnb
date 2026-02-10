@@ -52,7 +52,7 @@ const hero = home.hero;
 
           <ScrollReveal variant="fade-in" duration={800} delay={800}>
             <p className="text-cream/70 text-sm tracking-wide max-w-md mx-auto">
-              Thoughtfully designed stays for professionals, families, and extended visits.
+              For professionals, families, and extended stays — a calm alternative to hotels.
             </p>
           </ScrollReveal>
 

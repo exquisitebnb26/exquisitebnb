@@ -85,7 +85,7 @@ const Contact = () => {
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={900} delay={400}>
             <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">
-              We'd love to hear from you. Whether it's a booking question or a special request, every inquiry is handled personally and thoughtfully.
+              Whether it's a booking question or something specific about your stay, we're happy to hear from you. Every message is read personally.
             </p>
           </ScrollReveal>
         </div>
@@ -153,8 +153,8 @@ const Contact = () => {
                 </form>
               </Form>
 
-              <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs text-center mt-6 leading-relaxed">
-                We respond personally to every inquiry — typically within a few hours.
+               <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs text-center mt-6 leading-relaxed">
+                Every message is read by a real person. We typically respond within a few hours.
               </p>
             </div>
           </ScrollReveal>
