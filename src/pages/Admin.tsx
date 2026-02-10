@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { RefreshCw, AlertCircle } from "lucide-react";
+import { RefreshCw, AlertCircle, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -16,6 +16,7 @@ const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
 function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
   const [token, setToken] = useState("");
+  const [showToken, setShowToken] = useState(false);
 
   return (
     <div className="min-h-screen bg-[hsl(0_0%_7%)] flex items-center justify-center px-6">
@@ -40,13 +41,22 @@ function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
         </div>
 
         <div className="space-y-4">
-          <Input
-            type="password"
-            placeholder="ghp_token"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)]"
-          />
+          <div className="relative">
+            <Input
+              type={showToken ? "text" : "password"}
+              placeholder="ghp_token"
+              value={token}
+              onChange={(e) => setToken(e.target.value)}
+              className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)] pr-10"
+            />
+            <button
+              type="button"
+              onClick={() => setShowToken(!showToken)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[hsl(40_10%_55%)] hover:text-[hsl(43_40%_50%)]"
+            >
+              {showToken ? <EyeOff size={18} /> : <Eye size={18} />}
+            </button>
+          </div>
           <button
             className="w-full py-3 bg-[hsl(43_40%_50%)] hover:bg-[hsl(43_35%_45%)] text-[hsl(0_0%_8%)] font-medium tracking-widest uppercase text-xs rounded-sm transition-colors disabled:opacity-50"
             disabled={!token.trim()}
@@ -168,6 +178,7 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
 const Admin = () => {
   const [adminUnlocked, setAdminUnlocked] = useState<boolean>(() => sessionStorage.getItem("admin_unlocked") === "true");
   const [adminPasswordInput, setAdminPasswordInput] = useState("");
+  const [showAdminPassword, setShowAdminPassword] = useState(false);
   const [adminPasswordError, setAdminPasswordError] = useState<string | null>(null);
 
   const [token, setToken] = useState<string | null>(() =>
@@ -220,19 +231,28 @@ const Admin = () => {
           </div>
 
           <div className="space-y-4">
-            <Input
-              type="password"
-              placeholder="Enter admin password"
-              value={adminPasswordInput}
-              onChange={(e) => setAdminPasswordInput(e.target.value)}
-              className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)]"
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  e.preventDefault();
-                  handleAdminUnlock();
-                }
-              }}
-            />
+            <div className="relative">
+              <Input
+                type={showAdminPassword ? "text" : "password"}
+                placeholder="Enter admin password"
+                value={adminPasswordInput}
+                onChange={(e) => setAdminPasswordInput(e.target.value)}
+                className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)] pr-10"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleAdminUnlock();
+                  }
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowAdminPassword(!showAdminPassword)}
+                className="absolute right-3 top-1/2 -translate-y-1/2 text-[hsl(40_10%_55%)] hover:text-[hsl(43_40%_50%)]"
+              >
+                {showAdminPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
             <button
               className="w-full py-3 bg-[hsl(43_40%_50%)] hover:bg-[hsl(43_35%_45%)] text-[hsl(0_0%_8%)] font-medium tracking-widest uppercase text-xs rounded-sm transition-colors disabled:opacity-50"
               onClick={handleAdminUnlock}
