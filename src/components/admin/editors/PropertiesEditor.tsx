@@ -15,12 +15,6 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
     update("properties.items", items);
   };
 
-  const updateBookingLink = (index: number, platform: string, value: string) => {
-    const items = [...p.items];
-    items[index] = { ...items[index], bookingLinks: { ...items[index].bookingLinks, [platform]: value } };
-    update("properties.items", items);
-  };
-
   const addReviewToProperty = (propIndex: number) => {
     const items = [...p.items];
     items[propIndex] = {
@@ -108,7 +102,6 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
             <ImageKeySelector label="Cover Image" value={prop.imageKey} onChange={(v) => updateItem(i, "imageKey", v)} />
             <GalleryKeySelector label="Gallery Images" value={prop.galleryKeys} onChange={(v) => updateItem(i, "galleryKeys", v)} />
             <TextField label="Amenities (comma-separated)" value={prop.amenities.join(", ")} onChange={(v) => updateItem(i, "amenities", v.split(",").map((s) => s.trim()).filter(Boolean))} />
-            <TextField label="Booking Platforms (comma-separated)" value={prop.bookingPlatforms.join(", ")} onChange={(v) => updateItem(i, "bookingPlatforms", v.split(",").map((s) => s.trim()).filter(Boolean))} />
             <SectionDivider/>
 
 <TextField
@@ -122,10 +115,52 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
     )
   }
 />
-            <SectionDivider label="Booking Links" />
-            <TextField label="Airbnb URL" value={prop.bookingLinks.airbnb} onChange={(v) => updateBookingLink(i, "airbnb", v)} />
-            <TextField label="VRBO URL" value={prop.bookingLinks.vrbo} onChange={(v) => updateBookingLink(i, "vrbo", v)} />
-            <TextField label="Booking.com URL" value={prop.bookingLinks.bookingcom} onChange={(v) => updateBookingLink(i, "bookingcom", v)} />
+            <SectionDivider label="Booking Platforms" />
+
+            <RepeatableList
+              title="Platform"
+              count={prop.bookingPlatforms.length}
+              onAdd={() =>
+                updateItem(i, "bookingPlatforms", [
+                  ...prop.bookingPlatforms,
+                  { name: "", url: "" },
+                ])
+              }
+              addLabel="Add Platform"
+            >
+              {prop.bookingPlatforms.map((platform, pi) => (
+                <EditorCard
+                  key={pi}
+                  title={platform.name || `Platform ${pi + 1}`}
+                  onRemove={() =>
+                    updateItem(
+                      i,
+                      "bookingPlatforms",
+                      prop.bookingPlatforms.filter((_, j) => j !== pi)
+                    )
+                  }
+                >
+                  <TextField
+                    label="Platform Name"
+                    value={platform.name}
+                    onChange={(v) => {
+                      const updated = [...prop.bookingPlatforms];
+                      updated[pi] = { ...updated[pi], name: v };
+                      updateItem(i, "bookingPlatforms", updated);
+                    }}
+                  />
+                  <TextField
+                    label="Platform URL"
+                    value={platform.url}
+                    onChange={(v) => {
+                      const updated = [...prop.bookingPlatforms];
+                      updated[pi] = { ...updated[pi], url: v };
+                      updateItem(i, "bookingPlatforms", updated);
+                    }}
+                  />
+                </EditorCard>
+              ))}
+            </RepeatableList>
 
             <SectionDivider label="Property Reviews" />
             {prop.reviews.map((review, ri) => (
