@@ -26,10 +26,7 @@ type ContactFormData = z.infer<typeof contactSchema>;
 
 const Contact = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
-    const { content, isLoading } = useContent();
-  if (isLoading || !content?.contact || !content.site) {
-    return null;
-  }
+  const { content, isLoading } = useContent();
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
@@ -38,6 +35,7 @@ const Contact = () => {
 
   const contact = content?.contact;
   const site = content?.site;
+
   if (isLoading || !contact || !site) {
     return null;
   }
