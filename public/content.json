@@ -237,6 +237,11 @@
           "bedroom",
           "kitchen"
         ],
+        "idealFor": [
+            "Families",
+            "Remote Work",
+            "Extended Stays"
+          ],
         "amenities": [
           "High-Speed WiFi",
           "Free Parking",
@@ -286,6 +291,11 @@
           "hero",
           "bathroom"
         ],
+        "idealFor": [
+  "Families",
+  "Remote Work",
+  "Extended Stays"
+],
         "amenities": [
           "High-Speed WiFi",
           "Air Conditioning",
@@ -327,6 +337,11 @@
           "hero",
           "bedroom"
         ],
+        "idealFor": [
+  "Families",
+  "Remote Work",
+  "Extended Stays"
+],
         "amenities": [
           "High-Speed WiFi",
           "Free Parking",
@@ -376,6 +391,11 @@
           "Smart TV",
           "Coffee & Tea"
         ],
+        "idealFor": [
+  "Families",
+  "Remote Work",
+  "Extended Stays"
+],
         "reviews": [
           {
             "rating": 5,

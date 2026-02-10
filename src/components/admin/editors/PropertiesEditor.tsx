@@ -75,6 +75,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
           imageKey: "hero",
           galleryKeys: ["hero"],
           amenities: [],
+          idealFor: [],
           reviews: [],
           bookingLinks: { airbnb: "#", vrbo: "#", bookingcom: "#" },
           bookingPlatforms: ["Airbnb"],
@@ -109,7 +110,19 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
             <GalleryKeySelector label="Gallery Images" value={prop.galleryKeys} onChange={(v) => updateItem(i, "galleryKeys", v)} />
             <TextField label="Amenities (comma-separated)" value={prop.amenities.join(", ")} onChange={(v) => updateItem(i, "amenities", v.split(",").map((s) => s.trim()).filter(Boolean))} />
             <TextField label="Booking Platforms (comma-separated)" value={prop.bookingPlatforms.join(", ")} onChange={(v) => updateItem(i, "bookingPlatforms", v.split(",").map((s) => s.trim()).filter(Boolean))} />
+            <SectionDivider/>
 
+<TextField
+  label="Ideal For (comma-separated)"
+  value={(prop.idealFor || []).join(", ")}
+  onChange={(v) =>
+    updateItem(
+      i,
+      "idealFor",
+      v.split(",").map((s) => s.trim()).filter(Boolean)
+    )
+  }
+/>
             <SectionDivider label="Booking Links" />
             <TextField label="Airbnb URL" value={prop.bookingLinks.airbnb} onChange={(v) => updateBookingLink(i, "airbnb", v)} />
             <TextField label="VRBO URL" value={prop.bookingLinks.vrbo} onChange={(v) => updateBookingLink(i, "vrbo", v)} />
