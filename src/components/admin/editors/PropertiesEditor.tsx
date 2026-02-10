@@ -25,7 +25,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
     const items = [...p.items];
     items[propIndex] = {
       ...items[propIndex],
-      reviews: [...items[propIndex].reviews, { rating: 5, text: "", author: "" }],
+      reviews: [...items[propIndex].reviews, { rating: 5, text: "", author: "",label: "" }],
     };
     update("properties.items", items);
   };
@@ -121,6 +121,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
                 <StarRatingSelector value={review.rating} onChange={(v) => updateReview(i, ri, "rating", v)} />
                 <TextAreaField label="Text" value={review.text} onChange={(v) => updateReview(i, ri, "text", v)} />
                 <TextField label="Author" value={review.author} onChange={(v) => updateReview(i, ri, "author", v)} />
+                <TextField label="Label" value={review.label} onChange={(v) => updateReview(i, ri, "label", v)} />
               </EditorCard>
             ))}
             <button
