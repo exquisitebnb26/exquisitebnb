@@ -11,7 +11,6 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import LogoImage from "@/assets/Exquisitebnb.png";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
-console.log("[ADMIN] VITE_ADMIN_PASSWORD:", import.meta.env.VITE_ADMIN_PASSWORD);
 
 // ── Auth Gate ──────────────────────────────────────────────────────
 
@@ -175,11 +174,8 @@ const Admin = () => {
     sessionStorage.getItem("cms_token")
   );
 
-  console.log("[ADMIN] adminUnlocked:", adminUnlocked);
-  console.log("[ADMIN] cms_token:", token);
 
   const handleAuth = (t: string) => {
-    console.log("[ADMIN] GitHub token received");
     sessionStorage.setItem("cms_token", t);
     setToken(t);
   };
@@ -192,8 +188,6 @@ const Admin = () => {
   };
 
   const handleAdminUnlock = () => {
-    console.log("[ADMIN] Entered password:", adminPasswordInput);
-    console.log("[ADMIN] Expected password:", ADMIN_PASSWORD);
     if (adminPasswordInput === ADMIN_PASSWORD) {
       sessionStorage.setItem("admin_unlocked", "true");
       setAdminUnlocked(true);
