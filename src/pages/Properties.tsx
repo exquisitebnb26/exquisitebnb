@@ -18,6 +18,9 @@ const imageMap: Record<string, string> = {
 
 const Properties = () => {
   const { content, isLoading } = useContent();
+  if (isLoading || !content?.properties) {
+    return null;
+  }
   const { header, bookingNote, platforms, items } = content.properties;
 
   return (
