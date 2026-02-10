@@ -208,7 +208,7 @@
     "header": {
       "label": "Our Spaces",
       "title": "Places That Feel Like Home",
-      "subtitle": "Each property is personally chosen and lovingly maintained â because we believe every guest deserves a space that feels like it was prepared just for them."
+      "subtitle": "Each property is personally chosen and lovingly maintained because we believe every guest deserves a space that feels like it was prepared just for them."
     },
     "bookingNote": "All bookings are handled securely through trusted platforms",
     "platforms": [
@@ -392,7 +392,7 @@
     "header": {
       "label": "We're Here to Help",
       "title": "Questions We're Happy to Answer",
-      "subtitle": "We want you to feel confident and informed before, during, and after your stay. If something's not covered here, please don't hesitate to reach out â we're always glad to hear from you."
+      "subtitle": "We want you to feel confident and informed before, during, and after your stay. If something's not covered here, please don't hesitate to reach out we're always glad to hear from you."
     },
     "items": [
       {
@@ -445,11 +445,11 @@
     "header": {
       "label": "Say Hello",
       "title": "We'd Love to Hear from You",
-      "subtitle": "Whether it's a booking question, a special request, or simply something on your mind â please reach out. Every message means something to us."
+      "subtitle": "Whether it's a booking question, a special request, or simply something on your mind please reach out. Every message means something to us."
     },
     "formNote": "For booking inquiries, please complete your reservation through our partner platforms (Airbnb, VRBO, or Booking.com).",
     "successTitle": "Your Message Means the World to Us",
-    "successText": "Thank you for reaching out â every inquiry is read personally and with care. We'll get back to you as soon as we can. In the meantime, feel free to explore our properties or browse our FAQs."
+    "successText": "Thank you for reaching out every inquiry is read personally and with care. We'll get back to you as soon as we can. In the meantime, feel free to explore our properties or browse our FAQs."
   },
   "book": {
     "header": {
@@ -510,7 +510,7 @@
     "hero": {
       "label": "Partnership Opportunities",
       "title": "Your Property, Our Shared Promise.",
-      "subtitle": "We don't manage properties by volume â we build meaningful, lasting partnerships with owners who share our belief that every guest deserves to feel genuinely welcomed."
+      "subtitle": "We don't manage properties by volume we build meaningful, lasting partnerships with owners who share our belief that every guest deserves to feel genuinely welcomed."
     },
     "whyPartner": {
       "label": "A Different Approach",
