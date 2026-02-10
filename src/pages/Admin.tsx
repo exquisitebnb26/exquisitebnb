@@ -10,6 +10,8 @@ import {
 import AdminLayout from "@/components/admin/AdminLayout";
 import LogoImage from "@/assets/Exquisitebnb.png";
 
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+
 // ── Auth Gate ──────────────────────────────────────────────────────
 
 function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
@@ -164,6 +166,10 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
 // ── Root ────────────────────────────────────────────────────────────
 
 const Admin = () => {
+  const [adminUnlocked, setAdminUnlocked] = useState<boolean>(() => sessionStorage.getItem("admin_unlocked") === "true");
+  const [adminPasswordInput, setAdminPasswordInput] = useState("");
+  const [adminPasswordError, setAdminPasswordError] = useState<string | null>(null);
+
   const [token, setToken] = useState<string | null>(() =>
     sessionStorage.getItem("cms_token")
   );
@@ -175,8 +181,71 @@ const Admin = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("cms_token");
+    sessionStorage.removeItem("admin_unlocked");
     setToken(null);
+    setAdminUnlocked(false);
   };
+
+  const handleAdminUnlock = () => {
+    if (adminPasswordInput === ADMIN_PASSWORD) {
+      sessionStorage.setItem("admin_unlocked", "true");
+      setAdminUnlocked(true);
+      setAdminPasswordError(null);
+      setAdminPasswordInput("");
+    } else {
+      setAdminPasswordError("Invalid admin password");
+    }
+  };
+
+  if (!adminUnlocked) {
+    return (
+      <div className="min-h-screen bg-[hsl(0_0%_7%)] flex items-center justify-center px-6">
+        <div className="w-full max-w-md space-y-8">
+          <div className="text-center space-y-4">
+            <div className="flex justify-center">
+              <div className="bg-white rounded-full p-2 w-fit h-fit flex items-center justify-center">
+                <img src={LogoImage} alt="Exquisitebnb" className="w-10 h-10 object-contain" />
+              </div>
+            </div>
+            <div>
+              <p className="text-[hsl(43_40%_50%)] text-sm tracking-[0.25em] uppercase">
+                Admin Access
+              </p>
+              <h1 className="text-3xl font-serif text-[hsl(40_20%_90%)] mt-1">
+                Exquisite<span className="text-[hsl(43_40%_50%)]">bnb</span> CMS
+              </h1>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <Input
+              type="password"
+              placeholder="Enter admin password"
+              value={adminPasswordInput}
+              onChange={(e) => setAdminPasswordInput(e.target.value)}
+              className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)]"
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  handleAdminUnlock();
+                }
+              }}
+            />
+            <button
+              className="w-full py-3 bg-[hsl(43_40%_50%)] hover:bg-[hsl(43_35%_45%)] text-[hsl(0_0%_8%)] font-medium tracking-widest uppercase text-xs rounded-sm transition-colors disabled:opacity-50"
+              onClick={handleAdminUnlock}
+              disabled={!adminPasswordInput.trim()}
+            >
+              Unlock Admin
+            </button>
+            {adminPasswordError && (
+              <p className="text-[hsl(0_55%_55%)] text-xs text-center">{adminPasswordError}</p>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!token) return <AdminLogin onAuth={handleAuth} />;
   return <AdminDashboard token={token} onLogout={handleLogout} />;
