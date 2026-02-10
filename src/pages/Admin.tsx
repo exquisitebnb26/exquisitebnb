@@ -10,11 +10,8 @@ import {
 import AdminLayout from "@/components/admin/AdminLayout";
 import LogoImage from "@/assets/Exquisitebnb.png";
 
-<<<<<<< Updated upstream
-=======
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
 
->>>>>>> Stashed changes
 // ── Auth Gate ──────────────────────────────────────────────────────
 
 function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
@@ -169,12 +166,6 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
 // ── Root ────────────────────────────────────────────────────────────
 
 const Admin = () => {
-<<<<<<< Updated upstream
-  const [token, setToken] = useState<string | null>(() =>
-    sessionStorage.getItem("cms_token")
-  );
-
-=======
   const [adminUnlocked, setAdminUnlocked] = useState<boolean>(() => sessionStorage.getItem("admin_unlocked") === "true");
   const [adminPasswordInput, setAdminPasswordInput] = useState("");
   const [adminPasswordError, setAdminPasswordError] = useState<string | null>(null);
@@ -182,8 +173,7 @@ const Admin = () => {
   const [token, setToken] = useState<string | null>(() =>
     sessionStorage.getItem("cms_token")
   );
-  
->>>>>>> Stashed changes
+
   const handleAuth = (t: string) => {
     sessionStorage.setItem("cms_token", t);
     setToken(t);
@@ -191,11 +181,6 @@ const Admin = () => {
 
   const handleLogout = () => {
     sessionStorage.removeItem("cms_token");
-<<<<<<< Updated upstream
-    setToken(null);
-  };
-
-=======
     sessionStorage.removeItem("admin_unlocked");
     setToken(null);
     setAdminUnlocked(false);
@@ -262,7 +247,6 @@ const Admin = () => {
     );
   }
 
->>>>>>> Stashed changes
   if (!token) return <AdminLogin onAuth={handleAuth} />;
   return <AdminDashboard token={token} onLogout={handleLogout} />;
 };
