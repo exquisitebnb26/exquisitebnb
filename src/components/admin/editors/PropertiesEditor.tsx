@@ -25,7 +25,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
     const items = [...p.items];
     items[propIndex] = {
       ...items[propIndex],
-      reviews: [...items[propIndex].reviews, { rating: 5, text: "", author: "" }],
+      reviews: [...items[propIndex].reviews, { rating: 5, text: "", author: "",label: "" }],
     };
     update("properties.items", items);
   };
@@ -75,9 +75,9 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
           imageKey: "hero",
           galleryKeys: ["hero"],
           amenities: [],
+          idealFor: [],
           reviews: [],
-          bookingLinks: { airbnb: "#", vrbo: "#", bookingcom: "#" },
-          bookingPlatforms: ["Airbnb"],
+          bookingPlatforms: [],
         }])}
         addLabel="Add Property"
       >
@@ -109,7 +109,19 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
             <GalleryKeySelector label="Gallery Images" value={prop.galleryKeys} onChange={(v) => updateItem(i, "galleryKeys", v)} />
             <TextField label="Amenities (comma-separated)" value={prop.amenities.join(", ")} onChange={(v) => updateItem(i, "amenities", v.split(",").map((s) => s.trim()).filter(Boolean))} />
             <TextField label="Booking Platforms (comma-separated)" value={prop.bookingPlatforms.join(", ")} onChange={(v) => updateItem(i, "bookingPlatforms", v.split(",").map((s) => s.trim()).filter(Boolean))} />
+            <SectionDivider/>
 
+<TextField
+  label="Ideal For (comma-separated)"
+  value={(prop.idealFor || []).join(", ")}
+  onChange={(v) =>
+    updateItem(
+      i,
+      "idealFor",
+      v.split(",").map((s) => s.trim()).filter(Boolean)
+    )
+  }
+/>
             <SectionDivider label="Booking Links" />
             <TextField label="Airbnb URL" value={prop.bookingLinks.airbnb} onChange={(v) => updateBookingLink(i, "airbnb", v)} />
             <TextField label="VRBO URL" value={prop.bookingLinks.vrbo} onChange={(v) => updateBookingLink(i, "vrbo", v)} />
@@ -121,6 +133,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
                 <StarRatingSelector value={review.rating} onChange={(v) => updateReview(i, ri, "rating", v)} />
                 <TextAreaField label="Text" value={review.text} onChange={(v) => updateReview(i, ri, "text", v)} />
                 <TextField label="Author" value={review.author} onChange={(v) => updateReview(i, ri, "author", v)} />
+                <TextField label="Label" value={review.label} onChange={(v) => updateReview(i, ri, "label", v)} />
               </EditorCard>
             ))}
             <button
