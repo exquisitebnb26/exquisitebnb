@@ -131,7 +131,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-4 text-emerald dark:text-cream/40 text-xs">
           <p>© {currentYear} {site.brandName}. {site.copyrightText}</p>
-          <p className="italic font-serif">Privately hosted. Professionally managed.</p>
+          <p className="italic font-serif">Privately hosted. Thoughtfully managed.</p>
         </div>
       </div>
     </footer>

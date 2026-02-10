@@ -1,10 +1,10 @@
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 
 const comparisons = [
-  { point: "More space to live and work", detail: "Full kitchens, living rooms, and dedicated workspaces — not a single room." },
-  { point: "Residential calm, not hotel traffic", detail: "Quiet neighborhoods instead of busy lobbies, elevators, and hallways." },
-  { point: "Privacy without isolation", detail: "Your own space with a responsive host just a message away." },
-  { point: "Designed homes, not standardized rooms", detail: "Thoughtfully curated interiors — each property has its own character." },
+  { point: "Room to live and work", detail: "Full kitchens, living areas, and dedicated workspaces — not a single room with a minibar." },
+  { point: "Residential quiet", detail: "Calm neighborhoods instead of busy lobbies, elevators, and hallway noise." },
+  { point: "Privacy with support", detail: "Your own space, with a responsive host just a message away when you need something." },
+  { point: "Character, not conformity", detail: "Considered interiors with personality — each space has its own feel." },
 ];
 
 const WhyNotHotelSection = () => {
@@ -15,7 +15,7 @@ const WhyNotHotelSection = () => {
           <div className="text-center mb-16">
             <ScrollReveal variant="fade-in" duration={800}>
               <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
-                A Thoughtful Alternative
+                A Considered Alternative
               </p>
             </ScrollReveal>
 
