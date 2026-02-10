@@ -123,7 +123,8 @@ function HomeEditor({ content, update }: EditorProps) {
 function AboutEditor({ content, update }: EditorProps) {
   return (
     <div className="space-y-4">
-      <TextField label="Header Title" value={content.about.header.title} onChange={(v) => update("about.header.title", v)} />
+      <TextField label="Header Title (Primary)" value={content.about.header.title.primary} onChange={(v) => update("about.header.title.primary", v)} />
+      <TextField label="Header Title (Accent)" value={content.about.header.title.accent} onChange={(v) => update("about.header.title.accent", v)} />
       <TextAreaField label="Header Subtitle" value={content.about.header.subtitle} onChange={(v) => update("about.header.subtitle", v)} />
       <TextField label="Story Title" value={content.about.story.title} onChange={(v) => update("about.story.title", v)} />
       {content.about.story.paragraphs.map((p, i) => (
