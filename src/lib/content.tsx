@@ -123,9 +123,10 @@ const ContentContext = createContext<ContentContextValue>({
 
 // ── Provider ───────────────────────────────────────────────────────
 
-// GitHub config – update these when you configure your repo
-const GITHUB_OWNER = "OWNER";
-const GITHUB_REPO = "REPO";
+// GitHub config – update these when you configure your repo 
+
+const GITHUB_OWNER = "exquisitebnb26";
+const GITHUB_REPO = "exquisitebnb";
 const CONTENT_PATH = "public/content.json";
 
 async function fetchContent(): Promise<SiteContent> {

@@ -24,13 +24,13 @@ const amenityIconMap: Record<string, LucideIcon> = {
 
 const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const { content } = useContent();
+   const { content, isLoading } = useContent();
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const properties = content?.properties;
   if (!properties) return null;
 
-  const property = properties.items.find((p) => p.id === id) || properties.items[0];
+  const property = content.properties.items.find((p) => p.id === id) || content.properties.items[0];
 
   const images = property ? property.galleryKeys.map((k) => imageMap[k] || heroImage) : [];
 
