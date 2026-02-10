@@ -20,7 +20,12 @@ const about = content?.about;
             {about.header.label}
           </p>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">
-            {about.header.title}
+            <span className="text-[hsl(var(--forest-dark))] dark:text-cream">
+              {about.header.title.primary}
+            </span>
+            <span className="text-gold ml-1">
+              {about.header.title.accent}
+            </span>
           </h1>
           <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">
             {about.header.subtitle}
@@ -67,7 +72,12 @@ const about = content?.about;
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">
                 {about.story.title}
-                <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold"> {about.story.titleItalic}</span>
+                <span className="italic text-[hsl(var(--forest-dark))] dark:text-gold"> <span className="text-[hsl(var(--forest-dark))] dark:text-cream">
+              {about.header.title.primary}
+            </span>
+            <span className="text-gold ml-1">
+              {about.header.title.accent}
+            </span></span>
               </h2>
               <div className="space-y-4 text-[hsl(var(--forest-dark))]/75 dark:text-cream-muted leading-relaxed">
                 {about.story.paragraphs.map((p, i) => (

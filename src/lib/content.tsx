@@ -32,8 +32,15 @@ export interface SiteContent {
     cta: { title: string; titleItalic: string; subtitle: string; cta1Text: string; cta1Link: string; cta2Text: string; cta2Link: string };
   };
   about: {
-    header: { label: string; title: string; subtitle: string };
-    story: { title: string; titleItalic: string; paragraphs: string[] };
+  header: {
+    label: string;
+    title: {
+      primary: string;
+      accent: string;
+    };
+    subtitle: string;
+  };
+    story: { title: string; titleItalic: { primary: string; accent: string }; paragraphs: string[] };
     philosophy: {
       label: string; title: string;
       values: Array<{ icon: string; title: string; description: string }>;

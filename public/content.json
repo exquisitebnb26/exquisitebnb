@@ -97,12 +97,18 @@
   "about": {
     "header": {
       "label": "Our Story",
-      "title": "About Exquisitebnb",
+      "title": {
+    "primary": "Exquisite",
+    "accent": "bnb"
+  },
       "subtitle": "More than a place to stayâan experience crafted with intention, care, and a genuine love for hospitality."
     },
     "story": {
       "title": "Why We Created",
-      "titleItalic": "Exquisitebnb",
+      "titleItalic": {
+    "primary": "Exquisite",
+    "accent": "bnb"
+  },
       "paragraphs": [
         "Exquisitebnb was born from a simple belief: every guest deserves to feel truly welcomed, comfortable, and cared for. Not just a clean room and a key, but an experience that feels like coming home to something even better than home.",
         "We've stayed in countless rentalsâsome forgettable, some uncomfortable, and a rare few that made us think, \"This is how it should always be.\" Those exceptional stays inspired us to create something different.",
@@ -139,7 +145,7 @@
       "title": "A Personal Touch,",
       "titleItalic": "Every Time",
       "text": "When you book with Exquisitebnb, you're not just renting a spaceâyou're experiencing hospitality the way it was meant to be. Personal, warm, and consistently excellent. We look forward to welcoming you.",
-      "signature": "â The Exquisitebnb Team"
+      "signature": "-The Exquisitebnb Team"
     }
   },
   "properties": {
