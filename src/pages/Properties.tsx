@@ -93,9 +93,13 @@ const Properties = () => {
                       <Button variant="luxuryOutline" asChild className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)]">
                         <Link to={`/properties/${property.id}`}>View Details</Link>
                       </Button>
-                      <div className="flex items-center gap-1 text-xs text-[hsl(var(--forest-dark))] dark:text-cream-muted">
-                        <span>{property.bookingPlatforms.join(", ")}</span>
-                      </div>
+                      <div className="flex flex-wrap gap-2 text-xs text-[hsl(var(--forest-dark))] dark:text-cream-muted">
+  {property.bookingPlatforms.map((platform) => (
+    <span key={platform.name}>
+      {platform.name}
+    </span>
+  ))}
+</div>
                     </div>
                   </div>
                 </div>

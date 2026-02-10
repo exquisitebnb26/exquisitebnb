@@ -242,17 +242,26 @@ const PropertyDetail = () => {
                   <div className="luxury-divider" />
                   <div className="space-y-3">
                     <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-sm text-center mb-4">Book securely on:</p>
-                    {[
-                      { label: "Airbnb", url: property.bookingLinks.airbnb },
-                      { label: "VRBO", url: property.bookingLinks.vrbo },
-                      { label: "Booking.com", url: property.bookingLinks.bookingcom },
-                    ].map((platform) => (
-                      <a key={platform.label} href={platform.url} target="_blank" rel="noopener noreferrer"
-                        className="flex items-center justify-between p-4 rounded-sm bg-cream border border-[hsl(var(--forest-dark))] dark:bg-charcoal-light dark:border-border transition-all duration-500 ease-out will-change-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)] dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]">
-                        <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm">{platform.label}</span>
-                        <ExternalLink className="w-4 h-4 text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted" />
-                      </a>
-                    ))}
+                    {property.bookingPlatforms.map((platform) => (
+  <a
+    key={platform.name}
+    href={platform.url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="flex items-center justify-between p-4 rounded-sm
+      bg-cream border border-[hsl(var(--forest-dark))]
+      dark:bg-charcoal-light dark:border-border
+      transition-all duration-500 ease-out
+      hover:-translate-y-0.5
+      hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)]
+      dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)]"
+  >
+    <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm">
+      {platform.name}
+    </span>
+    <ExternalLink className="w-4 h-4 text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted" />
+  </a>
+))}
                   </div>
                    <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-xs text-center">
                     Availability, pricing, and payments are managed securely by each platform.

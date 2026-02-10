@@ -77,8 +77,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
           amenities: [],
           idealFor: [],
           reviews: [],
-          bookingLinks: { airbnb: "#", vrbo: "#", bookingcom: "#" },
-          bookingPlatforms: ["Airbnb"],
+          bookingPlatforms: [],
         }])}
         addLabel="Add Property"
       >

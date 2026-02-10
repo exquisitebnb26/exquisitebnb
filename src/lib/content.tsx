@@ -68,7 +68,10 @@ export interface SiteContent {
       idealFor?: string[];
       reviews: Array<{ rating: number; text: string; author: string; label: string }>;
       bookingLinks: { airbnb: string; vrbo: string; bookingcom: string };
-      bookingPlatforms: string[];
+      bookingPlatforms: Array<{
+  name: string;
+  url: string;
+}>;
     }>;
   };
   faqs: {
