@@ -9,7 +9,7 @@ const DesignedForRealLifeSection = () => {
   if (isLoading || !section) return null;
 
   return (
-    <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">
+    <section className="py-24 lg:py-32 bg-cream-soft dark:bg-charcoal-light">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">
           <ScrollReveal variant="fade-in" duration={800}>
