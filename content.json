@@ -2,7 +2,7 @@
   "site": {
     "brandName": "Exquisitebnb",
     "tagline": "Thoughtfully designed stays. Personally hosted.",
-    "description": "Considered spaces for professionals, families, and extended stays — designed with care, cleaned to hotel standards, and hosted with genuine attention.",
+    "description": "Considered spaces for professionals, families, and extended stays â designed with care, cleaned to hotel standards, and hosted with genuine attention.",
     "supportEmail": "support@exqusitebnb.com",
     "phone": "+1 (512) 555-0199",
     "address": "123 Luxury Ave, Austin, TX 78701",
@@ -28,7 +28,7 @@
       "label": "Our Approach",
       "title": "Where considered design meets",
       "titleItalic": "genuine care",
-      "text": "Every property we host is selected with intention and maintained with consistency. We focus on the things that matter most to you — clean spaces, reliable amenities, quiet settings, and a host who responds when you need something. It's hospitality built around real life, not grand gestures."
+      "text": "Every property we host is selected with intention and maintained with consistency. We focus on the things that matter most to you â clean spaces, reliable amenities, quiet settings, and a host who responds when you need something. It's hospitality built around real life, not grand gestures."
     },
     "features": {
       "label": "What You Can Expect",
@@ -38,7 +38,7 @@
         {
           "icon": "Sparkles",
           "title": "Considered Design",
-          "description": "Each space is furnished with care — comfortable, functional, and designed to feel like a place you'd actually want to spend time in."
+          "description": "Each space is furnished with care â comfortable, functional, and designed to feel like a place you'd actually want to spend time in."
         },
         {
           "icon": "Shield",
@@ -69,7 +69,7 @@
       "items": [
         {
           "rating": 5,
-          "text": "Everything was exactly as described — clean, quiet, and well thought out. The kind of place where you can just settle in and focus.",
+          "text": "Everything was exactly as described â clean, quiet, and well thought out. The kind of place where you can just settle in and focus.",
           "author": "Sarah M."
         },
         {
@@ -101,7 +101,7 @@
         "primary": "Exquisite",
         "accent": "bnb"
       },
-      "subtitle": "More than a place to stay — an experience built on intention, care, and a genuine commitment to doing hospitality well."
+      "subtitle": "More than a place to stay an experience built on intention, care, and a genuine commitment to doing hospitality well."
     },
     "story": {
       "title": "Why We Created",
@@ -110,9 +110,9 @@
         "accent": "bnb"
       },
       "paragraphs": [
-        "Exquisitebnb started with a simple observation: most short-term rentals fall short of what thoughtful travelers actually need. A clean room and a key code aren't enough. You deserve a space that feels considered — somewhere you can settle in, work comfortably, and genuinely rest.",
-        "We've stayed in dozens of rentals ourselves — some forgettable, some uncomfortable, and a rare few that made us think, 'This is how it should always be.' Those stays became our standard.",
-        "Each property we host is designed with intention. We care about the details that matter to you — the quality of the linens, the reliability of the Wi-Fi, the cleanliness you shouldn't have to think twice about. Great hospitality isn't about impressing you. It's about making your stay feel effortless."
+        "Exquisitebnb started with a simple observation: most short-term rentals fall short of what thoughtful travelers actually need. A clean room and a key code aren't enough. You deserve a space that feels considered somewhere you can settle in, work comfortably, and genuinely rest.",
+        "We've stayed in dozens of rentals ourselves some forgettable, some uncomfortable, and a rare few that made us think, 'This is how it should always be.' Those stays became our standard.",
+        "Each property we host is designed with intention. We care about the details that matter to you and the quality of the linens, the reliability of the Wi-Fi, the cleanliness you shouldn't have to think twice about. Great hospitality isn't about impressing you. It's about making your stay feel effortless."
       ]
     },
     "philosophy": {
@@ -122,12 +122,12 @@
         {
           "icon": "Sparkles",
           "title": "Intentional Design",
-          "description": "Every space is furnished and arranged with purpose — creating an atmosphere that's calm, functional, and genuinely pleasant to be in."
+          "description": "Every space is furnished and arranged with purpose â creating an atmosphere that's calm, functional, and genuinely pleasant to be in."
         },
         {
           "icon": "Shield",
           "title": "Consistent Standards",
-          "description": "Cleanliness isn't a bonus — it's the baseline. Every surface, every linen, every detail is held to the same standard, every time."
+          "description": "Cleanliness isn't a bonus â it's the baseline. Every surface, every linen, every detail is held to the same standard, every time."
         },
         {
           "icon": "Heart",
@@ -145,7 +145,7 @@
       "title": "A Thoughtful Stay,",
       "titleItalic": "Every Time",
       "text": "When you book with Exquisitebnb, you're choosing a host who takes this seriously. Personal, reliable, and consistently well-managed. We look forward to welcoming you.",
-      "signature": "— The Exquisitebnb Team"
+      "signature": "- The Exquisitebnb Team"
     }
   },
   "properties": {
@@ -218,7 +218,7 @@
         "rating": 4.98,
         "reviewCount": 89,
         "description": "A calm, well-appointed space designed for rest and focus. Warm lighting, quality textiles, and a quiet setting make it well suited for solo professionals or couples seeking a peaceful stay.",
-        "fullDescription": "Velvet Haven is a one-bedroom retreat in Midtown, designed around comfort and calm. Soft textures, warm lighting, and a considered layout make it a space where you can genuinely unwind. It's quiet, well-maintained, and close to everything you need — without the noise.",
+        "fullDescription": "Velvet Haven is a one-bedroom retreat in Midtown, designed around comfort and calm. Soft textures, warm lighting, and a considered layout make it a space where you can genuinely unwind. It's quiet, well-maintained, and close to everything you need â without the noise.",
         "imageKey": "bedroom",
         "galleryKeys": [
           "bedroom",
@@ -234,7 +234,7 @@
         "reviews": [
           {
             "rating": 5,
-            "text": "Exactly what I needed — quiet, clean, and comfortable. The kind of place where you can actually rest.",
+            "text": "Exactly what I needed â quiet, clean, and comfortable. The kind of place where you can actually rest.",
             "author": "Elena R."
           }
         ],
@@ -299,7 +299,7 @@
         "bathrooms": 2,
         "rating": 4.97,
         "reviewCount": 72,
-        "description": "A calm, spa-inspired space near the waterfront. Designed for guests who value rest and quiet — with quality amenities, soft lighting, and a peaceful atmosphere throughout.",
+        "description": "A calm, spa-inspired space near the waterfront. Designed for guests who value rest and quiet â with quality amenities, soft lighting, and a peaceful atmosphere throughout.",
         "fullDescription": "The Serene Suite is a waterfront retreat designed for genuine relaxation. Calming tones, quality amenities, and thoughtful lighting create a space that feels restful from the moment you arrive. Whether you're unwinding after a long week of travel or settling in for an extended stay, this is a space that lets you breathe.",
         "imageKey": "bathroom",
         "galleryKeys": [
@@ -336,12 +336,12 @@
     "header": {
       "label": "Common Questions",
       "title": "Things You Might Want to Know",
-      "subtitle": "Straightforward answers to the questions we hear most often. If something's not covered here, we're happy to help — just reach out."
+      "subtitle": "Straightforward answers to the questions we hear most often. If something's not covered here, we're happy to help â just reach out."
     },
     "items": [
       {
         "question": "How do I book a stay?",
-        "answer": "Browse our properties, choose the one that fits your needs, and book directly through one of our trusted partner platforms — Airbnb, VRBO, or Booking.com. Each platform handles reservations, payments, and guest protection, so you can book with confidence."
+        "answer": "Browse our properties, choose the one that fits your needs, and book directly through one of our trusted partner platforms â Airbnb, VRBO, or Booking.com. Each platform handles reservations, payments, and guest protection, so you can book with confidence."
       },
       {
         "question": "Which platforms do you use for bookings?",
@@ -349,7 +349,7 @@
       },
       {
         "question": "How is cleanliness handled?",
-        "answer": "Every property is professionally cleaned between stays using consistent, hotel-level protocols. Fresh linens, sanitized surfaces, and restocked essentials are standard — not optional. You'll arrive to a space that's ready for you."
+        "answer": "Every property is professionally cleaned between stays using consistent, hotel-level protocols. Fresh linens, sanitized surfaces, and restocked essentials are standard â not optional. You'll arrive to a space that's ready for you."
       },
       {
         "question": "What is the check-in and check-out process?",
@@ -373,7 +373,7 @@
       },
       {
         "question": "Is parking available?",
-        "answer": "Many of our properties include free parking — this is noted on each listing. For those without dedicated parking, we provide clear information about nearby street parking and garage options."
+        "answer": "Many of our properties include free parking â this is noted on each listing. For those without dedicated parking, we provide clear information about nearby street parking and garage options."
       },
       {
         "question": "Can I host events or gatherings?",
@@ -382,14 +382,14 @@
     ],
     "contactCta": {
       "text": "Didn't find what you were looking for?",
-      "linkText": "Reach out to us →"
+      "linkText": "Reach out to us â"
     }
   },
   "contact": {
     "header": {
       "label": "Say Hello",
       "title": "Start a Conversation",
-      "subtitle": "Whether it's a booking question, a special request, or just a thought — we'd genuinely like to hear from you."
+      "subtitle": "Whether it's a booking question, a special request, or just a thought â we'd genuinely like to hear from you."
     },
     "formNote": "For booking inquiries, please complete your reservation through our partner platforms (Airbnb, VRBO, or Booking.com).",
     "successTitle": "We've Received Your Message",
@@ -418,7 +418,7 @@
         {
           "icon": "Calendar",
           "title": "Real-Time Availability",
-          "description": "View up-to-date availability and choose dates that work for your schedule — no back and forth."
+          "description": "View up-to-date availability and choose dates that work for your schedule â no back and forth."
         }
       ]
     },
@@ -447,14 +447,14 @@
     "browseCta": {
       "title": "Not sure which property is right?",
       "subtitle": "Browse our spaces first and find the one that fits your stay.",
-      "linkText": "Browse Properties →"
+      "linkText": "Browse Properties â"
     }
   },
   "partnership": {
     "hero": {
       "label": "Partnership Opportunities",
       "title": "Your Property, Thoughtfully Positioned.",
-      "subtitle": "We don't manage properties by volume — we build lasting partnerships with owners who value care, quality, and a considered guest experience."
+      "subtitle": "We don't manage properties by volume â we build lasting partnerships with owners who value care, quality, and a considered guest experience."
     },
     "whyPartner": {
       "label": "A Different Approach",
@@ -464,12 +464,12 @@
         {
           "icon": "Shield",
           "title": "Relationships Over Transactions",
-          "description": "We build partnerships on mutual respect and shared values — not quick turnovers or aggressive marketing."
+          "description": "We build partnerships on mutual respect and shared values â not quick turnovers or aggressive marketing."
         },
         {
           "icon": "Sparkles",
           "title": "Long-Term Value",
-          "description": "Our focus is on sustainable success — protecting your property's reputation while delivering consistent, memorable guest experiences."
+          "description": "Our focus is on sustainable success â protecting your property's reputation while delivering consistent, memorable guest experiences."
         }
       ]
     },
@@ -479,7 +479,7 @@
       "items": [
         {
           "title": "Thoughtful Positioning",
-          "description": "Each property is presented as a distinct space with its own character — not a generic listing."
+          "description": "Each property is presented as a distinct space with its own character â not a generic listing."
         },
         {
           "title": "Design Guidance",
@@ -491,7 +491,7 @@
         },
         {
           "title": "Reliable Operations",
-          "description": "From guest communication to turnover — every detail is managed with consistency and professionalism."
+          "description": "From guest communication to turnover â every detail is managed with consistency and professionalism."
         }
       ]
     },
@@ -512,12 +512,12 @@
         {
           "icon": "Shield",
           "title": "Seamless Operations",
-          "description": "From communication to cleaning coordination — we handle the operational details with professionalism."
+          "description": "From communication to cleaning coordination â we handle the operational details with professionalism."
         },
         {
           "icon": "Users",
           "title": "Guests Who Care",
-          "description": "Our brand attracts people who appreciate quality — guests who treat your home with the same respect you put into it."
+          "description": "Our brand attracts people who appreciate quality â guests who treat your home with the same respect you put into it."
         }
       ]
     },
@@ -534,7 +534,7 @@
         "label": "A Gentle Note",
         "title": "This May Not Be the Right Fit If...",
         "text1": "Our approach is intentional, which means it's not for everyone. If your primary goal is maximizing nightly rates above all else, or if guest experience feels secondary to revenue, we may not be the right match.",
-        "text2": "We work best with partners who see their property as a space that deserves care — not just an asset to optimize."
+        "text2": "We work best with partners who see their property as a space that deserves care â not just an asset to optimize."
       }
     },
     "process": {
@@ -561,7 +561,7 @@
     },
     "cta": {
       "title": "Let's See If We're a Good Fit",
-      "subtitle": "No commitment needed — just a conversation to explore whether working together makes sense. We'd like to hear about your property.",
+      "subtitle": "No commitment needed â just a conversation to explore whether working together makes sense. We'd like to hear about your property.",
       "ctaText": "Start the Conversation",
       "note": "We respond to every inquiry within 48 hours."
     }
