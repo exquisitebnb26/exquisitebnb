@@ -27,6 +27,8 @@ const PropertyDetail = () => {
    const { content, isLoading } = useContent();
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const properties = content?.properties;
+  if (!properties) return null;
 
   const property = content.properties.items.find((p) => p.id === id) || content.properties.items[0];
 
