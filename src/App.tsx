@@ -15,7 +15,7 @@ import Partnership from "./pages/Partnership";
 import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/utils/ScrollToTop";
-
+import RedirectHandler from "./components/utils/RedirectHandler";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -25,6 +25,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+        <RedirectHandler />
         <ScrollToTop/>
           <Routes>
             <Route path="/" element={<Index />} />
