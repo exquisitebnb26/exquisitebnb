@@ -9,7 +9,9 @@ import {
 import { useContent } from "@/lib/content";
 
 const FAQs = () => {
-  const { faqs } = useContent();
+  const { content } = useContent();
+  const faqs = content?.faqs;
+  if (!faqs) return null;
 
   return (
     <Layout>
