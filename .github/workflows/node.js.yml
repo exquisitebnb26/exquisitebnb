@@ -28,7 +28,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-            VITE_ADMIN_PASSWORD: ${{ vars.VITE_ADMIN_PASSWORD }}
+            VITE_ADMIN_PASSWORD: ${{ secrets.VITE_ADMIN_PASSWORD }}
 
       - name: Configure Git identity
         run: |
