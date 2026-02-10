@@ -11,6 +11,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import LogoImage from "@/assets/Exquisitebnb.png";
 
 const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
+console.log("[ADMIN] VITE_ADMIN_PASSWORD:", import.meta.env.VITE_ADMIN_PASSWORD);
 
 // ── Auth Gate ──────────────────────────────────────────────────────
 
@@ -42,7 +43,7 @@ function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
         <div className="space-y-4">
           <Input
             type="password"
-            placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+            placeholder="ghp_token"
             value={token}
             onChange={(e) => setToken(e.target.value)}
             className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)]"
@@ -174,7 +175,11 @@ const Admin = () => {
     sessionStorage.getItem("cms_token")
   );
 
+  console.log("[ADMIN] adminUnlocked:", adminUnlocked);
+  console.log("[ADMIN] cms_token:", token);
+
   const handleAuth = (t: string) => {
+    console.log("[ADMIN] GitHub token received");
     sessionStorage.setItem("cms_token", t);
     setToken(t);
   };
@@ -187,6 +192,8 @@ const Admin = () => {
   };
 
   const handleAdminUnlock = () => {
+    console.log("[ADMIN] Entered password:", adminPasswordInput);
+    console.log("[ADMIN] Expected password:", ADMIN_PASSWORD);
     if (adminPasswordInput === ADMIN_PASSWORD) {
       sessionStorage.setItem("admin_unlocked", "true");
       setAdminUnlocked(true);
