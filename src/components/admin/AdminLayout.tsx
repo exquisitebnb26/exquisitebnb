@@ -91,6 +91,7 @@ function SiteEditor({ content, update }: EditorProps) {
       <TextField label="Address" value={content.site.address} onChange={(v) => update("site.address", v)} />
       <TextField label="Instagram URL" value={content.site.instagram} onChange={(v) => update("site.instagram", v)} />
       <TextField label="Twitter URL" value={content.site.twitter} onChange={(v) => update("site.twitter", v)} />
+      <TextField label="Location URL" value={content.site.mapEmbedUrl} onChange={(v) => update("site.mapEmbedUrl", v)} />
     </div>
   );
 }

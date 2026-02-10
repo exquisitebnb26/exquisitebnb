@@ -30,8 +30,6 @@ const Contact = () => {
   if (isLoading || !content?.contact || !content.site) {
     return null;
   }
-  const contact = content.contact;
-  const site = content.site;
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
