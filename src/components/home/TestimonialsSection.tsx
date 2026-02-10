@@ -56,7 +56,7 @@ const TestimonialsSection = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-2">
             {visibleItems.map((review, index) => {
-              const label = guestLabels[review.author];
+              const label = review.label;
               return (
                 <ScrollReveal key={currentIndex + index} variant="fade-up" delay={200 + index * 140} duration={800}>
                   <div className="p-8 bg-card border border-border rounded-sm transition-all duration-500 ease-out hover:border-[hsl(var(--forest-dark))] hover:shadow-[0_0_38px_hsl(var(--forest-dark)_/_0.55)] dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)] hover:-translate-y-1 h-full">

@@ -69,18 +69,21 @@
       "items": [
         {
           "rating": 5,
-          "text": "From the moment we walked in, everything felt right — clean, peaceful, and so thoughtfully prepared. It's rare to find a place that makes you feel this welcomed.",
-          "author": "Sarah M."
+          "text": "From the moment we walked in...",
+          "author": "Sarah M.",
+          "label": "Business Traveler"
         },
         {
           "rating": 5,
-          "text": "You can feel the care in every detail. The linens, the kitchen, the quiet neighborhood — it all came together beautifully. We'll carry this stay with us.",
-          "author": "James K."
+          "text": "You can feel the care...",
+          "author": "James K.",
+          "label": "Extended Stay"
         },
         {
           "rating": 5,
-          "text": "This wasn't just a rental — it was someone's pride and joy, and it showed. The host made us feel like family. We're already planning our return.",
-          "author": "Elena R."
+          "text": "This wasn't just a rental...",
+          "author": "Elena R.",
+          "label": "Family Visit"
         }
       ]
     },
@@ -251,12 +254,14 @@
           {
             "rating": 5,
             "text": "Walking in felt like a breath of fresh air. Everything was spotless, peaceful, and so thoughtfully arranged. We didn't want to leave.",
-            "author": "Sarah M."
+            "author": "Sarah M.",
+            "label" : "Business Traveler"
           },
           {
             "rating": 5,
             "text": "The warmth of this place surprised us. The kitchen, the light, the little touches — it felt like someone truly cared about our stay.",
-            "author": "James K."
+            "author": "James K.",
+            "label" : "Extended Stay"
           }
         ],
         "bookingLinks": {
@@ -296,7 +301,8 @@
           {
             "rating": 5,
             "text": "I've never felt so at peace in a rental. It was quiet, pristine, and designed with such tenderness. Exactly what my soul needed.",
-            "author": "Elena R."
+            "author": "Elena R.",
+            "label" : "Family Visit"
           }
         ],
         "bookingLinks": {
@@ -338,7 +344,8 @@
           {
             "rating": 5,
             "text": "Our family stayed for two weeks and it truly felt like our home away from home. The kids didn't want to leave, and honestly, neither did we.",
-            "author": "Michael T."
+            "author": "Michael T.",
+            "label" : "Family Visit"
           }
         ],
         "bookingLinks": {
@@ -378,7 +385,8 @@
           {
             "rating": 5,
             "text": "Immaculate, serene, and filled with quiet beauty. I felt genuinely taken care of — like the host had thought of everything before I even arrived.",
-            "author": "Anna L."
+            "author": "Anna L.",
+            "label" : "Extended Stay"
           }
         ],
         "bookingLinks": {

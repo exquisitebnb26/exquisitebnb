@@ -24,18 +24,22 @@ const amenityIconMap: Record<string, LucideIcon> = {
 
 const PropertyDetail = () => {
   const { id } = useParams<{ id: string }>();
-   const { content, isLoading } = useContent();
+  const { content, isLoading } = useContent();
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const properties = content?.properties;
-  if (!properties) return null;
+  const property =
+    properties?.items.find((p) => p.id === id) ??
+    properties?.items[0];
 
-  const property = content.properties.items.find((p) => p.id === id) || content.properties.items[0];
-
-  const images = property ? property.galleryKeys.map((k) => imageMap[k] || heroImage) : [];
+  // Guard against undefined content/properties, and property
+  const images =
+    property && property.galleryKeys
+      ? property.galleryKeys.map((k: string) => imageMap[k] || heroImage)
+      : [];
 
   useEffect(() => {
-    if (!property || isTransitioning) return;
+    if (!property || isTransitioning || images.length === 0) return;
     const timer = setInterval(() => {
       setIsTransitioning(true);
       setActiveImage((prev) => (prev + 1) % images.length);
@@ -44,11 +48,14 @@ const PropertyDetail = () => {
     return () => clearInterval(timer);
   }, [images.length, isTransitioning, property]);
 
-  if (!property) {
+  // Loading state after all hooks, do not return before hooks
+  if (isLoading || !property) {
     return (
       <Layout>
         <div className="min-h-screen flex items-center justify-center">
-          <p className="text-cream">Property not found</p>
+          <p className="text-[hsl(var(--forest-dark))] dark:text-cream-muted">
+            Loading property…
+          </p>
         </div>
       </Layout>
     );
@@ -207,8 +214,19 @@ const PropertyDetail = () => {
                             <Star key={i} className="w-4 h-4 fill-[hsl(var(--forest-dark))] text-[hsl(var(--forest-dark))] dark:fill-gold dark:text-gold" />
                           ))}
                         </div>
-                        <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted italic mb-3">"{review.text}"</p>
-                        <p className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm font-medium">{review.author}</p>
+                        {/* Review text */}
+                        <p className="text-[hsl(var(--forest-dark))] dark:text-cream-muted text-base mb-4">{review.text}</p>
+                        {/* Footer row: author left, label right */}
+                        <div className="flex items-end justify-between">
+                          <span className="text-[hsl(var(--forest-dark))] dark:text-cream text-sm font-medium">
+                            {review.author}
+                          </span>
+                          {review.label && (
+                            <span className="text-[hsl(var(--forest-dark))]/50 dark:text-gold/60 text-xs tracking-wide whitespace-nowrap">
+                              {review.label}
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </ScrollReveal>
                   ))}
