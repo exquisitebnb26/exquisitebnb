@@ -237,6 +237,11 @@
           "bedroom",
           "kitchen"
         ],
+        "idealFor": [
+            "Families",
+            "Remote Work",
+            "Extended Stays"
+          ],
         "amenities": [
           "High-Speed WiFi",
           "Free Parking",
@@ -258,16 +263,20 @@
             "author": "James K.",
             "label" : "Extended Stay"
           }
-        ],
-        "bookingLinks": {
-          "airbnb": "#",
-          "vrbo": "#",
-          "bookingcom": "#"
-        },
-        "bookingPlatforms": [
-          "Airbnb",
-          "VRBO"
-        ]
+        ],"bookingPlatforms": [
+  {
+    "name": "Airbnb",
+    "url": "https://airbnb.com/your-listing"
+  },
+  {
+    "name": "VRBO",
+    "url": "https://vrbo.com/your-listing"
+  },
+  {
+    "name": "Booking.com",
+    "url": "https://booking.com/your-listing"
+  }
+]
       },
       {
         "id": "velvet-haven",
@@ -286,6 +295,11 @@
           "hero",
           "bathroom"
         ],
+        "idealFor": [
+  "Families",
+  "Remote Work",
+  "Extended Stays"
+],
         "amenities": [
           "High-Speed WiFi",
           "Air Conditioning",
@@ -299,16 +313,20 @@
             "author": "Elena R.",
             "label" : "Family Visit"
           }
-        ],
-        "bookingLinks": {
-          "airbnb": "#",
-          "vrbo": "#",
-          "bookingcom": "#"
-        },
-        "bookingPlatforms": [
-          "Airbnb",
-          "VRBO"
-        ]
+        ],"bookingPlatforms": [
+  {
+    "name": "Airbnb",
+    "url": "https://airbnb.com/your-listing"
+  },
+  {
+    "name": "VRBO",
+    "url": "https://vrbo.com/your-listing"
+  },
+  {
+    "name": "Booking.com",
+    "url": "https://booking.com/your-listing"
+  }
+]
       },
       {
         "id": "urban-retreat",
@@ -327,6 +345,11 @@
           "hero",
           "bedroom"
         ],
+        "idealFor": [
+  "Families",
+  "Remote Work",
+  "Extended Stays"
+],
         "amenities": [
           "High-Speed WiFi",
           "Free Parking",
@@ -342,16 +365,20 @@
             "author": "Michael T.",
             "label" : "Family Visit"
           }
-        ],
-        "bookingLinks": {
-          "airbnb": "#",
-          "vrbo": "#",
-          "bookingcom": "#"
-        },
-        "bookingPlatforms": [
-          "Airbnb",
-          "VRBO"
-        ]
+        ],"bookingPlatforms": [
+  {
+    "name": "Airbnb",
+    "url": "https://airbnb.com/your-listing"
+  },
+  {
+    "name": "VRBO",
+    "url": "https://vrbo.com/your-listing"
+  },
+  {
+    "name": "Booking.com",
+    "url": "https://booking.com/your-listing"
+  }
+]
       },
       {
         "id": "serene-suite",
@@ -376,6 +403,11 @@
           "Smart TV",
           "Coffee & Tea"
         ],
+        "idealFor": [
+  "Families",
+  "Remote Work",
+  "Extended Stays"
+],
         "reviews": [
           {
             "rating": 5,
@@ -383,16 +415,20 @@
             "author": "Anna L.",
             "label" : "Extended Stay"
           }
-        ],
-        "bookingLinks": {
-          "airbnb": "#",
-          "vrbo": "#",
-          "bookingcom": "#"
-        },
-        "bookingPlatforms": [
-          "Airbnb",
-          "VRBO"
-        ]
+        ],"bookingPlatforms": [
+  {
+    "name": "Airbnb",
+    "url": "https://airbnb.com/your-listing"
+  },
+  {
+    "name": "VRBO",
+    "url": "https://vrbo.com/your-listing"
+  },
+  {
+    "name": "Booking.com",
+    "url": "https://booking.com/your-listing"
+  }
+]
       }
     ]
   },
