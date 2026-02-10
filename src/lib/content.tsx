@@ -187,7 +187,7 @@ export function useContent() {
 
 export async function fetchContentFromGitHub(token: string): Promise<{ content: SiteContent; sha: string }> {
   const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONTENT_PATH}`,
+    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONTENT_PATH}?ref=cms-content`,
     { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
   );
   if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
@@ -212,7 +212,7 @@ export async function saveContentToGitHub(
         Accept: "application/vnd.github.v3+json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message, content: encoded, sha }),
+      body: JSON.stringify({ message, content: encoded, sha, branch: "cms-content" }),
     }
   );
   if (!res.ok) {
