@@ -73,6 +73,23 @@ const Properties = () => {
                     <h2 className="text-2xl font-serif text-emerald dark:text-cream mb-3">{property.name}</h2>
                     <p className="text-emerald dark:text-cream-muted text-sm leading-relaxed mb-6">{property.description}</p>
 
+                    {/* Ideal-for labels */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {property.guests >= 4 && (
+                        <span className="text-xs px-2.5 py-1 rounded-sm bg-[hsl(var(--forest-dark))]/8 text-[hsl(var(--forest-dark))] dark:bg-gold/10 dark:text-gold/80">
+                          Families
+                        </span>
+                      )}
+                      {property.amenities?.includes("High-Speed WiFi") && (
+                        <span className="text-xs px-2.5 py-1 rounded-sm bg-[hsl(var(--forest-dark))]/8 text-[hsl(var(--forest-dark))] dark:bg-gold/10 dark:text-gold/80">
+                          Remote Work
+                        </span>
+                      )}
+                      <span className="text-xs px-2.5 py-1 rounded-sm bg-[hsl(var(--forest-dark))]/8 text-[hsl(var(--forest-dark))] dark:bg-gold/10 dark:text-gold/80">
+                        Extended Stays
+                      </span>
+                    </div>
+
                     <div className="flex items-center justify-between">
                       <Button variant="luxuryOutline" asChild className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)]">
                         <Link to={`/properties/${property.id}`}>View Details</Link>

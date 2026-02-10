@@ -3,15 +3,21 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
+const guestLabels: Record<string, string> = {
+  "Sarah M.": "Business Traveler",
+  "James K.": "Extended Stay",
+  "Elena R.": "Family Visit",
+};
+
 const TestimonialsSection = () => {
-  const { content, isLoading, error } = useContent();
+  const { content, isLoading } = useContent();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (isLoading || !content?.home?.testimonials) {
     return null;
   }
   const t = content.home.testimonials;
-  const items = t.items;
+  const items = t.items.filter((r) => r.text !== "sk testing");
   const visibleCount = 3;
   const maxIndex = Math.max(0, items.length - visibleCount);
   const canScrollPrev = currentIndex > 0;
@@ -37,7 +43,6 @@ const TestimonialsSection = () => {
 
         {/* Carousel with arrows */}
         <div className="relative mb-16">
-          {/* Left arrow */}
           {items.length > visibleCount && (
             <button
               onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
@@ -50,24 +55,33 @@ const TestimonialsSection = () => {
           )}
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-2">
-            {visibleItems.map((review, index) => (
-              <ScrollReveal key={currentIndex + index} variant="fade-up" delay={200 + index * 140} duration={800}>
-                <div className="p-8 bg-card border border-border rounded-sm transition-all duration-500 ease-out hover:border-[hsl(var(--forest-dark))] hover:shadow-[0_0_38px_hsl(var(--forest-dark)_/_0.55)] dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)] hover:-translate-y-1 h-full">
-                  <div className="flex items-center gap-1 mb-4">
-                    {[...Array(review.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-forest dark:fill-gold text-emerald dark:text-gold" />
-                    ))}
+            {visibleItems.map((review, index) => {
+              const label = guestLabels[review.author];
+              return (
+                <ScrollReveal key={currentIndex + index} variant="fade-up" delay={200 + index * 140} duration={800}>
+                  <div className="p-8 bg-card border border-border rounded-sm transition-all duration-500 ease-out hover:border-[hsl(var(--forest-dark))] hover:shadow-[0_0_38px_hsl(var(--forest-dark)_/_0.55)] dark:hover:shadow-[0_0_35px_rgba(212,175,55,0.45)] hover:-translate-y-1 h-full">
+                    <div className="flex items-center gap-1 mb-4">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-forest dark:fill-gold text-emerald dark:text-gold" />
+                      ))}
+                    </div>
+                    <p className="text-emerald dark:text-cream-muted italic mb-4 leading-relaxed">
+                      "{review.text}"
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-cream text-sm font-medium">{review.author}</p>
+                      {label && (
+                        <span className="text-[hsl(var(--forest-dark))]/50 dark:text-gold/60 text-xs tracking-wide">
+                          {label}
+                        </span>
+                      )}
+                    </div>
                   </div>
-                  <p className="text-emerald dark:text-cream-muted italic mb-4 leading-relaxed">
-                    "{review.text}"
-                  </p>
-                  <p className="text-cream text-sm font-medium">{review.author}</p>
-                </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
 
-          {/* Right arrow */}
           {items.length > visibleCount && (
             <button
               onClick={() => setCurrentIndex((i) => Math.min(maxIndex, i + 1))}

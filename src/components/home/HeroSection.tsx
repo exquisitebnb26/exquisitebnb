@@ -50,6 +50,12 @@ const hero = home.hero;
             </p>
           </ScrollReveal>
 
+          <ScrollReveal variant="fade-in" duration={800} delay={800}>
+            <p className="text-cream/70 text-sm tracking-wide max-w-md mx-auto">
+              Thoughtfully designed stays for professionals, families, and extended visits.
+            </p>
+          </ScrollReveal>
+
           <ScrollReveal variant="fade-up" duration={800} delay={850}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
               <Button variant="heroGold" size="lg" asChild>

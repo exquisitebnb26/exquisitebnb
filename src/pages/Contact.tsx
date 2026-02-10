@@ -84,7 +84,9 @@ const Contact = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">{contact.header.title}</h1>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={900} delay={400}>
-            <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">{contact.header.subtitle}</p>
+            <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">
+              We'd love to hear from you. Whether it's a booking question or a special request, every inquiry is handled personally and thoughtfully.
+            </p>
           </ScrollReveal>
         </div>
       </section>
@@ -145,14 +147,14 @@ const Contact = () => {
                     </FormItem>
                   )} />
 
-                  <Button type="submit" variant="luxuryGold" size="lg" className="w-full transition-all duration-500 ease-out hover:shadow-[0_0_30px_hsl(var(--forest-dark)_/_0.45)] dark:hover:shadow-[0_0_30px_rgba(212,175,55,0.45)]">
-                    <Send className="w-4 h-4 mr-2" /> Open Email App
+                   <Button type="submit" variant="luxuryGold" size="lg" className="w-full transition-all duration-500 ease-out hover:shadow-[0_0_30px_hsl(var(--forest-dark)_/_0.45)] dark:hover:shadow-[0_0_30px_rgba(212,175,55,0.45)]">
+                    <Send className="w-4 h-4 mr-2" /> Start a Conversation
                   </Button>
                 </form>
               </Form>
 
-              <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-xs text-center mt-6">
-                {contact.formNote}
+              <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs text-center mt-6 leading-relaxed">
+                We respond personally to every inquiry — typically within a few hours.
               </p>
             </div>
           </ScrollReveal>

@@ -145,6 +145,34 @@ const PropertyDetail = () => {
                 </div>
               </ScrollReveal>
 
+              {/* Booking Clarity */}
+              <ScrollReveal variant="fade-up" duration={800} delay={200}>
+                <div className="p-6 bg-[hsl(var(--forest-dark))]/5 dark:bg-gold/5 rounded-sm space-y-4">
+                  <h2 className="text-lg font-serif text-[hsl(var(--forest-dark))] dark:text-cream">Stay Details</h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Check-in</p>
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">3:00 PM — Self check-in</p>
+                    </div>
+                    <div>
+                      <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Check-out</p>
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">11:00 AM</p>
+                    </div>
+                    <div>
+                      <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Ideal for</p>
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">Business travel, extended stays, families</p>
+                    </div>
+                    <div>
+                      <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs uppercase tracking-wider mb-1">Not suited for</p>
+                      <p className="text-[hsl(var(--forest-dark))] dark:text-cream">Events or parties</p>
+                    </div>
+                  </div>
+                  <p className="text-[hsl(var(--forest-dark))]/50 dark:text-cream-muted text-xs">
+                    Extended stays welcomed — reach out for multi-week availability. Cancellation terms are fair and transparent, detailed on each booking platform.
+                  </p>
+                </div>
+              </ScrollReveal>
+
               {/* Amenities */}
               <div>
                 <ScrollReveal variant="fade-in" duration={800}>
