@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Save, LogOut, RefreshCw, Check, AlertCircle, Plus, Trash2 } from "lucide-react";
+import { Save, LogOut, RefreshCw, Check, AlertCircle, Plus, Trash2, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -166,6 +166,33 @@ function PropertiesEditor({ content, update }: EditorProps) {
   );
 }
 
+function StarRatingSelector({ value, onChange }: { value: number; onChange: (v: number) => void }) {
+  return (
+    <div className="space-y-1.5">
+      <label className={`text-xs ${theme.textDim} uppercase tracking-wider`}>Rating</label>
+      <div className="flex items-center gap-1">
+        {[1, 2, 3, 4, 5].map((star) => (
+          <button
+            key={star}
+            type="button"
+            onClick={() => onChange(star)}
+            className="p-0.5 transition-colors"
+          >
+            <Star
+              className={`w-5 h-5 ${
+                star <= value
+                  ? "fill-[hsl(43_40%_50%)] text-[hsl(43_40%_50%)]"
+                  : "fill-transparent text-[hsl(0_0%_25%)]"
+              }`}
+            />
+          </button>
+        ))}
+        <span className={`text-xs ${theme.textDim} ml-2`}>{value}/5</span>
+      </div>
+    </div>
+  );
+}
+
 function ReviewsEditor({ content, update }: EditorProps) {
   const items = content.home.testimonials.items;
 
@@ -207,6 +234,14 @@ function ReviewsEditor({ content, update }: EditorProps) {
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
                 </div>
+                <StarRatingSelector
+                  value={t.rating}
+                  onChange={(v) => {
+                    const newItems = [...items];
+                    newItems[i] = { ...newItems[i], rating: v };
+                    update("home.testimonials.items", newItems);
+                  }}
+                />
                 <TextAreaField
                   label="Review Text"
                   value={t.text}
@@ -240,14 +275,75 @@ function ReviewsEditor({ content, update }: EditorProps) {
 }
 
 function FAQsEditor({ content, update }: EditorProps) {
+  const items = content.faqs.items;
+
+  const addFaq = () => {
+    const newItems = [...items, { question: "", answer: "" }];
+    update("faqs.items", newItems);
+  };
+
+  const removeFaq = (index: number) => {
+    const newItems = items.filter((_, i) => i !== index);
+    update("faqs.items", newItems);
+  };
+
   return (
     <div className="space-y-4">
-      {content.faqs.items.map((faq, i) => (
-        <div key={i} className={`border ${theme.border} rounded-sm p-4 space-y-3`}>
-          <TextField label={`Question ${i + 1}`} value={faq.question} onChange={(v) => { const items = [...content.faqs.items]; items[i] = { ...items[i], question: v }; update("faqs.items", items); }} />
-          <TextAreaField label="Answer" value={faq.answer} rows={3} onChange={(v) => { const items = [...content.faqs.items]; items[i] = { ...items[i], answer: v }; update("faqs.items", items); }} />
-        </div>
-      ))}
+      <div className="flex items-center justify-between">
+        <p className={`text-sm ${theme.textMuted}`}>{items.length} FAQ{items.length !== 1 ? "s" : ""}</p>
+        <button
+          onClick={addFaq}
+          className={`flex items-center gap-1.5 text-xs ${theme.gold} hover:opacity-80 transition-opacity uppercase tracking-wider font-medium`}
+        >
+          <Plus className="w-3.5 h-3.5" />
+          Add FAQ
+        </button>
+      </div>
+
+      <div className={`border ${theme.border} rounded-sm overflow-hidden`}>
+        <ScrollArea className="h-[calc(100vh-280px)]">
+          <div className="p-4 space-y-4">
+            {items.map((faq, i) => (
+              <div key={i} className={`border ${theme.border} rounded-sm p-4 space-y-3 ${theme.bgInput}`}>
+                <div className="flex items-start justify-between">
+                  <span className={`text-xs ${theme.textDim} uppercase tracking-wider`}>FAQ {i + 1}</span>
+                  <button
+                    onClick={() => removeFaq(i)}
+                    className="text-[hsl(0_55%_50%)] hover:text-[hsl(0_55%_60%)] transition-colors p-1"
+                    title="Remove FAQ"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+                <TextField
+                  label="Question"
+                  value={faq.question}
+                  onChange={(v) => {
+                    const newItems = [...items];
+                    newItems[i] = { ...newItems[i], question: v };
+                    update("faqs.items", newItems);
+                  }}
+                />
+                <TextAreaField
+                  label="Answer"
+                  value={faq.answer}
+                  rows={3}
+                  onChange={(v) => {
+                    const newItems = [...items];
+                    newItems[i] = { ...newItems[i], answer: v };
+                    update("faqs.items", newItems);
+                  }}
+                />
+              </div>
+            ))}
+            {items.length === 0 && (
+              <p className={`text-center py-12 ${theme.textDim} text-sm`}>
+                No FAQs yet. Click "+ Add FAQ" to get started.
+              </p>
+            )}
+          </div>
+        </ScrollArea>
+      </div>
     </div>
   );
 }
