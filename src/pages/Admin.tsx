@@ -176,9 +176,10 @@ const Admin = () => {
 
 
   const handleAuth = (t: string) => {
-    sessionStorage.setItem("cms_token", t);
-    setToken(t);
-  };
+  const cleanToken = t.trim();
+  sessionStorage.setItem("cms_token", cleanToken);
+  setToken(cleanToken);
+};
 
   const handleLogout = () => {
     sessionStorage.removeItem("cms_token");
