@@ -1,9 +1,23 @@
-import { Star, Plus, Trash2, GripVertical } from "lucide-react";
+import { Star, Plus, Trash2, GripVertical, X, Check } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { theme } from "./theme";
 import { iconRegistry, iconNames } from "./icons";
+
+import heroImage from "@/assets/hero-living-room.jpg";
+import bedroomImage from "@/assets/property-bedroom.jpg";
+import kitchenImage from "@/assets/property-kitchen.jpg";
+import bathroomImage from "@/assets/property-bathroom.jpg";
+
+const imageKeyMap: Record<string, string> = {
+  hero: heroImage,
+  bedroom: bedroomImage,
+  kitchen: kitchenImage,
+  bathroom: bathroomImage,
+};
+
+export const availableImageKeys = Object.keys(imageKeyMap);
 
 // ── Basic Fields ───────────────────────────────────────────────────
 
@@ -139,6 +153,92 @@ export function StarRatingSelector({ value, onChange }: {
           </button>
         ))}
         <span className={`text-xs ${theme.textDim} ml-2`}>{value}/5</span>
+      </div>
+    </div>
+  );
+}
+
+// ── Repeatable List ───────────────────────────────────────────────
+
+// ── Image Key Selector ────────────────────────────────────────────
+
+export function ImageKeySelector({ label, value, onChange }: {
+  label: string; value: string; onChange: (v: string) => void;
+}) {
+  return (
+    <div className="space-y-1.5">
+      <label className={`text-xs ${theme.textDim} uppercase tracking-wider`}>{label}</label>
+      <div className="flex flex-wrap gap-2">
+        {availableImageKeys.map((key) => {
+          const isActive = value === key;
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => onChange(key)}
+              className={`relative rounded-sm overflow-hidden border-2 transition-all ${
+                isActive
+                  ? "border-[hsl(43_40%_50%)] ring-1 ring-[hsl(43_40%_50%_/_0.4)]"
+                  : "border-[hsl(0_0%_16%)] hover:border-[hsl(0_0%_25%)]"
+              }`}
+              title={key}
+            >
+              <img src={imageKeyMap[key]} alt={key} className="w-16 h-12 object-cover" />
+              {isActive && (
+                <div className="absolute inset-0 bg-[hsl(43_40%_50%_/_0.25)] flex items-center justify-center">
+                  <Check className="w-4 h-4 text-[hsl(43_40%_90%)]" />
+                </div>
+              )}
+              <span className={`block text-[10px] text-center py-0.5 ${isActive ? "text-[hsl(43_40%_50%)]" : theme.textDim}`}>{key}</span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ── Gallery Key Selector ──────────────────────────────────────────
+
+export function GalleryKeySelector({ label, value, onChange }: {
+  label: string; value: string[]; onChange: (v: string[]) => void;
+}) {
+  const toggle = (key: string) => {
+    if (value.includes(key)) {
+      onChange(value.filter((k) => k !== key));
+    } else {
+      onChange([...value, key]);
+    }
+  };
+
+  return (
+    <div className="space-y-1.5">
+      <label className={`text-xs ${theme.textDim} uppercase tracking-wider`}>{label} <span className="normal-case opacity-60">({value.length} selected)</span></label>
+      <div className="flex flex-wrap gap-2">
+        {availableImageKeys.map((key) => {
+          const isActive = value.includes(key);
+          return (
+            <button
+              key={key}
+              type="button"
+              onClick={() => toggle(key)}
+              className={`relative rounded-sm overflow-hidden border-2 transition-all ${
+                isActive
+                  ? "border-[hsl(43_40%_50%)] ring-1 ring-[hsl(43_40%_50%_/_0.4)]"
+                  : "border-[hsl(0_0%_16%)] hover:border-[hsl(0_0%_25%)]"
+              }`}
+              title={key}
+            >
+              <img src={imageKeyMap[key]} alt={key} className="w-16 h-12 object-cover" />
+              {isActive && (
+                <div className="absolute inset-0 bg-[hsl(43_40%_50%_/_0.25)] flex items-center justify-center">
+                  <Check className="w-4 h-4 text-[hsl(43_40%_90%)]" />
+                </div>
+              )}
+              <span className={`block text-[10px] text-center py-0.5 ${isActive ? "text-[hsl(43_40%_50%)]" : theme.textDim}`}>{key}</span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
