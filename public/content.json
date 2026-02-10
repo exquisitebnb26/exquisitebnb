@@ -66,33 +66,7 @@
       "label": "Trusted by Guests",
       "title": "What Our Guests Say",
       "platformNote": "Book securely through trusted platforms",
-      "items": [
-        {
-          "rating": 5,
-          "text": "Absolutely stunning space. Every detail was perfectâfrom the lighting to the linens. Felt like a five-star hotel with the warmth of home.",
-          "author": "Sarah M."
-        },
-        {
-          "rating": 5,
-          "text": "The cleanest rental I've ever stayed in. You can tell the hosts truly care. Will definitely be returning.",
-          "author": "James K."
-        },
-        {
-          "rating": 5,
-          "text": "A rare find. Beautiful, comfortable, and the host was incredibly responsive. This is what hospitality should be.",
-          "author": "Elena R."
-        },
-        {
-          "rating": 5,
-          "text": "testing ",
-          "author": "sk review"
-        },
-        {
-          "rating": 5,
-          "text": "testing",
-          "author": "babi review"
-        }
-      ]
+      "items": []
     },
     "cta": {
       "title": "Ready to experience",
