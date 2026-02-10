@@ -6,7 +6,12 @@ import { useContent } from "@/lib/content";
 const iconMap: Record<string, LucideIcon> = { Shield, CreditCard, Calendar };
 
 const Book = () => {
-  const { book } = useContent();
+
+  const { content, isLoading } = useContent();
+  if (isLoading || !content?.book) {
+    return null;
+  }
+  const book = content.book;
 
   return (
     <Layout>

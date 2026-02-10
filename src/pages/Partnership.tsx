@@ -8,8 +8,11 @@ import { useContent } from "@/lib/content";
 const iconMap: Record<string, LucideIcon> = { Sparkles, Shield, Users, Palette };
 
 const Partnership = () => {
-  const { partnership } = useContent();
-  const p = partnership;
+  const { content, isLoading } = useContent();
+  if (isLoading || !content?.partnership) {
+    return null;
+  }
+  const p = content.partnership;
 
   return (
     <Layout>
