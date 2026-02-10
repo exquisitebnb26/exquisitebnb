@@ -35,7 +35,7 @@ export interface SiteContent {
     propertiesPreview: { label: string; title: string; ctaText: string };
     testimonials: {
       label: string; title: string; platformNote: string;
-      items: Array<{ rating: number; text: string; author: string }>;
+      items: Array<{ rating: number; text: string; author: string; label: string }>;
     };
     cta: { title: string; titleItalic: string; subtitle: string; cta1Text: string; cta1Link: string; cta2Text: string; cta2Link: string };
   };
@@ -65,7 +65,7 @@ export interface SiteContent {
       description: string; fullDescription: string;
       imageKey: string; galleryKeys: string[];
       amenities: string[];
-      reviews: Array<{ rating: number; text: string; author: string }>;
+      reviews: Array<{ rating: number; text: string; author: string; label: string }>;
       bookingLinks: { airbnb: string; vrbo: string; bookingcom: string };
       bookingPlatforms: string[];
     }>;

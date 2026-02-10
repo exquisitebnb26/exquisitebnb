@@ -31,6 +31,7 @@ export default function ReviewsEditor({ content, update }: EditorProps) {
           <StarRatingSelector value={t.rating} onChange={(v) => updateReview(i, "rating", v)} />
           <TextAreaField label="Review Text" value={t.text} onChange={(v) => updateReview(i, "text", v)} />
           <TextField label="Author" value={t.author} onChange={(v) => updateReview(i, "author", v)} />
+          <TextField label="Label" value={t.label} onChange={(v) => updateReview(i, "label", v)} />
         </EditorCard>
       ))}
     </RepeatableList>
