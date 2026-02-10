@@ -1,4 +1,4 @@
-import { TextField, TextAreaField, NumberField, SectionDivider, EditorCard, RepeatableList, StarRatingSelector } from "../fields";
+import { TextField, TextAreaField, NumberField, SectionDivider, EditorCard, RepeatableList, StarRatingSelector, ImageKeySelector, GalleryKeySelector } from "../fields";
 import type { SiteContent } from "@/lib/content";
 
 interface EditorProps {
@@ -105,8 +105,8 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
             <TextAreaField label="Short Description" value={prop.description} onChange={(v) => updateItem(i, "description", v)} />
             <TextAreaField label="Full Description" value={prop.fullDescription} rows={4} onChange={(v) => updateItem(i, "fullDescription", v)} />
 
-            <TextField label="Image Key" value={prop.imageKey} onChange={(v) => updateItem(i, "imageKey", v)} />
-            <TextField label="Gallery Keys (comma-separated)" value={prop.galleryKeys.join(", ")} onChange={(v) => updateItem(i, "galleryKeys", v.split(",").map((s) => s.trim()).filter(Boolean))} />
+            <ImageKeySelector label="Cover Image" value={prop.imageKey} onChange={(v) => updateItem(i, "imageKey", v)} />
+            <GalleryKeySelector label="Gallery Images" value={prop.galleryKeys} onChange={(v) => updateItem(i, "galleryKeys", v)} />
             <TextField label="Amenities (comma-separated)" value={prop.amenities.join(", ")} onChange={(v) => updateItem(i, "amenities", v.split(",").map((s) => s.trim()).filter(Boolean))} />
             <TextField label="Booking Platforms (comma-separated)" value={prop.bookingPlatforms.join(", ")} onChange={(v) => updateItem(i, "bookingPlatforms", v.split(",").map((s) => s.trim()).filter(Boolean))} />
 
