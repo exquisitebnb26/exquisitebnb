@@ -156,7 +156,18 @@
     --sidebar-ring: 155 35% 25%;
   }
 }
+::-webkit-scrollbar {
+  width: 6px;
+}
 
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 6px;
+}
 @layer base {
   * {
     @apply border-border;

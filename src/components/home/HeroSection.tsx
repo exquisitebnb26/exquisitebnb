@@ -71,7 +71,7 @@ const hero = home.hero;
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-px h-12 bg-gradient-to-b from-cream/50 to-transparent" />
+        <div className="w-px h-12 bg-gradient-to-b from-emerald-700 via-emerald-500/60 dark:from-gold dark:via-gold/60 to-transparent" />
       </div>
     </section>
   );
