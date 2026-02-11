@@ -553,3 +553,34 @@
     transform: scale(1);
   }
 }
+
+/* Luxury Chat Bounce */
+@keyframes luxuryBounce {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-6px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.luxury-bounce {
+  animation: luxuryBounce 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  box-shadow: 0 0 0 rgba(16,185,129,0.4);
+}
+
+.dark .luxury-bounce {
+  box-shadow: 0 0 12px rgba(212,175,55,0.3);
+}
