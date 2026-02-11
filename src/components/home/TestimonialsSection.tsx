@@ -3,11 +3,6 @@ import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
-const guestLabels: Record<string, string> = {
-  "Sarah M.": "Business Traveler",
-  "James K.": "Extended Stay",
-  "Elena R.": "Family Visit",
-};
 
 const TestimonialsSection = () => {
   const { content, isLoading } = useContent();
