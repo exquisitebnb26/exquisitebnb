@@ -102,7 +102,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
             <ImageKeySelector label="Cover Image" value={prop.imageKey} onChange={(v) => updateItem(i, "imageKey", v)} />
             <GalleryKeySelector label="Gallery Images" value={prop.galleryKeys} onChange={(v) => updateItem(i, "galleryKeys", v)} />
             <TextField label="Amenities (comma-separated)" value={prop.amenities.join(", ")} onChange={(v) => updateItem(i, "amenities", v.split(",").map((s) => s.trim()).filter(Boolean))} />
-            <SectionDivider/>
+            <SectionDivider label="Ideal For & Details" />
 
 <TextField
   label="Ideal For (comma-separated)"
