@@ -43,7 +43,6 @@ const context = useMemo(() => {
 
  const onSend = async () => {
     const text = input.trim();
-    console.log("Sending:", text);
     if (!text) return;
 
     const userMsg = {
@@ -73,8 +72,6 @@ const context = useMemo(() => {
         memory: nextMemory,
       });
 
-      console.log("AI Reply:", reply);
-
       const botMsg = {
         id: crypto.randomUUID(),
         role: "assistant" as const,
@@ -95,7 +92,6 @@ const context = useMemo(() => {
       const fallback =
         "I’m here to help. For anything specific (availability, pricing, or special requests), please use our contact form.";
 
-      console.log("AI Fallback Reply:", fallback);
 
       setMessages((prev) => [
         ...prev,

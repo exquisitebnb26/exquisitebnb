@@ -108,7 +108,6 @@ export default {
 
     if (!hfRes.ok) {
       const errText = await hfRes.text();
-      console.log("HF HTTP ERROR:", hfRes.status, errText);
       return new Response(
         JSON.stringify({ reply: "AI service is temporarily unavailable. Please try again shortly." }),
         {
@@ -127,8 +126,6 @@ export default {
         headers: { "Content-Type": "application/json", ...corsHeaders }
       });
     }
-
-    console.log("HF RAW RESPONSE:", JSON.stringify(data));
 
     if (data?.error) {
       return new Response(
