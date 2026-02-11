@@ -7,7 +7,7 @@ type AskPayload = {
 };
 
 const WORKER_URL = import.meta.env.VITE_AI_WORKER_URL as string;
-console.log("AI Worker URL:", WORKER_URL);
+
 
 export async function askConciergeAI(payload: AskPayload): Promise<string> {
   if (!WORKER_URL) {
