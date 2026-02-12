@@ -521,18 +521,18 @@
         {
           "icon": "CreditCard",
           "title": "Payments You Can Trust",
-          "description": "All payments are processed through encrypted, secure systems. Nothing is handled outside the platform ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ your security is non-negotiable."
+          "description": "All payments are processed through encrypted, secure systems. Nothing is handled outside the platform  your security is non-negotiable."
         },
         {
           "icon": "Calendar",
           "title": "Real-Time Availability",
-          "description": "See up-to-date availability instantly and choose the dates that work for you ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ no waiting, no back and forth, just simplicity."
+          "description": "See up-to-date availability instantly and choose the dates that work for you  no waiting, no back and forth, just simplicity."
         }
       ]
     },
     "platforms": {
       "title": "Choose Your Platform",
-      "subtitle": "Our properties are listed on these trusted platforms ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ pick the one you're most comfortable with",
+      "subtitle": "Our properties are listed on these trusted platforms  pick the one you're most comfortable with",
       "items": [
         {
           "name": "Airbnb",
@@ -541,21 +541,21 @@
         },
         {
           "name": "VRBO",
-          "description": "Explore our properties on VRBO with their Book with Confidence guarantee ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ because your trip deserves certainty.",
+          "description": "Explore our properties on VRBO with their Book with Confidence guarantee  because your trip deserves certainty.",
           "url": "#"
         },
         {
           "name": "Booking.com",
-          "description": "View our spaces on Booking.com with flexible options and clear terms ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ making your planning effortless.",
+          "description": "View our spaces on Booking.com with flexible options and clear terms  making your planning effortless.",
           "url": "#"
         }
       ]
     },
-    "transparencyNote": "Availability, pricing, and payments are managed by each booking platform. Once you complete your reservation, you'll receive confirmation through the platform ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ and a warm, personal note from us shortly after.",
+    "transparencyNote": "Availability, pricing, and payments are managed by each booking platform. Once you complete your reservation, you'll receive confirmation through the platform  and a warm, personal note from us shortly after.",
     "browseCta": {
       "title": "Not sure which property is right for you?",
-      "subtitle": "Take your time ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ browse our spaces and find the one that feels like it was made for your stay.",
-      "linkText": "Browse Properties ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ"
+      "subtitle": "Take your time  browse our spaces and find the one that feels like it was made for your stay.",
+      "linkText": "Browse Properties "
     }
   },
   "partnership": {
