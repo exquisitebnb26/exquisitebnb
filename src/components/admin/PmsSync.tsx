@@ -4,12 +4,13 @@ export default function PmsSync() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
+  const SYNC_WORKER_URL = import.meta.env.VITE_SYNC_WORKER_URL as string;
   const handleSync = async () => {
     setLoading(true);
     setMessage("");
     try {
       const res = await fetch(
-        "https://exquisitebnb-sync.exquisitebnb-ai.workers.dev/sync",
+        `${SYNC_WORKER_URL}/sync`,
         {
           method: "POST",
           headers: {
