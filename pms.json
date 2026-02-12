@@ -1,5 +1,5 @@
 {
-  "lastSynced": "2026-02-12T15:53:47.994Z",
+  "lastSynced": "2026-02-12T16:11:14.760Z",
   "properties": [
     {
       "properties": [
@@ -14,9 +14,7 @@
           "reviewCount": 128,
           "description": "A sun-filled downtown retreat where every corner has been thoughtfully designed for comfort and connection.",
           "fullDescription": "The Gilded Loft is more than a place to stay — it's a space designed with warmth, generous light, and effortless comfort.",
-          "images": [
-            "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
-          ],
+          "imageKey": "kitchen",
           "galleryKeys": [
             "hero",
             "bedroom",
@@ -69,9 +67,7 @@
           "reviewCount": 89,
           "description": "A gentle, beautifully appointed sanctuary designed for rest and renewal.",
           "fullDescription": "Velvet Haven is crafted for guests who need peace, softness, and quiet comfort.",
-          "images": [
-            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
-          ],
+          "imageKey": "bedroom",
           "galleryKeys": [
             "bedroom",
             "hero",
@@ -121,9 +117,7 @@
           "reviewCount": 156,
           "description": "A spacious, welcoming home with room for everyone to gather.",
           "fullDescription": "The Urban Retreat offers real space, warmth, and a peaceful residential setting.",
-          "images": [
-            "https://images.unsplash.com/photo-1484154218962-a197022b5858"
-          ],
+          "imageKey": "bathroom",
           "galleryKeys": [
             "kitchen",
             "hero",
@@ -176,9 +170,7 @@
           "reviewCount": 72,
           "description": "A tranquil, spa-inspired haven near the water's edge.",
           "fullDescription": "The Serene Suite is a calm waterfront sanctuary with soothing tones and premium comforts.",
-          "images": [
-            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae"
-          ],
+          "imageKey": "hero",
           "galleryKeys": [
             "bathroom",
             "bedroom",
