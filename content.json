@@ -229,8 +229,8 @@
         "bathrooms": 2,
         "rating": 4.96,
         "reviewCount": 128,
-        "description": "A sun-filled downtown retreat where every corner has been thoughtfully designed for comfort and connection. Whether you're here to work, explore, or simply breathe ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ this space wraps around you like a warm welcome.",
-        "fullDescription": "The Gilded Loft is more than a place to stay ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ it's a space that was designed with you in mind. Generous windows flood the rooms with natural light, while carefully chosen furnishings and a fully equipped kitchen make it effortless to settle into your own rhythm. Whether you're here for a weekend or a month, you'll feel the care woven into every detail.",
+        "description": "A sun-filled downtown retreat where every corner has been thoughtfully designed for comfort and connection. Whether you're here to work, explore, or simply breathe  this space wraps around you like a warm welcome.",
+        "fullDescription": "The Gilded Loft is more than a place to stay  it's a space that was designed with you in mind. Generous windows flood the rooms with natural light, while carefully chosen furnishings and a fully equipped kitchen make it effortless to settle into your own rhythm. Whether you're here for a weekend or a month, you'll feel the care woven into every detail.",
         "imageKey": "kitchen",
         "galleryKeys": [
           "bedroom",
@@ -259,7 +259,7 @@
           },
           {
             "rating": 5,
-            "text": "The warmth of this place surprised us. The kitchen, the light, the little touches ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ it felt like someone truly cared about our stay.",
+            "text": "The warmth of this place surprised us. The kitchen, the light, the little touches  it felt like someone truly cared about our stay.",
             "author": "James K.",
             "label": "Extended Stay"
           }
@@ -293,7 +293,7 @@
         "rating": 4.98,
         "reviewCount": 89,
         "description": "A gentle, beautifully appointed sanctuary designed for rest and renewal. Soft textures, warm light, and a quiet setting that feels like a deep exhale after a long day.",
-        "fullDescription": "Velvet Haven is a one-bedroom retreat crafted for those who need a moment of peace. Every texture, every light source, every detail has been chosen to help you slow down and truly rest. It's the kind of space that makes you feel held ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ quiet, immaculate, and close to everything you need, yet blissfully removed from the noise.",
+        "fullDescription": "Velvet Haven is a one-bedroom retreat crafted for those who need a moment of peace. Every texture, every light source, every detail has been chosen to help you slow down and truly rest. It's the kind of space that makes you feel held quiet, immaculate, and close to everything you need, yet blissfully removed from the noise.",
         "imageKey": "bedroom",
         "galleryKeys": [
           "bedroom",
@@ -344,7 +344,7 @@
         "rating": 4.94,
         "reviewCount": 156,
         "description": "A spacious, welcoming home with room for everyone to gather, laugh, and make memories. A full kitchen, comfortable living spaces, and a neighborhood so calm it feels like your own.",
-        "fullDescription": "The Urban Retreat was designed for families and groups who need real space ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ and real warmth. Three bedrooms, a fully equipped kitchen, and generous living areas give everyone room to be together or find their own quiet corner. Set in a peaceful residential neighborhood, this home is built for the kind of stays you'll talk about long after you've left.",
+        "fullDescription": "The Urban Retreat was designed for families and groups who need real space  and real warmth. Three bedrooms, a fully equipped kitchen, and generous living areas give everyone room to be together or find their own quiet corner. Set in a peaceful residential neighborhood, this home is built for the kind of stays you'll talk about long after you've left.",
         "imageKey": "bathroom",
         "galleryKeys": [
           "kitchen",
@@ -418,7 +418,7 @@
         "reviews": [
           {
             "rating": 5,
-            "text": "Immaculate, serene, and filled with quiet beauty. I felt genuinely taken care of ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ like the host had thought of everything before I even arrived.",
+            "text": "Immaculate, serene, and filled with quiet beauty. I felt genuinely taken care of  like the host had thought of everything before I even arrived.",
             "author": "Anna L.",
             "label": "Extended Stay"
           }
