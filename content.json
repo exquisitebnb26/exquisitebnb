@@ -449,15 +449,15 @@
     "items": [
       {
         "question": "How do I book a stay?",
-        "answer": "Simply browse our properties, find the one that speaks to you, and book through one of our trusted partner platforms ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ Airbnb, VRBO, or Booking.com. Each platform handles your reservation, payment, and guest protection, so you can book with complete peace of mind."
+        "answer": "Simply browse our properties, find the one that speaks to you, and book through one of our trusted partner platforms  Airbnb, VRBO, or Booking.com. Each platform handles your reservation, payment, and guest protection, so you can book with complete peace of mind."
       },
       {
         "question": "Which platforms do you use for bookings?",
-        "answer": "We list our properties on Airbnb, VRBO, and Booking.com. Availability and pricing stay in sync across all three, so please use whichever platform feels most comfortable to you ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ we're happy either way."
+        "answer": "We list our properties on Airbnb, VRBO, and Booking.com. Availability and pricing stay in sync across all three, so please use whichever platform feels most comfortable to you  we're happy either way."
       },
       {
         "question": "How is cleanliness handled?",
-        "answer": "Cleanliness is something we take deeply to heart. Every property is professionally cleaned between stays using thorough, hotel-level protocols. Fresh linens, sanitized surfaces, and restocked essentials are always waiting for you ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ because arriving to a pristine space is the very least you deserve."
+        "answer": "Cleanliness is something we take deeply to heart. Every property is professionally cleaned between stays using thorough, hotel-level protocols. Fresh linens, sanitized surfaces, and restocked essentials are always waiting for you because arriving to a pristine space is the very least you deserve."
       },
       {
         "question": "What is the check-in and check-out process?",
@@ -469,19 +469,19 @@
       },
       {
         "question": "What is the cancellation policy?",
-        "answer": "Cancellation terms are set by each booking platform and may vary by property. We always aim for fair, understanding terms ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ because life happens, and we get that. Full details are clearly visible before you confirm your booking."
+        "answer": "Cancellation terms are set by each booking platform and may vary by property. We always aim for fair, understanding terms  because life happens, and we get that. Full details are clearly visible before you confirm your booking."
       },
       {
         "question": "How can I reach the host during my stay?",
-        "answer": "You can message us anytime through the booking platform ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ we typically respond within 30 minutes during the day. For anything urgent, we provide a direct phone number after booking. Your comfort and peace of mind are our priority, and we're genuinely here for you."
+        "answer": "You can message us anytime through the booking platform  we typically respond within 30 minutes during the day. For anything urgent, we provide a direct phone number after booking. Your comfort and peace of mind are our priority, and we're genuinely here for you."
       },
       {
         "question": "Are pets allowed?",
-        "answer": "We love pets! Policies do vary by property ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ some spaces warmly welcome furry companions with a small fee, while others remain pet-free for guests with sensitivities. Check the specific listing for details, or simply ask us ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ we're happy to help you find the right fit."
+        "answer": "We love pets! Policies do vary by property  some spaces warmly welcome furry companions with a small fee, while others remain pet-free for guests with sensitivities. Check the specific listing for details, or simply ask us  we're happy to help you find the right fit."
       },
       {
         "question": "Is parking available?",
-        "answer": "Many of our properties include complimentary parking ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ this is noted on each listing. For those without dedicated spots, we provide helpful information about nearby street parking and garage options so you're never left guessing."
+        "answer": "Many of our properties include complimentary parking  this is noted on each listing. For those without dedicated spots, we provide helpful information about nearby street parking and garage options so you're never left guessing."
       },
       {
         "question": "Can I host events or gatherings?",
@@ -490,7 +490,7 @@
     ],
     "contactCta": {
       "text": "Still have a question on your mind?",
-      "linkText": "We'd love to hear from you ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ"
+      "linkText": "We'd love to hear from you "
     }
   },
   "contact": {
