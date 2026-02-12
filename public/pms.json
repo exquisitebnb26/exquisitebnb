@@ -1,7 +1,32 @@
 {
-  "lastSynced": null,
-  "properties": []
+  "lastSynced": "2026-02-12T04:51:30.919Z",
+  "properties": [
+    {
+      "id": "mock-1",
+      "name": "Emerald Executive Suite",
+      "location": "Columbus, Ohio",
+      "guests": 4,
+      "price": 289,
+      "platforms": {
+        "airbnb": "https://airbnb.com/mock1",
+        "vrbo": "https://vrbo.com/mock1"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+      ]
+    },
+    {
+      "id": "mock-2",
+      "name": "Forest View Residence",
+      "location": "Cleveland, Ohio",
+      "guests": 6,
+      "price": 349,
+      "platforms": {
+        "airbnb": "https://airbnb.com/mock2"
+      },
+      "images": [
+        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
+      ]
+    }
+  ]
 }
-
-
-roperties = pms?.properties ?? [];
