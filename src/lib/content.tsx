@@ -144,9 +144,7 @@ const ContentContext = createContext<ContentContextValue>({
 
 // GitHub config – update these when you configure your repo 
 
-const GITHUB_OWNER = "exquisitebnb26";
-const GITHUB_REPO = "exquisitebnb";
-const CONTENT_PATH = "public/content.json";
+
 
 async function fetchContent(): Promise<SiteContent> {
   const [contentRes, pmsRes] = await Promise.all([
@@ -237,46 +235,38 @@ export function useContent() {
 
 // ── GitHub API helpers (for admin) ─────────────────────────────────
 
-export async function fetchContentFromGitHub(token: string): Promise<{ content: SiteContent; sha: string }> {
+const cmsWorkerUrl = import.meta.env.VITE_CMS_WORKER_URL;
+
+export async function fetchContentFromCMS() {
+  const token = localStorage.getItem("cms_jwt");
   const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONTENT_PATH}?ref=main`,
-    { headers: { 
-      Authorization: `Bearer ${token}`,
-       Accept: "application/vnd.github.v3+json" 
+    `${cmsWorkerUrl}/cms/content`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`
       }
     }
   );
-  if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
-  const data = await res.json();
-  const decoded = JSON.parse(atob(data.content));
-  return { content: decoded, sha: data.sha };
+
+  return res.json();
 }
 
-export async function saveContentToGitHub(
-  token: string,
-  content: SiteContent,
-  sha: string,
-  message = "Update site content via CMS"
-): Promise<string> {
-  const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+export async function saveContentToCMS(content: SiteContent, sha: string) {
+  const token = localStorage.getItem("cms_jwt");
+
   const res = await fetch(
-    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONTENT_PATH}`,
+    `${cmsWorkerUrl}/cms/content`,
     {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github.v3+json",
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify({ message, content: encoded, sha, branch: "main" }),
+      body: JSON.stringify({ content, sha })
     }
   );
-  if (!res.ok) {
-    const err = await res.json();
-    throw new Error(err.message || `GitHub API error: ${res.status}`);
-  }
-  const data = await res.json();
-  return data.content.sha;
+
+  return res.json();
 }
 
-export { GITHUB_OWNER, GITHUB_REPO, CONTENT_PATH };
+

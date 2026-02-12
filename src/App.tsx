@@ -17,6 +17,7 @@ import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/utils/ScrollToTop";
 import RedirectHandler from "./components/utils/RedirectHandler";
 import ChatWidget from "./components/chat/ChatWidget";
+import AdminLogin from "./lib/auth/AdminLogin";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -38,6 +39,7 @@ const App = () => (
             <Route path="/book" element={<Book />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/partnership" element={<Partnership />} />
+            <Route path="/login" element={<AdminLogin />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
