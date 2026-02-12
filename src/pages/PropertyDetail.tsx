@@ -186,7 +186,7 @@ const PropertyDetail = () => {
                   <h2 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">Amenities</h2>
                 </ScrollReveal>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {property.amenities.map((amenity, index) => {
+                  {(property.amenities ?? []).map((amenity, index) => {
                     const Icon = amenityIconMap[amenity] || Wifi;
                     return (
                       <ScrollReveal key={index} variant="fade-up" delay={100 + index * 80} duration={700}>
@@ -206,7 +206,7 @@ const PropertyDetail = () => {
                   <h2 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">Guest Reviews</h2>
                 </ScrollReveal>
                 <div className="space-y-6">
-                  {property.reviews.map((review, index) => (
+                  {(property.reviews ?? []).map((review, index) => (
                     <ScrollReveal key={index} variant="fade-up" delay={100 + index * 120} duration={800}>
                       <div className="p-6 bg-card border border-border transition-all duration-500 hover:-translate-y-0.5 border-[hsl(var(--forest-dark))] hover:shadow-[0_0_24px_hsl(var(--forest-dark)_/_0.45)] dark:border-border dark:hover:shadow-[0_0_24px_rgba(212,175,55,0.45)] rounded-sm">
                         <div className="flex items-center gap-1 mb-3">
@@ -242,7 +242,7 @@ const PropertyDetail = () => {
                   <div className="luxury-divider" />
                   <div className="space-y-3">
                     <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-sm text-center mb-4">Book securely on:</p>
-                    {property.bookingPlatforms.map((platform) => (
+                    {(property.bookingPlatforms ?? []).map((platform) => (
   <a
     key={platform.name}
     href={platform.url}
