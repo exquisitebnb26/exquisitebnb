@@ -149,16 +149,39 @@ const GITHUB_REPO = "exquisitebnb";
 const CONTENT_PATH = "public/content.json";
 
 async function fetchContent(): Promise<SiteContent> {
-  // Try GitHub raw first (for live updates), fall back to local
-  try {
-    const res = await fetch(`/content.json?t=${Date.now()}`);
-    if (!res.ok) throw new Error("Local fetch failed");
-    return res.json();
-  } catch {
-    const res = await fetch(`/content.json`);
-    return res.json();
+  const [contentRes, pmsRes] = await Promise.all([
+    fetch(`/content.json?t=${Date.now()}`),
+    fetch(`/pms.json?t=${Date.now()}`).catch(() => null),
+  ]);
+
+  const contentData = await contentRes.json();
+
+  let pmsData = null;
+  if (pmsRes && pmsRes.ok) {
+    pmsData = await pmsRes.json();
   }
+
+  if (pmsData?.properties?.length) {
+    contentData.properties.items = mergeProperties(
+      contentData.properties.items,
+      pmsData.properties
+    );
+  }
+
+  return contentData;
 }
+
+function mergeProperties(cmsItems, pmsItems) {
+  return pmsItems.map((pmsProp) => {
+    const cmsProp = cmsItems.find((c) => c.id === pmsProp.id);
+
+    return {
+      ...cmsProp,          // CMS editable fields
+      ...pmsProp,          // PMS core fields override
+    };
+  });
+}
+
 
 export function ContentProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<SiteContent | null>(null);

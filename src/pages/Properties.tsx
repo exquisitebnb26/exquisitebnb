@@ -75,31 +75,31 @@ const Properties = () => {
 
                     {/* Ideal-for labels */}
                     <div className="flex flex-wrap gap-2 mb-4">
-  {property.idealFor?.map((label) => (
-    <span
-      key={label}
-      className="text-xs px-2.5 py-1 rounded-sm
-        bg-[hsl(var(--forest-dark))]/8
-        text-[hsl(var(--forest-dark))]
-        dark:bg-gold/10
-        dark:text-gold/80"
-    >
-      {label}
-    </span>
-  ))}
-</div>
+                      {(property.idealFor || []).map((label) => (
+                        <span
+                          key={label}
+                          className="text-xs px-2.5 py-1 rounded-sm
+                            bg-[hsl(var(--forest-dark))]/8
+                            text-[hsl(var(--forest-dark))]
+                            dark:bg-gold/10
+                            dark:text-gold/80"
+                        >
+                          {label}
+                        </span>
+                      ))}
+                    </div>
 
                     <div className="flex items-center justify-between">
                       <Button variant="luxuryOutline" asChild className="transition-all duration-300 hover:shadow-[0_0_15px_rgba(212,175,55,0.5)]">
                         <Link to={`/properties/${property.id}`}>View Details</Link>
                       </Button>
                       <div className="flex flex-wrap gap-2 text-xs text-[hsl(var(--forest-dark))] dark:text-cream-muted">
-  {property.bookingPlatforms.map((platform) => (
-    <span key={platform.name}>
-      {platform.name}
-    </span>
-  ))}
-</div>
+                        {(property.bookingPlatforms || []).map((platform) => (
+                          <span key={platform?.name || Math.random()}>
+                            {platform?.name}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const Properties = () => {
           <ScrollReveal variant="fade-in" duration={800}>
             <p className="text-emerald dark:text-cream-muted text-sm mb-4">{bookingNote}</p>
             <div className="flex items-center justify-center gap-8">
-              {platforms.map((platform) => (
+              {(platforms || []).map((platform) => (
                 <span key={platform} className="font-medium text-sm cursor-default transition-all duration-300 ease-out text-[hsl(var(--forest-dark))] hover:drop-shadow-[0_0_12px_hsl(var(--forest-dark)_/_0.45)] dark:text-cream/50 dark:hover:text-gold dark:hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)] hover:-translate-y-0.5">
                   {platform}
                 </span>

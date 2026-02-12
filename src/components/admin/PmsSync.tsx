@@ -7,8 +7,6 @@ export default function PmsSync() {
   const handleSync = async () => {
     setLoading(true);
     setMessage("");
-        console.log("Starting PMS sync...");
-        console.log("Using sync secret:", import.meta.env.VITE_SYNC_SECRET);
     try {
       const res = await fetch(
         "https://exquisitebnb-sync.exquisitebnb-ai.workers.dev/sync",
