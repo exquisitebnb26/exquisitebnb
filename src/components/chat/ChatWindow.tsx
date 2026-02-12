@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState,useMemo } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import MessageBubble from "./MessageBubble";
 import type { ChatMessage } from "./types";
 import { X, Send } from "lucide-react";
@@ -25,8 +25,9 @@ export default function ChatWindow({ open, onClose }: Props) {
   ]);
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isTyping, setIsTyping] = useState(false);
-const [memory, setMemory] = useState<ChatTurn[]>(() => loadMemory());
+  const [memory, setMemory] = useState<ChatTurn[]>(() => loadMemory());
 const content = useContent();
 
 const context = useMemo(() => {
@@ -36,14 +37,37 @@ const context = useMemo(() => {
 
   useEffect(() => {
     if (!open) return;
-    requestAnimationFrame(() => {
-      scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-    });
-  }, [open, messages.length]);
+    const el = scrollRef.current;
+    if (!el) return;
 
- const onSend = async () => {
+    const isNearBottom =
+      el.scrollHeight - el.scrollTop - el.clientHeight < 120;
+
+    if (isNearBottom) {
+      requestAnimationFrame(() => {
+        el.scrollTo({
+          top: el.scrollHeight,
+          behavior: "smooth",
+        });
+      });
+    }
+  }, [messages, open]);
+
+  const onSend = async () => {
     const text = input.trim();
     if (!text) return;
+    if (!context) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant" as const,
+          text: "I’m preparing your concierge experience. Please try again in a moment.",
+          ts: Date.now(),
+        },
+      ]);
+      return;
+    }
 
     const userMsg = {
       id: crypto.randomUUID(),
@@ -72,6 +96,11 @@ const context = useMemo(() => {
         memory: nextMemory,
       });
 
+      if (audioRef.current) {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().catch(() => {});
+      }
+
       const botMsg = {
         id: crypto.randomUUID(),
         role: "assistant" as const,
@@ -90,9 +119,7 @@ const context = useMemo(() => {
       saveMemory(updatedMemory);
     } catch (e) {
       const fallback =
-        "I’m here to help. For anything specific (availability, pricing, or special requests), please use our contact form.";
-
-
+        "I’m here to assist. For availability, pricing details, or special arrangements, please use our contact form and our team will respond promptly.";
       setMessages((prev) => [
         ...prev,
         {
@@ -147,10 +174,26 @@ const context = useMemo(() => {
       {/* Messages */}
       <div ref={scrollRef} className="px-4 py-3 h-[360px] overflow-y-auto space-y-3">
         {messages.map((msg) => (
-          <MessageBubble key={msg.id} message={msg} />
+          <div
+            key={msg.id}
+            className="animate-fade-in-up"
+          >
+            <MessageBubble
+              message={{
+                ...msg,
+                text: msg.text,
+                ts: msg.ts,
+              }}
+            />
+            <div className="text-[10px] mt-1 text-charcoal/40 dark:text-cream-muted/50">
+              {new Date(msg.ts).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
+            </div>
+          </div>
         ))}
-          {isTyping ? <TypingIndicator /> : null} 
-        
+        {isTyping ? <TypingIndicator /> : null}
       </div>
 
       {/* Input */}
@@ -190,6 +233,11 @@ const context = useMemo(() => {
           For reservations, you’ll be redirected to secure booking platforms.
         </p>
       </div>
+      <audio
+        ref={audioRef}
+        src="/chat-notification.mp3"
+        preload="auto"
+      />
     </div>
   );
 }
