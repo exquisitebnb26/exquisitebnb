@@ -157,7 +157,7 @@ const context = useMemo(() => {
           <span className="text-sm font-semibold text-charcoal dark:text-cream">
             Exquisite Concierge
           </span>
-          <span className="text-xs text-charcoal/60 dark:text-cream-muted">
+          <span className="text-xs text-emerald dark:text-cream-muted">
             24/7 quick guidance
           </span>
         </div>
@@ -229,7 +229,7 @@ const context = useMemo(() => {
           </button>
         </div>
 
-        <p className="mt-2 text-[11px] text-charcoal/50 dark:text-cream-muted/60">
+        <p className="mt-2 text-[11px] text-emerald dark:text-cream-muted">
           For reservations, you’ll be redirected to secure booking platforms.
         </p>
       </div>
