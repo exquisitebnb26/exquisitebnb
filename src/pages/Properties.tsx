@@ -34,8 +34,6 @@ const Properties = () => {
       ? rawItems[0].properties
       : rawItems;
 
-  console.log("Properties content:", content.properties);
-
   return (
     <Layout>
       {/* Header */}

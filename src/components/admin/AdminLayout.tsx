@@ -15,7 +15,9 @@ import ContactEditor from "./editors/ContactEditor";
 import BookEditor from "./editors/BookEditor";
 import PartnershipEditor from "./editors/PartnershipEditor";
 import PmsSync from "./PmsSync";
+import { clearToken } from "@/lib/auth/session";
 
+const logout = () => { clearToken(); window.location.href = "/admin"; };
 // ── Nav sections ───────────────────────────────────────────────────
 const sections = [
   { id: "site", label: "Site Settings", icon: "⚙" },
@@ -27,7 +29,7 @@ const sections = [
   { id: "contact", label: "Contact", icon: "📬" },
   { id: "book", label: "Book", icon: "📅" },
   { id: "partnership", label: "Partnership", icon: "🤝" },
-  { id: "PMS Sync", label: "PMS Sync", icon: "🔄" },
+  { id: "PMS", label: "PMS Sync", icon: "🔄" },
 ] as const;
 
 type SectionId = (typeof sections)[number]["id"];
@@ -42,6 +44,7 @@ const sectionTitles: Record<SectionId, string> = {
   contact: "Contact Page",
   book: "Book Page",
   partnership: "Partnership Page",
+  "PMS": "PMS Sync",
 };
 
 // ── Editor router ─────────────────────────────────────────────────
@@ -58,7 +61,9 @@ function EditorPanel({ section, content, update }: {
     case "contact": return <ContactEditor content={content} update={update} />;
     case "book": return <BookEditor content={content} update={update} />;
     case "partnership": return <PartnershipEditor content={content} update={update} />;
-    case "PMS Sync": return <PmsSync />;
+    case "PMS": return <PmsSync />;
+    default:
+  return <div>Section not found</div>;
   }
 }
 
@@ -121,7 +126,7 @@ export default function AdminLayout({
 
         <div className={`p-4 border-t ${theme.border} space-y-2`}>
           <button
-            onClick={onLogout}
+            onClick={logout}
             className={`w-full flex items-center gap-2 px-3 py-2 text-xs ${theme.textDim} hover:${theme.textMuted} transition-colors`}
           >
             <LogOut className="w-3.5 h-3.5" />

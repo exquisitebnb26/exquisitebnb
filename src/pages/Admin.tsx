@@ -1,74 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
 import { RefreshCw, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import {
   SiteContent,
-  fetchContentFromGitHub,
-  saveContentToGitHub,
+  fetchContentFromCMS,
+  saveContentToCMS,
 } from "@/lib/content";
 import AdminLayout from "@/components/admin/AdminLayout";
-import LogoImage from "@/assets/Exquisitebnb.png";
-import { Eye, EyeOff } from "lucide-react";
-
-const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD;
-// ── Auth Gate ──────────────────────────────────────────────────────
-
-function AdminLogin({ onAuth }: { onAuth: (token: string) => void }) {
-  const [token, setToken] = useState("");
-
-  return (
-    <div className="min-h-screen bg-[hsl(0_0%_7%)] flex items-center justify-center px-6">
-      <div className="w-full max-w-md space-y-8">
-        <div className="text-center space-y-4">
-          <div className="flex justify-center">
-            <div className="bg-white rounded-full p-2 w-fit h-fit flex items-center justify-center">
-              <img src={LogoImage} alt="Exquisitebnb" className="w-10 h-10 object-contain" />
-            </div>
-          </div>
-          <div>
-            <p className="text-[hsl(43_40%_50%)] text-sm tracking-[0.25em] uppercase">
-              Admin Access
-            </p>
-            <h1 className="text-3xl font-serif text-[hsl(40_20%_90%)] mt-1">
-              Exquisite<span className="text-[hsl(43_40%_50%)]">bnb</span> CMS
-            </h1>
-          </div>
-          <p className="text-[hsl(40_10%_55%)] text-sm">
-            Enter your GitHub Personal Access Token to manage site content.
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <Input
-            type="password"
-            placeholder="ghp_token"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] focus-visible:ring-[hsl(43_40%_50%)]"
-          />
-          <button
-            className="w-full py-3 bg-[hsl(43_40%_50%)] hover:bg-[hsl(43_35%_45%)] text-[hsl(0_0%_8%)] font-medium tracking-widest uppercase text-xs rounded-sm transition-colors disabled:opacity-50"
-            disabled={!token.trim()}
-            onClick={() => onAuth(token.trim())}
-          >
-            Authenticate
-          </button>
-        </div>
-
-        <p className="text-[hsl(40_10%_40%)] text-xs text-center leading-relaxed">
-          Your token is stored in this browser session only and is never persisted.
-          <br />
-          Requires <code className="text-[hsl(43_40%_50%_/_0.6)]">repo</code> scope on the content repository.
-        </p>
-      </div>
-    </div>
-  );
-}
+import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // ── Main Admin Dashboard ──────────────────────────────────────────
 
-function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => void }) {
+function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [sha, setSha] = useState("");
   const [loading, setLoading] = useState(true);
@@ -80,7 +24,7 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
     setLoading(true);
     setError(null);
     try {
-      const { content: c, sha: s } = await fetchContentFromGitHub(token);
+      const { content: c, sha: s } = await fetchContentFromCMS();
       setContent(c);
       setSha(s);
     } catch (err: any) {
@@ -88,7 +32,7 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
     } finally {
       setLoading(false);
     }
-  }, [token]);
+  }, []);
 
   useEffect(() => {
     loadContent();
@@ -100,7 +44,7 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
     setError(null);
     setSaved(false);
     try {
-      const newSha = await saveContentToGitHub(token, content, sha);
+      const newSha = await saveContentToCMS(content, sha);
       setSha(newSha);
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
@@ -166,97 +110,18 @@ function AdminDashboard({ token, onLogout }: { token: string; onLogout: () => vo
 // ── Root ────────────────────────────────────────────────────────────
 
 const Admin = () => {
-  const [adminUnlocked, setAdminUnlocked] = useState<boolean>(() => sessionStorage.getItem("admin_unlocked") === "true");
-  const [adminPasswordInput, setAdminPasswordInput] = useState("");
-  const [adminPasswordError, setAdminPasswordError] = useState<string | null>(null);
-
-  const [token, setToken] = useState<string | null>(() =>
-    sessionStorage.getItem("cms_token")
-  );
-
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleAuth = (t: string) => {
-  const cleanToken = t.trim();
-  sessionStorage.setItem("cms_token", cleanToken);
-  setToken(cleanToken);
-};
-
-  const handleLogout = () => {
-    sessionStorage.removeItem("cms_token");
-    sessionStorage.removeItem("admin_unlocked");
-    setToken(null);
-    setAdminUnlocked(false);
-  };
-
-  const handleAdminUnlock = () => {
-    if (adminPasswordInput === ADMIN_PASSWORD) {
-      sessionStorage.setItem("admin_unlocked", "true");
-      setAdminUnlocked(true);
-      setAdminPasswordError(null);
-      setAdminPasswordInput("");
-    } else {
-      setAdminPasswordError("Invalid admin password");
-    }
-  };
-
-  if (!adminUnlocked) {
-    return (
-      <div className="min-h-screen bg-[hsl(0_0%_7%)] flex items-center justify-center px-6">
-        <div className="w-full max-w-md space-y-8">
-          <div className="text-center space-y-4">
-            <div className="flex justify-center">
-              <div className="bg-white rounded-full p-2 w-fit h-fit flex items-center justify-center">
-                <img src={LogoImage} alt="Exquisitebnb" className="w-10 h-10 object-contain" />
-              </div>
-            </div>
-            <div>
-              <p className="text-[hsl(43_40%_50%)] text-sm tracking-[0.25em] uppercase">
-                Admin Access
-              </p>
-              <h1 className="text-3xl font-serif text-[hsl(40_20%_90%)] mt-1">
-                Exquisite<span className="text-[hsl(43_40%_50%)]">bnb</span> CMS
-              </h1>
-            </div>
-          </div>
-
-          <div className="space-y-4">
-            <div className="relative">
-  <Input
-    type={showPassword ? "text" : "password"}
-    value={adminPasswordInput}
-    onChange={(e) => setAdminPasswordInput(e.target.value)}
-    placeholder="Enter admin password"
-    className="bg-[hsl(0_0%_13%)] border-[hsl(0_0%_18%)] text-[hsl(40_20%_90%)] pr-10 focus-visible:ring-[hsl(43_40%_50%)]"
-  />
-
-  <button
-    type="button"
-    onClick={() => setShowPassword((prev) => !prev)}
-    className="absolute right-3 top-1/2 -translate-y-1/2
-               text-[hsl(40_10%_55%)] hover:text-[hsl(43_40%_50%)] transition-colors"
-  >
-    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
-  </button>
-</div>
-            <button
-              className="w-full py-3 bg-[hsl(43_40%_50%)] hover:bg-[hsl(43_35%_45%)] text-[hsl(0_0%_8%)] font-medium tracking-widest uppercase text-xs rounded-sm transition-colors disabled:opacity-50"
-              onClick={handleAdminUnlock}
-              disabled={!adminPasswordInput.trim()}
-            >
-              Unlock Admin
-            </button>
-            {adminPasswordError && (
-              <p className="text-[hsl(0_55%_55%)] text-xs text-center">{adminPasswordError}</p>
-            )}
-          </div>
-        </div>
-      </div>
-    );
+  const navigate = useNavigate();
+  const token = localStorage.getItem("cms_jwt");
+  if (!token) {
+    return <Navigate to="/login" replace />;
   }
 
-  if (!token) return <AdminLogin onAuth={handleAuth} />;
-  return <AdminDashboard token={token} onLogout={handleLogout} />;
+  const handleLogout = () => {
+    localStorage.removeItem("cms_jwt");
+    navigate("/login", { replace: true });
+  };
+
+  return <AdminDashboard onLogout={handleLogout} />;
 };
 
 export default Admin;
