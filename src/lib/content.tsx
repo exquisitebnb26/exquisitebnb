@@ -238,8 +238,7 @@ export function useContent() {
 const cmsWorkerUrl = import.meta.env.VITE_CMS_WORKER_URL;
 
 export async function fetchContentFromCMS() {
-  const token = sessionStorage.getItem("jwt");
-
+  const token = localStorage.getItem("cms_jwt");
   const res = await fetch(
     `${cmsWorkerUrl}/cms/content`,
     {
@@ -253,7 +252,7 @@ export async function fetchContentFromCMS() {
 }
 
 export async function saveContentToCMS(content: SiteContent, sha: string) {
-  const token = sessionStorage.getItem("jwt");
+  const token = localStorage.getItem("cms_jwt");
 
   const res = await fetch(
     `${cmsWorkerUrl}/cms/content`,

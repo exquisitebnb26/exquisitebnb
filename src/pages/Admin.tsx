@@ -44,8 +44,10 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     setError(null);
     setSaved(false);
     try {
-      const newSha = await saveContentToCMS(content, sha);
-      setSha(newSha);
+      const result = await saveContentToCMS(content, sha);
+      if (result.sha) {
+          setSha(result.sha);
+        }
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } catch (err: any) {
