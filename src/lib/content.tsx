@@ -161,23 +161,40 @@ async function fetchContent(): Promise<SiteContent> {
     pmsData = await pmsRes.json();
   }
 
-  if (pmsData?.properties?.length) {
+  // Normalize PMS structure
+  let normalizedPmsProperties: any[] = [];
+
+  if (Array.isArray(pmsData?.properties)) {
+    // Standard structure
+    normalizedPmsProperties = pmsData.properties;
+  } else if (
+    Array.isArray(pmsData?.items) &&
+    Array.isArray(pmsData.items[0]?.properties)
+  ) {
+    // Nested structure: items[0].properties
+    normalizedPmsProperties = pmsData.items[0].properties;
+  }
+
+  if (normalizedPmsProperties.length > 0) {
     contentData.properties.items = mergeProperties(
-      contentData.properties.items,
-      pmsData.properties
+      contentData.properties.items || [],
+      normalizedPmsProperties
     );
   }
 
   return contentData;
 }
 
-function mergeProperties(cmsItems, pmsItems) {
+function mergeProperties(cmsItems: any[] = [], pmsItems: any[] = []) {
+  if (!Array.isArray(pmsItems)) return cmsItems;
+
   return pmsItems.map((pmsProp) => {
+    // PMS structure should contain id directly, not nested under properties
     const cmsProp = cmsItems.find((c) => c.id === pmsProp.id);
 
     return {
-      ...cmsProp,          // CMS editable fields
-      ...pmsProp,          // PMS core fields override
+      ...cmsProp,   // CMS editable fields (optional overrides)
+      ...pmsProp,   // PMS core fields
     };
   });
 }
