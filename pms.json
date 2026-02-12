@@ -1,31 +1,224 @@
 {
-  "lastSynced": "2026-02-12T04:53:51.945Z",
+  "lastSynced": "2026-02-12T05:13:30.125Z",
   "properties": [
     {
-      "id": "mock-1",
-      "name": "Emerald Executive Suite",
-      "location": "Columbus, Ohio",
-      "guests": 4,
-      "price": 289,
-      "platforms": {
-        "airbnb": "https://airbnb.com/mock1",
-        "vrbo": "https://vrbo.com/mock1"
-      },
-      "images": [
-        "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
-      ]
-    },
-    {
-      "id": "mock-2",
-      "name": "Forest View Residence",
-      "location": "Cleveland, Ohio",
-      "guests": 6,
-      "price": 349,
-      "platforms": {
-        "airbnb": "https://airbnb.com/mock2"
-      },
-      "images": [
-        "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
+      "lastSynced": "2026-02-12T05:00:00.000Z",
+      "properties": [
+        {
+          "id": "gilded-loft",
+          "name": "The Gilded Loft",
+          "location": "Downtown",
+          "guests": 4,
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "rating": 4.96,
+          "reviewCount": 128,
+          "description": "A sun-filled downtown retreat where every corner has been thoughtfully designed for comfort and connection.",
+          "fullDescription": "The Gilded Loft is more than a place to stay — it's a space designed with warmth, generous light, and effortless comfort.",
+          "images": [
+            "https://images.unsplash.com/photo-1505691938895-1758d7feb511"
+          ],
+          "galleryKeys": [
+            "hero",
+            "bedroom",
+            "kitchen"
+          ],
+          "idealFor": [
+            "Families",
+            "Remote Work",
+            "Extended Stays"
+          ],
+          "amenities": [
+            "High-Speed WiFi",
+            "Free Parking",
+            "Air Conditioning",
+            "Smart TV",
+            "Coffee & Tea",
+            "Full Kitchen"
+          ],
+          "reviews": [
+            {
+              "rating": 5,
+              "text": "Walking in felt like a breath of fresh air.",
+              "author": "Sarah M.",
+              "label": "Business Traveler"
+            }
+          ],
+          "bookingPlatforms": [
+            {
+              "name": "Airbnb",
+              "url": "https://airbnb.com/your-listing"
+            },
+            {
+              "name": "VRBO",
+              "url": "https://vrbo.com/your-listing"
+            },
+            {
+              "name": "Booking.com",
+              "url": "https://booking.com/your-listing"
+            }
+          ]
+        },
+        {
+          "id": "velvet-haven",
+          "name": "Velvet Haven",
+          "location": "Midtown",
+          "guests": 2,
+          "bedrooms": 1,
+          "bathrooms": 1,
+          "rating": 4.98,
+          "reviewCount": 89,
+          "description": "A gentle, beautifully appointed sanctuary designed for rest and renewal.",
+          "fullDescription": "Velvet Haven is crafted for guests who need peace, softness, and quiet comfort.",
+          "images": [
+            "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267"
+          ],
+          "galleryKeys": [
+            "bedroom",
+            "hero",
+            "bathroom"
+          ],
+          "idealFor": [
+            "Couples",
+            "Remote Work"
+          ],
+          "amenities": [
+            "High-Speed WiFi",
+            "Air Conditioning",
+            "Smart TV",
+            "Coffee & Tea"
+          ],
+          "reviews": [
+            {
+              "rating": 5,
+              "text": "I've never felt so at peace in a rental.",
+              "author": "Elena R.",
+              "label": "Family Visit"
+            }
+          ],
+          "bookingPlatforms": [
+            {
+              "name": "Airbnb",
+              "url": "https://airbnb.com/your-listing"
+            },
+            {
+              "name": "VRBO",
+              "url": "https://vrbo.com/your-listing"
+            },
+            {
+              "name": "Booking.com",
+              "url": "https://booking.com/your-listing"
+            }
+          ]
+        },
+        {
+          "id": "urban-retreat",
+          "name": "The Urban Retreat",
+          "location": "Uptown",
+          "guests": 6,
+          "bedrooms": 3,
+          "bathrooms": 2,
+          "rating": 4.94,
+          "reviewCount": 156,
+          "description": "A spacious, welcoming home with room for everyone to gather.",
+          "fullDescription": "The Urban Retreat offers real space, warmth, and a peaceful residential setting.",
+          "images": [
+            "https://images.unsplash.com/photo-1484154218962-a197022b5858"
+          ],
+          "galleryKeys": [
+            "kitchen",
+            "hero",
+            "bedroom"
+          ],
+          "idealFor": [
+            "Families",
+            "Groups",
+            "Extended Stays"
+          ],
+          "amenities": [
+            "High-Speed WiFi",
+            "Free Parking",
+            "Air Conditioning",
+            "Smart TV",
+            "Coffee & Tea",
+            "Full Kitchen"
+          ],
+          "reviews": [
+            {
+              "rating": 5,
+              "text": "Our family stayed for two weeks and it felt like home.",
+              "author": "Michael T.",
+              "label": "Family Visit"
+            }
+          ],
+          "bookingPlatforms": [
+            {
+              "name": "Airbnb",
+              "url": "https://airbnb.com/your-listing"
+            },
+            {
+              "name": "VRBO",
+              "url": "https://vrbo.com/your-listing"
+            },
+            {
+              "name": "Booking.com",
+              "url": "https://booking.com/your-listing"
+            }
+          ]
+        },
+        {
+          "id": "serene-suite",
+          "name": "The Serene Suite",
+          "location": "Waterfront",
+          "guests": 4,
+          "bedrooms": 2,
+          "bathrooms": 2,
+          "rating": 4.97,
+          "reviewCount": 72,
+          "description": "A tranquil, spa-inspired haven near the water's edge.",
+          "fullDescription": "The Serene Suite is a calm waterfront sanctuary with soothing tones and premium comforts.",
+          "images": [
+            "https://images.unsplash.com/photo-1507089947368-19c1da9775ae"
+          ],
+          "galleryKeys": [
+            "bathroom",
+            "bedroom",
+            "hero"
+          ],
+          "idealFor": [
+            "Couples",
+            "Remote Work",
+            "Extended Stays"
+          ],
+          "amenities": [
+            "High-Speed WiFi",
+            "Air Conditioning",
+            "Smart TV",
+            "Coffee & Tea"
+          ],
+          "reviews": [
+            {
+              "rating": 5,
+              "text": "Immaculate, serene, and filled with quiet beauty.",
+              "author": "Anna L.",
+              "label": "Extended Stay"
+            }
+          ],
+          "bookingPlatforms": [
+            {
+              "name": "Airbnb",
+              "url": "https://airbnb.com/your-listing"
+            },
+            {
+              "name": "VRBO",
+              "url": "https://vrbo.com/your-listing"
+            },
+            {
+              "name": "Booking.com",
+              "url": "https://booking.com/your-listing"
+            }
+          ]
+        }
       ]
     }
   ]
