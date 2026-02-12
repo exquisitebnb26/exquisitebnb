@@ -200,7 +200,11 @@ export function useContent() {
 export async function fetchContentFromGitHub(token: string): Promise<{ content: SiteContent; sha: string }> {
   const res = await fetch(
     `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${CONTENT_PATH}?ref=main`,
-    { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github.v3+json" } }
+    { headers: { 
+      Authorization: `Bearer ${token}`,
+       Accept: "application/vnd.github.v3+json" 
+      }
+    }
   );
   if (!res.ok) throw new Error(`GitHub API error: ${res.status}`);
   const data = await res.json();
