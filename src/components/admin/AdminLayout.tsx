@@ -14,6 +14,7 @@ import FAQsEditor from "./editors/FAQsEditor";
 import ContactEditor from "./editors/ContactEditor";
 import BookEditor from "./editors/BookEditor";
 import PartnershipEditor from "./editors/PartnershipEditor";
+import PmsSync from "./PmsSync";
 
 // ── Nav sections ───────────────────────────────────────────────────
 const sections = [
@@ -26,6 +27,7 @@ const sections = [
   { id: "contact", label: "Contact", icon: "📬" },
   { id: "book", label: "Book", icon: "📅" },
   { id: "partnership", label: "Partnership", icon: "🤝" },
+  { id: "PMS Sync", label: "PMS Sync", icon: "🔄" },
 ] as const;
 
 type SectionId = (typeof sections)[number]["id"];
@@ -56,6 +58,7 @@ function EditorPanel({ section, content, update }: {
     case "contact": return <ContactEditor content={content} update={update} />;
     case "book": return <BookEditor content={content} update={update} />;
     case "partnership": return <PartnershipEditor content={content} update={update} />;
+    case "PMS Sync": return <PmsSync />;
   }
 }
 
