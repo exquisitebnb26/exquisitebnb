@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ChatWindow from "./ChatWindow";
-import { MessageSquareText } from "lucide-react";
+import { MessageCircle, MessageCircleCode, MessageSquareText } from "lucide-react";
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -51,7 +51,7 @@ export default function ChatWidget() {
           fixed bottom-5 right-5 z-50
           h-14 w-14 rounded-full
           border backdrop-blur-md
-          bg-cream/80 dark:bg-charcoal/70
+          bg-cream/80 dark:bg-green-900
           border-cream/60 dark:border-warm-white/10
           shadow-lg
           transition-all duration-300 ease-out
@@ -62,7 +62,7 @@ export default function ChatWidget() {
         `}
         aria-label={open ? "Close chat" : "Open chat"}
       >
-        <MessageSquareText className="w-6 h-6 mx-auto text-emerald-900 dark:text-gold" />
+        <MessageCircle className="w-6 h-6 mx-auto text-emerald-900 dark:text-cream dark:bg-green-900/10" />
       </button>
     </>
   );
