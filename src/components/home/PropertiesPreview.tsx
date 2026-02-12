@@ -18,8 +18,16 @@ const PropertiesPreview = () => {
     return null;
   }
   const pp = content.home.propertiesPreview;
+  // Normalize properties (supports CMS format + PMS nested format)
+  const rawItems = content?.properties?.items || [];
+
+  const normalizedItems =
+    rawItems.length > 0 && rawItems[0]?.properties
+      ? rawItems[0].properties
+      : rawItems;
+
   // Show first 3 properties
-  const previewItems = content.properties.items.slice(0, 3);
+  const previewItems = normalizedItems.slice(0, 3);
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">
@@ -41,7 +49,7 @@ const PropertiesPreview = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {previewItems.map((property, index) => (
             <ScrollReveal
-              key={property.id}
+              key={property.id || `${property.name}-${index}`}
               variant="scale-in"
               delay={200 + index * 160}
               duration={900}

@@ -18,10 +18,23 @@ const imageMap: Record<string, string> = {
 
 const Properties = () => {
   const { content, isLoading } = useContent();
-  if (isLoading || !content?.properties) {
+  if (isLoading) {
     return null;
   }
-  const { header, bookingNote, platforms, items } = content.properties;
+  const header = content.properties?.header || {};
+  const bookingNote = content.properties?.bookingNote || "";
+  const platforms = content.properties?.platforms || [];
+  const rawItems = content.properties?.items || [];
+
+  // Normalize structure (supports both CMS and PMS shapes)
+  const items = Array.isArray(rawItems) &&
+    rawItems.length > 0 &&
+    rawItems[0]?.properties &&
+    Array.isArray(rawItems[0].properties)
+      ? rawItems[0].properties
+      : rawItems;
+
+  console.log("Properties content:", content.properties);
 
   return (
     <Layout>
@@ -30,17 +43,17 @@ const Properties = () => {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <ScrollReveal variant="fade-in" duration={900} delay={100}>
             <p className="text-emerald dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">
-              {header.label}
+              {header?.label}
             </p>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={1000} delay={250}>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-emerald dark:text-cream mb-6">
-              {header.title}
+              {header?.title}
             </h1>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={900} delay={400}>
             <p className="text-emerald dark:text-cream-muted text-lg max-w-2xl mx-auto">
-              {header.subtitle}
+              {header?.subtitle}
             </p>
           </ScrollReveal>
         </div>
@@ -50,8 +63,19 @@ const Properties = () => {
       <section className="py-16 lg:py-24 bg-cream-warm dark:bg-charcoal-light">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {items.map((property, index) => (
-              <ScrollReveal key={property.id} variant="fade-up" delay={150 + index * 120} duration={800}>
+            {items.length === 0 && (
+              <div className="col-span-full text-center text-emerald dark:text-cream-muted">
+                No properties available at the moment.
+              </div>
+            )}
+            {items?.map((property, index) => {
+              return (
+                <ScrollReveal
+                  key={property?.id ? `property-${property.id}` : `property-index-${index}`}
+                  variant="fade-up"
+                  delay={150 + index * 120}
+                  duration={800}
+                >
                 <div className="group bg-cream-soft dark:bg-card border border-border rounded-sm overflow-hidden transition-all duration-500 ease-out hover:border-[hsl(var(--forest-dark))] hover:shadow-[0_0_40px_hsl(var(--forest-dark)_/_0.45)] dark:hover:border-gold dark:hover:shadow-[0_0_40px_rgba(212,175,55,0.45)] hover:-translate-y-1 h-full">
                   <div className="relative aspect-[16/10] overflow-hidden border border-transparent group-hover:border-gold transition-colors duration-500">
                     <img src={imageMap[property.imageKey] || heroImage} alt={property.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
@@ -75,9 +99,9 @@ const Properties = () => {
 
                     {/* Ideal-for labels */}
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {(property.idealFor || []).map((label) => (
+                      {(property.idealFor || []).map((label, idx) => (
                         <span
-                          key={label}
+                          key={`${property.id}-ideal-${idx}`}
                           className="text-xs px-2.5 py-1 rounded-sm
                             bg-[hsl(var(--forest-dark))]/8
                             text-[hsl(var(--forest-dark))]
@@ -94,8 +118,8 @@ const Properties = () => {
                         <Link to={`/properties/${property.id}`}>View Details</Link>
                       </Button>
                       <div className="flex flex-wrap gap-2 text-xs text-[hsl(var(--forest-dark))] dark:text-cream-muted">
-                        {(property.bookingPlatforms || []).map((platform) => (
-                          <span key={platform?.name || Math.random()}>
+                        {(property.bookingPlatforms || []).map((platform, idx) => (
+                          <span key={`${property.id}-platform-${idx}`}>
                             {platform?.name}
                           </span>
                         ))}
@@ -103,8 +127,9 @@ const Properties = () => {
                     </div>
                   </div>
                 </div>
-              </ScrollReveal>
-            ))}
+                </ScrollReveal>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -115,8 +140,8 @@ const Properties = () => {
           <ScrollReveal variant="fade-in" duration={800}>
             <p className="text-emerald dark:text-cream-muted text-sm mb-4">{bookingNote}</p>
             <div className="flex items-center justify-center gap-8">
-              {(platforms || []).map((platform) => (
-                <span key={platform} className="font-medium text-sm cursor-default transition-all duration-300 ease-out text-[hsl(var(--forest-dark))] hover:drop-shadow-[0_0_12px_hsl(var(--forest-dark)_/_0.45)] dark:text-cream/50 dark:hover:text-gold dark:hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)] hover:-translate-y-0.5">
+              {(platforms || []).map((platform, idx) => (
+                <span key={`footer-platform-${idx}`} className="font-medium text-sm cursor-default transition-all duration-300 ease-out text-[hsl(var(--forest-dark))] hover:drop-shadow-[0_0_12px_hsl(var(--forest-dark)_/_0.45)] dark:text-cream/50 dark:hover:text-gold dark:hover:drop-shadow-[0_0_12px_rgba(212,175,55,0.6)] hover:-translate-y-0.5">
                   {platform}
                 </span>
               ))}

@@ -28,15 +28,26 @@ const PropertyDetail = () => {
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const properties = content?.properties;
-  const property =
-    properties?.items.find((p) => p.id === id) ??
-    properties?.items[0];
 
-  // Guard against undefined content/properties, and property
+  // Support both CMS format and PMS nested format
+  const rawItems = properties?.items;
+
+  const propertyList =
+    Array.isArray(rawItems) && rawItems[0]?.properties
+      ? rawItems[0].properties
+      : rawItems ?? [];
+
+  const property =
+    propertyList.find((p: any) => p.id === id) ??
+    propertyList[0];
+
+  // Support CMS image keys OR PMS direct image URLs
   const images =
-    property && property.galleryKeys
+    property?.galleryKeys && property.galleryKeys.length > 0
       ? property.galleryKeys.map((k: string) => imageMap[k] || heroImage)
-      : [];
+      : property?.images && property.images.length > 0
+      ? property.images
+      : [heroImage];
 
   useEffect(() => {
     if (!property || isTransitioning || images.length === 0) return;
@@ -186,7 +197,8 @@ const PropertyDetail = () => {
                   <h2 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">Amenities</h2>
                 </ScrollReveal>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {(property.amenities ?? []).map((amenity, index) => {
+                  {(Array.isArray(property?.amenities) ? property.amenities : []).map(
+                    (amenity, index) => {
                     const Icon = amenityIconMap[amenity] || Wifi;
                     return (
                       <ScrollReveal key={index} variant="fade-up" delay={100 + index * 80} duration={700}>
