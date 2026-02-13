@@ -21,10 +21,10 @@ const Properties = () => {
   if (isLoading) {
     return null;
   }
-  const header = content.properties?.header || {};
+  const header = (content.properties?.header || {}) as { label?: string; title?: string; subtitle?: string };
   const bookingNote = content.properties?.bookingNote || "";
   const platforms = content.properties?.platforms || [];
-  const rawItems = content.properties?.items || [];
+  const rawItems: any[] = content.properties?.items || [];
 
   // Normalize structure (supports both CMS and PMS shapes)
   const items = Array.isArray(rawItems) &&

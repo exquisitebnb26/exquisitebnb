@@ -79,10 +79,10 @@ const context = useMemo(() => {
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
 
-    const nextMemory: ChatTurn[] = [
+    const nextMemory: ChatTurn[] = ([
       ...memory,
-      { role: "user", content: text },
-    ].slice(-12);
+      { role: "user" as const, content: text },
+    ] as ChatTurn[]).slice(-12);
 
     setMemory(nextMemory);
     saveMemory(nextMemory);
@@ -110,10 +110,10 @@ const context = useMemo(() => {
 
       setMessages((prev) => [...prev, botMsg]);
 
-      const updatedMemory: ChatTurn[] = [
+      const updatedMemory: ChatTurn[] = ([
         ...nextMemory,
-        { role: "assistant", content: reply },
-      ].slice(-12);
+        { role: "assistant" as const, content: reply },
+      ] as ChatTurn[]).slice(-12);
 
       setMemory(updatedMemory);
       saveMemory(updatedMemory);
