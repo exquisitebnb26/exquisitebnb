@@ -30,12 +30,12 @@ const PropertyDetail = () => {
   const properties = content?.properties;
 
   // Support both CMS format and PMS nested format
-  const rawItems = properties?.items;
+  const rawItems: any[] = properties?.items || [];
 
   const propertyList =
     Array.isArray(rawItems) && rawItems[0]?.properties
       ? rawItems[0].properties
-      : rawItems ?? [];
+      : rawItems;
 
   const property =
     propertyList.find((p: any) => p.id === id) ??

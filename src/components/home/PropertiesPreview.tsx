@@ -19,7 +19,7 @@ const PropertiesPreview = () => {
   }
   const pp = content.home.propertiesPreview;
   // Normalize properties (supports CMS format + PMS nested format)
-  const rawItems = content?.properties?.items || [];
+  const rawItems: any[] = content?.properties?.items || [];
 
   const normalizedItems =
     rawItems.length > 0 && rawItems[0]?.properties
