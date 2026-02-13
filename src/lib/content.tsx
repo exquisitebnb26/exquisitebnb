@@ -240,7 +240,7 @@ const cmsWorkerUrl = import.meta.env.VITE_CMS_WORKER_URL;
 export async function fetchContentFromCMS() {
   const token = localStorage.getItem("cms_jwt");
   const res = await fetch(
-    `${cmsWorkerUrl}/cms/content`,
+    `${cmsWorkerUrl}cms/content`,
     {
       headers: {
         Authorization: `Bearer ${token}`
