@@ -81,12 +81,36 @@ const Partnership = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {p.differentiators.items.map((item, index) => (
               <ScrollReveal key={index} variant="fade-up" delay={200 + index * 130} duration={800}>
-                <div className="text-center p-6">
-                  <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-[hsl(var(--forest-dark))]/10 dark:bg-gold/10 flex items-center justify-center">
-                    <span className="text-[hsl(var(--forest-dark))] dark:text-gold font-serif text-lg">{index + 1}</span>
+                <div className="group text-center p-6 transition-all duration-500 ease-out hover:-translate-y-1">
+                  <div
+                    className="
+                      w-12 h-12 mx-auto mb-4 rounded-full
+                      bg-[hsl(var(--forest-dark))]/10 dark:bg-gold/10
+                      flex items-center justify-center
+                      transition-all duration-500 ease-out
+                      group-hover:scale-110
+                      group-hover:shadow-[0_0_18px_hsl(var(--forest-dark))]
+                      dark:group-hover:shadow-[0_0_18px_rgba(212,175,55,0.65)]
+                    "
+                  >
+                    <span
+                      className="
+                        text-[hsl(var(--forest-dark))] dark:text-gold
+                        font-serif text-lg
+                        transition-all duration-500 ease-out
+                        group-hover:drop-shadow-[0_0_8px_hsl(var(--forest-dark))]
+                        dark:group-hover:drop-shadow-[0_0_8px_rgba(212,175,55,0.85)]
+                      "
+                    >
+                      {index + 1}
+                    </span>
                   </div>
-                  <h3 className="text-lg font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-3">{item.title}</h3>
-                  <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="text-lg font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-sm leading-relaxed">
+                    {item.description}
+                  </p>
                 </div>
               </ScrollReveal>
             ))}
