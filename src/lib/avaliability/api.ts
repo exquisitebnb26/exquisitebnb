@@ -2,7 +2,7 @@
 
 export async function fetchAvailability(propertyId: string) {
   const res = await fetch(
-    `https://availability-worker.exquisitebnb-ai.workers.dev/api/availability?propertyId=${propertyId}`
+    `${import.meta.env.VITE_CALENDER_WORKER_URL}/api/availability?propertyId=${propertyId}`
   );
 
   if (!res.ok) {

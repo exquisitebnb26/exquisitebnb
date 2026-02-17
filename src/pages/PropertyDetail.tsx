@@ -4,7 +4,6 @@ import {
   Star, Users, MapPin, Wifi, Car, Snowflake, Tv, Coffee, UtensilsCrossed,
   ChevronLeft, ChevronRight, ExternalLink, LucideIcon,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import heroImage from "@/assets/hero-living-room.jpg";

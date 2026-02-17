@@ -3,9 +3,8 @@ import MessageBubble from "./MessageBubble";
 import type { ChatMessage } from "./types";
 import { X, Send } from "lucide-react";
 import { useContent } from "@/lib/content"; // adjust if your hook path differs
-import { buildSiteContext } from "@/lib/ai/buildContext";
-import { askConciergeAI } from "@/lib/ai/huggingface";
-import type { ChatTurn } from "@/lib/ai/huggingface";
+import { askConciergeAI, submitLead } from "@/lib/ai/Bot";
+import type { ChatTurn } from "@/lib/ai/Bot";
 import { loadMemory, saveMemory } from "@/lib/ai/memory";
 import TypingIndicator from "./TypingIndicator";
 
@@ -28,12 +27,28 @@ export default function ChatWindow({ open, onClose }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [isTyping, setIsTyping] = useState(false);
   const [memory, setMemory] = useState<ChatTurn[]>(() => loadMemory());
-const content = useContent();
+  const [conversationId] = useState(() => crypto.randomUUID());
+  const [lastPreferences, setLastPreferences] = useState<any>(null);
+  const [showLeadForm, setShowLeadForm] = useState(false);
+  const [leadName, setLeadName] = useState("");
+  const [leadEmail, setLeadEmail] = useState("");
+  const [leadPhone, setLeadPhone] = useState("");
 
-const context = useMemo(() => {
-  if (!content) return "";
-  return buildSiteContext(content);
-}, [content]);
+  function parseAgentResponse(text: string) {
+    try {
+      const trimmed = text.trim();
+
+      // If agent sends structured JSON
+      if (trimmed.startsWith("{") && trimmed.endsWith("}")) {
+        const parsed = JSON.parse(trimmed);
+        return parsed;
+      }
+
+      return { type: "text", content: text };
+    } catch {
+      return { type: "text", content: text };
+    }
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -56,18 +71,6 @@ const context = useMemo(() => {
   const onSend = async () => {
     const text = input.trim();
     if (!text) return;
-    if (!context) {
-      setMessages((prev) => [
-        ...prev,
-        {
-          id: crypto.randomUUID(),
-          role: "assistant" as const,
-          text: "I’m preparing your concierge experience. Please try again in a moment.",
-          ts: Date.now(),
-        },
-      ]);
-      return;
-    }
 
     const userMsg = {
       id: crypto.randomUUID(),
@@ -90,11 +93,19 @@ const context = useMemo(() => {
     setIsTyping(true);
 
     try {
-      const reply = await askConciergeAI({
+      const agentResponse = await askConciergeAI({
         question: text,
-        context,
         memory: nextMemory,
+        conversationId,
       });
+
+      const reply = agentResponse?.reply ?? "I’m here to help.";
+
+      setLastPreferences(agentResponse?.preferences ?? null);
+
+      if (agentResponse?.needsLead) {
+        setShowLeadForm(true);
+      }
 
       if (audioRef.current) {
         audioRef.current.currentTime = 0;
@@ -138,6 +149,42 @@ const context = useMemo(() => {
     if (e.key === "Enter") onSend();
   };
 
+  async function handleLeadSubmit() {
+    try {
+      await submitLead({
+        name: leadName,
+        email: leadEmail,
+        phone: leadPhone,
+        message: messages[messages.length - 1]?.text,
+        preferences: lastPreferences,
+        source: "chat",
+        conversationId,
+      });
+
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          text: "Perfect — our concierge team will personally reach out shortly.",
+          ts: Date.now(),
+        },
+      ]);
+
+      setShowLeadForm(false);
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: crypto.randomUUID(),
+          role: "assistant",
+          text: "Something went wrong while sending your request. Please try again.",
+          ts: Date.now(),
+        },
+      ]);
+    }
+  }
+
   return (
     <div
       className={[
@@ -178,13 +225,20 @@ const context = useMemo(() => {
             key={msg.id}
             className="animate-fade-in-up"
           >
-            <MessageBubble
-              message={{
-                ...msg,
-                text: msg.text,
-                ts: msg.ts,
-              }}
-            />
+            {(() => {
+              const parsed = parseAgentResponse(msg.text);
+
+              return (
+                <MessageBubble
+                  message={{
+                    ...msg,
+                    text: parsed.type === "text" ? parsed.content : "",
+                    structured: parsed.type !== "text" ? parsed : undefined,
+                    ts: msg.ts,
+                  }}
+                />
+              );
+            })()}
             <div className="text-[10px] mt-1 text-charcoal/40 dark:text-cream-muted/50">
               {new Date(msg.ts).toLocaleTimeString([], {
                 hour: "2-digit",
@@ -195,6 +249,35 @@ const context = useMemo(() => {
         ))}
         {isTyping ? <TypingIndicator /> : null}
       </div>
+
+      {showLeadForm && (
+        <div className="px-4 py-3 border-t border-cream/60 dark:border-warm-white/10 space-y-2">
+          <input
+            placeholder="Your name"
+            value={leadName}
+            onChange={(e) => setLeadName(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg border bg-transparent"
+          />
+          <input
+            placeholder="Email"
+            value={leadEmail}
+            onChange={(e) => setLeadEmail(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg border bg-transparent"
+          />
+          <input
+            placeholder="Phone (optional)"
+            value={leadPhone}
+            onChange={(e) => setLeadPhone(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg border bg-transparent"
+          />
+          <button
+            onClick={handleLeadSubmit}
+            className="w-full py-2 rounded-lg bg-emerald text-white dark:bg-gold dark:text-charcoal"
+          >
+            Send to Concierge
+          </button>
+        </div>
+      )}
 
       {/* Input */}
       <div className="px-3 py-3 border-t border-cream/60 dark:border-warm-white/10">

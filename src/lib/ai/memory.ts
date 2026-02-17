@@ -1,4 +1,4 @@
-import type { ChatTurn } from "@/lib/ai/huggingface";
+import type { ChatTurn } from "@/lib/ai/Bot";
 
 const KEY = "exq_chat_memory_v1";
 
