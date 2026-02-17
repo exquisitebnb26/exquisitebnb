@@ -1,0 +1,11 @@
+name = "availability-worker"
+main = "src/index.ts"
+compatibility_date = "2026-02-12"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "exquisitebnb_availability"
+database_id = "671252cd-58df-46e1-9726-e45beb3615ac"
+
+[vars]
+CORS_ORIGIN = "*"

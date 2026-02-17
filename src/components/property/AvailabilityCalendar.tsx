@@ -10,13 +10,19 @@ interface AvailabilityCalendarProps {
 export function AvailabilityCalendar({ bookedDates = [] }: AvailabilityCalendarProps) {
   const [month, setMonth] = useState(new Date());
 
-  const isBooked = (date: Date) =>
-    bookedDates.some(
-      (d) =>
+  const isBooked = (date: Date) => {
+    if (!Array.isArray(bookedDates)) return false;
+
+    return bookedDates.some((d) => {
+      if (!(d instanceof Date)) return false;
+
+      return (
         d.getFullYear() === date.getFullYear() &&
         d.getMonth() === date.getMonth() &&
-        d.getDate() === date.getDate(),
-    );
+        d.getDate() === date.getDate()
+      );
+    });
+  };
 
   return (
     <div className="space-y-4">
@@ -39,11 +45,12 @@ export function AvailabilityCalendar({ bookedDates = [] }: AvailabilityCalendarP
             "text-sm font-medium text-[hsl(var(--forest-dark))] dark:text-cream",
           nav: "space-x-1 flex items-center",
           nav_button: cn(
-            "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100 inline-flex items-center justify-center rounded-sm border transition-colors",
-            "border-[hsl(var(--forest-dark))]/30 text-[hsl(var(--forest-dark))] hover:bg-[hsl(var(--forest-dark))]/10",
-            "dark:border-gold/30 dark:text-gold dark:hover:bg-gold/10",
+            "h-7 w-7 inline-flex items-center justify-center rounded-sm border transition-colors",
+            "bg-emerald-900 text-white border-emerald-900 hover:bg-emerald-900",
+            "dark:bg-transparent dark:border-gold/30 dark:text-gold dark:hover:bg-gold/10"
           ),
-          nav_button_previous: "absolute left-1",
+          nav_button_previous:
+            "absolute left-1 ",
           nav_button_next: "absolute right-1",
           table: "w-full border-collapse space-y-1",
           head_row: "flex",
@@ -53,7 +60,7 @@ export function AvailabilityCalendar({ bookedDates = [] }: AvailabilityCalendarP
           cell: "h-9 w-9 text-center text-sm p-0 relative focus-within:relative focus-within:z-20",
           day: cn(
             "h-9 w-9 p-0 font-normal inline-flex items-center justify-center rounded-sm transition-colors",
-            "text-[hsl(var(--forest-dark))] hover:bg-[hsl(var(--forest-dark))]/10",
+            "text-[hsl(var(--forest-dark))] hover:bg-emerald-800 hover:text-emerald-100 data-[state=open]:bg-emerald-800 data-[state=open]:text-emerald-100",
             "dark:text-cream dark:hover:bg-gold/10",
             "aria-selected:opacity-100",
           ),
@@ -71,7 +78,7 @@ export function AvailabilityCalendar({ bookedDates = [] }: AvailabilityCalendarP
       {/* Legend */}
       <div className="flex items-center justify-center gap-4 text-xs text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted">
         <span className="flex items-center gap-1.5">
-          <span className="w-3 h-3 rounded-sm bg-[hsl(var(--forest-dark))]/10 dark:bg-gold/10 border border-[hsl(var(--forest-dark))]/20 dark:border-gold/20" />
+          <span className="w-3 h-3 rounded-sm bg-[hsl(var(--forest-dark))] dark:bg-gold/100 border border-[hsl(var(--forest-dark))]/20 dark:border-gold/20" />
           Available
         </span>
         <span className="flex items-center gap-1.5">

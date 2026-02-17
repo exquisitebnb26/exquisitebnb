@@ -13,6 +13,7 @@ import kitchenImage from "@/assets/property-kitchen.jpg";
 import bathroomImage from "@/assets/property-bathroom.jpg";
 import { useContent } from "@/lib/content";
 import { AvailabilityCalendar } from "@/components/property/AvailabilityCalendar";
+import { useAvailability } from "@/lib/avaliability/useAvaliability";
 
 const imageMap: Record<string, string> = {
   hero: heroImage, bedroom: bedroomImage, kitchen: kitchenImage, bathroom: bathroomImage,
@@ -28,6 +29,7 @@ const PropertyDetail = () => {
   const { content, isLoading } = useContent();
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const { availability, error } = useAvailability(id ?? "");
   const properties = content?.properties;
 
   // Support both CMS format and PMS nested format
@@ -254,6 +256,25 @@ const PropertyDetail = () => {
                   <h3 className="text-xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream text-center">Where to Book</h3>
                   <div className="luxury-divider" />
                   <div className="space-y-3">
+                    {/* Availability Calendar */}
+              <ScrollReveal variant="fade-right" duration={900} delay={450}>
+                <div className="mt-6 p-8 rounded-sm space-y-4 bg-cream-warm border border-[hsl(var(--forest-dark))] dark:bg-card dark:border-border transition-all duration-700 ease-out will-change-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_0_28px_hsl(var(--forest-dark)_/_0.35)] dark:hover:shadow-[0_0_28px_rgba(212,175,55,0.35)]">
+                  {error && (
+                    <p className="text-xs text-red-500 dark:text-red-400 text-center">
+                      Failed to load availability.
+                    </p>
+                  )}
+                  <AvailabilityCalendar
+                    bookedDates={
+                      Array.isArray((availability as any)?.bookedDates)
+                        ? (availability as any).bookedDates.map((d: string | Date) =>
+                            d instanceof Date ? d : new Date(d)
+                          )
+                        : []
+                    }
+                  />
+                </div>
+              </ScrollReveal>
                     <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-sm text-center mb-4">Book securely on:</p>
                     {(property.bookingPlatforms ?? []).map((platform) => (
   <a
@@ -282,12 +303,7 @@ const PropertyDetail = () => {
                 </div>
               </ScrollReveal>
 
-              {/* Availability Calendar */}
-              <ScrollReveal variant="fade-right" duration={900} delay={450}>
-                <div className="mt-6 p-8 rounded-sm space-y-4 bg-cream-warm border border-[hsl(var(--forest-dark))] dark:bg-card dark:border-border transition-all duration-700 ease-out will-change-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_0_28px_hsl(var(--forest-dark)_/_0.35)] dark:hover:shadow-[0_0_28px_rgba(212,175,55,0.35)]">
-                  <AvailabilityCalendar bookedDates={property.bookedDates ?? []} />
-                </div>
-              </ScrollReveal>
+              
             </div>
           </div>
         </div>

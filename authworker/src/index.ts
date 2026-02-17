@@ -13,7 +13,7 @@ const cors = (env: Env) => ({
   "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 });
-
+console.log("Auth worker starting...");
 function json(env: Env, data: unknown, status = 200) {
   return new Response(JSON.stringify(data), {
     status,
@@ -40,6 +40,7 @@ async function sha256(text: string) {
  * - For Cloudflare Workers, we can do PBKDF2 with SHA-256.
  */
 async function hashPassword(password: string, saltBase64?: string) {
+  console.log("Hashing password...");
   const salt = saltBase64
     ? Uint8Array.from(atob(saltBase64), (c) => c.charCodeAt(0))
     : crypto.getRandomValues(new Uint8Array(16));
@@ -70,12 +71,14 @@ async function hashPassword(password: string, saltBase64?: string) {
 }
 
 async function verifyPassword(password: string, stored: string) {
+  console.log("Verifying password...");
   const [saltB64] = stored.split(".");
   const computed = await hashPassword(password, saltB64);
   return computed === stored;
 }
 
 async function signToken(env: Env, payload: { sub: string; email: string; role: string }) {
+  console.log("Signing token for user:", payload.email);
   const secret = new TextEncoder().encode(env.JWT_SECRET);
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
@@ -85,6 +88,7 @@ async function signToken(env: Env, payload: { sub: string; email: string; role: 
 }
 
 async function requireAuth(env: Env, request: Request) {
+  console.log("Checking auth for request:", request.url);
   const auth = request.headers.get("Authorization");
   if (!auth?.startsWith("Bearer ")) return null;
 
@@ -148,6 +152,7 @@ export default {
 }
     // POST /auth/login
     if (request.method === "POST" && path === "/auth/login") {
+      console.log("Login attempt...");
       const body = await request.json().catch(() => null) as any;
       const email = body?.email?.trim()?.toLowerCase();
       const password = body?.password;
