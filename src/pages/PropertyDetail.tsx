@@ -12,6 +12,7 @@ import bedroomImage from "@/assets/property-bedroom.jpg";
 import kitchenImage from "@/assets/property-kitchen.jpg";
 import bathroomImage from "@/assets/property-bathroom.jpg";
 import { useContent } from "@/lib/content";
+import { AvailabilityCalendar } from "@/components/property/AvailabilityCalendar";
 
 const imageMap: Record<string, string> = {
   hero: heroImage, bedroom: bedroomImage, kitchen: kitchenImage, bathroom: bathroomImage,
@@ -278,6 +279,13 @@ const PropertyDetail = () => {
                    <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-xs text-center">
                     Availability, pricing, and payments are managed securely by each platform.
                   </p>
+                </div>
+              </ScrollReveal>
+
+              {/* Availability Calendar */}
+              <ScrollReveal variant="fade-right" duration={900} delay={450}>
+                <div className="mt-6 p-8 rounded-sm space-y-4 bg-cream-warm border border-[hsl(var(--forest-dark))] dark:bg-card dark:border-border transition-all duration-700 ease-out will-change-[background-color,box-shadow,transform] hover:-translate-y-0.5 hover:shadow-[0_0_28px_hsl(var(--forest-dark)_/_0.35)] dark:hover:shadow-[0_0_28px_rgba(212,175,55,0.35)]">
+                  <AvailabilityCalendar bookedDates={property.bookedDates ?? []} />
                 </div>
               </ScrollReveal>
             </div>
