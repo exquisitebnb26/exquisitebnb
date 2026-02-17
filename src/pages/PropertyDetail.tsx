@@ -29,7 +29,7 @@ const PropertyDetail = () => {
   const { content, isLoading } = useContent();
   const [activeImage, setActiveImage] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const { availability, error } = useAvailability(id ?? "");
+  const { blockedDates, error } = useAvailability(id ?? "");
   const properties = content?.properties;
 
   // Support both CMS format and PMS nested format
@@ -264,15 +264,7 @@ const PropertyDetail = () => {
                       Failed to load availability.
                     </p>
                   )}
-                  <AvailabilityCalendar
-                    bookedDates={
-                      Array.isArray((availability as any)?.bookedDates)
-                        ? (availability as any).bookedDates.map((d: string | Date) =>
-                            d instanceof Date ? d : new Date(d)
-                          )
-                        : []
-                    }
-                  />
+                  <AvailabilityCalendar bookedDates={blockedDates} />
                 </div>
               </ScrollReveal>
                     <p className="text-[hsl(var(--forest-dark))]/60 dark:text-cream-muted text-sm text-center mb-4">Book securely on:</p>

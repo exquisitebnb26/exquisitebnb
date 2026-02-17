@@ -1,39 +1,45 @@
 import { useEffect, useState } from "react";
-import fetchAvailability from "./api";
+import { fetchAvailability } from "./api";
 
-type Availability = string[];
-
-export function useAvailability(propertyId?: string) {
-  const [availability, setAvailability] = useState<Availability | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
+export function useAvailability(propertyId: string) {
+  const [blockedDates, setBlockedDates] = useState<Date[]>([]);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (!propertyId) return;
 
-    let alive = true;
-    setIsLoading(true);
-    setError(null);
+    let mounted = true;
 
-    fetchAvailability(propertyId)
-      .then((data) => {
-        if (!alive) return;
-        setAvailability(data?.blockedDates ?? []);
-      })
-      .catch((e) => {
-        if (!alive) return;
-        console.error("Error fetching availability:", e);
-        setError(e?.message ?? "Failed to load availability");
-      })
-      .finally(() => {
-        if (!alive) return;
-        setIsLoading(false);
-      });
+    async function load() {
+      try {
+        setLoading(true);
+        const data = await fetchAvailability(propertyId);
+        console.log("Fetched availability:", data);
+        if (mounted) {
+          const dates = (data.blockedDates || []).map((d: string) => {
+            // Force midnight to avoid timezone shifts
+            return new Date(d + "T00:00:00");
+          });
+          setBlockedDates(dates);
+        }
+      } catch (err: any) {
+        if (mounted) {
+          setError(err.message || "Failed to load availability");
+        }
+      } finally {
+        if (mounted) {
+          setLoading(false);
+        }
+      }
+    }
+
+    load();
 
     return () => {
-      alive = false;
+      mounted = false;
     };
   }, [propertyId]);
 
-  return { availability, isLoading, error };
+  return { blockedDates, loading, error };
 }

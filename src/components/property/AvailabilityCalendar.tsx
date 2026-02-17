@@ -10,6 +10,9 @@ interface AvailabilityCalendarProps {
 export function AvailabilityCalendar({ bookedDates = [] }: AvailabilityCalendarProps) {
   const [month, setMonth] = useState(new Date());
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   const isBooked = (date: Date) => {
     if (!Array.isArray(bookedDates)) return false;
 
@@ -35,7 +38,11 @@ export function AvailabilityCalendar({ bookedDates = [] }: AvailabilityCalendarP
         mode="single"
         month={month}
         onMonthChange={setMonth}
-        disabled={(date) => date < new Date() || isBooked(date)}
+        disabled={(date) => {
+          const normalized = new Date(date);
+          normalized.setHours(0, 0, 0, 0);
+          return normalized < today || isBooked(normalized);
+        }}
         className={cn("p-3 pointer-events-auto w-full")}
         classNames={{
           months: "flex flex-col space-y-4",
