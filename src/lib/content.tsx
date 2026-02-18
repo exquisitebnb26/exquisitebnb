@@ -146,55 +146,46 @@ const ContentContext = createContext<ContentContextValue>({
 
 
 
+
 async function fetchContent(): Promise<SiteContent> {
-  const [contentRes, pmsRes] = await Promise.all([
-    fetch(`/content.json?t=${Date.now()}`),
-    fetch(`/pms.json?t=${Date.now()}`).catch(() => null),
-  ]);
+  const baseUrl = import.meta.env.VITE_CMS_WORKER_URL;
 
-  const contentData = await contentRes.json();
+  // List all public sections you want to load
+  const sections = [
+    "home",
+    "about",
+    "properties",
+    "faqs",
+    "contact",
+    "book",
+    "partnership"
+  ];
 
-  let pmsData = null;
-  if (pmsRes && pmsRes.ok) {
-    pmsData = await pmsRes.json();
+  const results = await Promise.all(
+    sections.map(async (section) => {
+      const res = await fetch(`${baseUrl}/public/section/${section}`);
+      if (!res.ok) {
+        throw new Error(`Failed to fetch section: ${section}`);
+      }
+      const data = await res.json();
+      return { key: section, data };
+    })
+  );
+
+  // Convert array to object shape matching SiteContent
+  const content: any = {};
+
+  for (const item of results) {
+    // DB returns { key, content, updated_at }
+    const parsed =
+      typeof item.data?.content === "string"
+        ? JSON.parse(item.data.content)
+        : item.data?.content || {};
+
+    content[item.key] = parsed;
   }
 
-  // Normalize PMS structure
-  let normalizedPmsProperties: any[] = [];
-
-  if (Array.isArray(pmsData?.properties)) {
-    // Standard structure
-    normalizedPmsProperties = pmsData.properties;
-  } else if (
-    Array.isArray(pmsData?.items) &&
-    Array.isArray(pmsData.items[0]?.properties)
-  ) {
-    // Nested structure: items[0].properties
-    normalizedPmsProperties = pmsData.items[0].properties;
-  }
-
-  if (normalizedPmsProperties.length > 0) {
-    contentData.properties.items = mergeProperties(
-      contentData.properties.items || [],
-      normalizedPmsProperties
-    );
-  }
-
-  return contentData;
-}
-
-function mergeProperties(cmsItems: any[] = [], pmsItems: any[] = []) {
-  if (!Array.isArray(pmsItems)) return cmsItems;
-
-  return pmsItems.map((pmsProp) => {
-    // PMS structure should contain id directly, not nested under properties
-    const cmsProp = cmsItems.find((c) => c.id === pmsProp.id);
-
-    return {
-      ...cmsProp,   // CMS editable fields (optional overrides)
-      ...pmsProp,   // PMS core fields
-    };
-  });
+  return content as SiteContent;
 }
 
 
@@ -240,7 +231,7 @@ const cmsWorkerUrl = import.meta.env.VITE_CMS_WORKER_URL;
 export async function fetchContentFromCMS() {
   const token = localStorage.getItem("cms_jwt");
   const res = await fetch(
-    `${cmsWorkerUrl}/cms/content`,
+    `${cmsWorkerUrl}/admin/section/home`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -251,18 +242,18 @@ export async function fetchContentFromCMS() {
   return res.json();
 }
 
-export async function saveContentToCMS(content: SiteContent, sha: string) {
+export async function saveContentToCMS(content: SiteContent) {
   const token = localStorage.getItem("cms_jwt");
 
   const res = await fetch(
-    `${cmsWorkerUrl}/cms/content`,
+    `${cmsWorkerUrl}/admin/section/home`,
     {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ content, sha })
+      body: JSON.stringify({ content })
     }
   );
 

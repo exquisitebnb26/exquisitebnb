@@ -18,6 +18,7 @@ import ScrollToTop from "./components/utils/ScrollToTop";
 import RedirectHandler from "./components/utils/RedirectHandler";
 import ChatWidget from "./components/chat/ChatWidget";
 import AdminLogin from "./lib/auth/AdminLogin";
+import RequireAuth from "./lib/auth/RequireAuth";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -40,7 +41,14 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/partnership" element={<Partnership />} />
             <Route path="/login" element={<AdminLogin />} />
-            <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/admin"
+            element={
+              <RequireAuth>
+                <Admin />
+              </RequireAuth>
+            }
+          />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

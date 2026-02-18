@@ -9,7 +9,7 @@ const Book = () => {
   const { content } = useContent();
   const book = content?.book;
   if (!book) return null;
-
+console.log("Book content:", book);
   return (
     <Layout>
       {/* Header */}

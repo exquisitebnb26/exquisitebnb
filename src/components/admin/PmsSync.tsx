@@ -1,34 +1,44 @@
 import { useState } from "react";
+import { getToken } from "../../lib/auth/session";
 
 export default function PmsSync() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const SYNC_WORKER_URL = import.meta.env.VITE_SYNC_WORKER_URL as string;
+
   const handleSync = async () => {
     setLoading(true);
     setMessage("");
+    setError("");
+
     try {
-      const res = await fetch(
-        `${SYNC_WORKER_URL}/sync`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-sync-secret": import.meta.env.VITE_SYNC_SECRET,
-          },
-        }
-      );
+      const token = getToken();
+
+      if (!token) {
+        setError("Unauthorized. Please login again.");
+        setLoading(false);
+        return;
+      }
+
+      const res = await fetch(`${SYNC_WORKER_URL}/pms/sync`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+      });
 
       const data = await res.json();
 
       if (!res.ok) {
-        throw new Error(data.error || "Sync failed");
+        throw new Error(data?.error || "Sync failed");
       }
 
-      setMessage(data.message || "Sync completed");
-    } catch (err) {
-      setMessage("Sync failed");
+      setMessage("PMS Sync completed successfully.");
+    } catch (err: any) {
+      setError(err?.message || "Sync failed.");
     } finally {
       setLoading(false);
     }
@@ -41,13 +51,17 @@ export default function PmsSync() {
       <button
         onClick={handleSync}
         disabled={loading}
-        className="px-6 py-3 rounded-xl border border-gold text-gold hover:shadow-lg transition"
+        className="px-6 py-3 rounded-xl border border-gold text-gold hover:shadow-lg transition disabled:opacity-50"
       >
-        {loading ? "Syncing..." : "Sync Now"}
+        {loading ? "Syncing PMS..." : "Run PMS Sync"}
       </button>
 
       {message && (
-        <p className="text-sm opacity-70">{message}</p>
+        <p className="text-green-500 text-sm">{message}</p>
+      )}
+
+      {error && (
+        <p className="text-red-500 text-sm">{error}</p>
       )}
     </div>
   );
