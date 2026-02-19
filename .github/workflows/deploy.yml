@@ -40,7 +40,6 @@ jobs:
           VITE_SYNC_SECRET: ${{secrets.VITE_SYNC_SECRET}}
           VITE_CMS_WORKER_URL: ${{secrets.VITE_CMS_WORKER_URL}}
           VITE_CMS_AUTH_URL: ${{secrets.VITE_CMS_AUTH_URL}}
-          VITE_CALENDER_WORKER_URL: ${{secrets.VITE_CALENDER_WORKER_URL}}
           VITE_AVAILABILITY_WORKER_URL: ${{secrets.VITE_AVAILABILITY_WORKER_URL}}
 
       - name: Upload build artifact
