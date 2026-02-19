@@ -2,13 +2,11 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
 const PhilosophySection = () => {
-  const { content, isLoading, error } = useContent();
+ const { content, isLoading } = useContent();
 
-  if (isLoading || !content?.home?.philosophy) {
-    return null;
-  }
-
-  const p = content.home.philosophy;
+if (isLoading || !content) return null;
+  const home = content.home;
+const p = home.philosophy;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">

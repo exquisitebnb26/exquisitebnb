@@ -146,55 +146,80 @@ const ContentContext = createContext<ContentContextValue>({
 
 
 
-async function fetchContent(): Promise<SiteContent> {
-  const [contentRes, pmsRes] = await Promise.all([
-    fetch(`/content.json?t=${Date.now()}`),
-    fetch(`/pms.json?t=${Date.now()}`).catch(() => null),
-  ]);
+function safeJsonParse(value: string | null | undefined) {
 
-  const contentData = await contentRes.json();
-
-  let pmsData = null;
-  if (pmsRes && pmsRes.ok) {
-    pmsData = await pmsRes.json();
+  try {
+    return value ? JSON.parse(value) : [];
+  } catch {
+    return [];
   }
-
-  // Normalize PMS structure
-  let normalizedPmsProperties: any[] = [];
-
-  if (Array.isArray(pmsData?.properties)) {
-    // Standard structure
-    normalizedPmsProperties = pmsData.properties;
-  } else if (
-    Array.isArray(pmsData?.items) &&
-    Array.isArray(pmsData.items[0]?.properties)
-  ) {
-    // Nested structure: items[0].properties
-    normalizedPmsProperties = pmsData.items[0].properties;
-  }
-
-  if (normalizedPmsProperties.length > 0) {
-    contentData.properties.items = mergeProperties(
-      contentData.properties.items || [],
-      normalizedPmsProperties
-    );
-  }
-
-  return contentData;
 }
 
-function mergeProperties(cmsItems: any[] = [], pmsItems: any[] = []) {
-  if (!Array.isArray(pmsItems)) return cmsItems;
+async function fetchContent(): Promise<SiteContent> {
+  const baseUrl = import.meta.env.VITE_CMS_WORKER_URL;
+  // 1️⃣ Fetch all CMS sections (except properties.items)
+  const contentRes = await fetch(`${baseUrl}/public/content`);
+  if (!contentRes.ok) {
+    throw new Error("Failed to fetch CMS content");
+  }
+  const contentData = await contentRes.json();
 
-  return pmsItems.map((pmsProp) => {
-    // PMS structure should contain id directly, not nested under properties
-    const cmsProp = cmsItems.find((c) => c.id === pmsProp.id);
+  if (!contentData?.sections) {
+    throw new Error("Invalid CMS response format");
+  }
 
-    return {
-      ...cmsProp,   // CMS editable fields (optional overrides)
-      ...pmsProp,   // PMS core fields
+  // Normalize array response -> object keyed by section key
+  const sectionsArray = contentData.sections;
+  const sections: any = {};
+
+  if (Array.isArray(sectionsArray)) {
+    for (const section of sectionsArray) {
+      if (section?.key && section?.content) {
+        sections[section.key] = section.content;
+      }
+    }
+  } else {
+    Object.assign(sections, sectionsArray);
+  }
+
+  // 2️⃣ Fetch live properties from properties table
+  const propertiesRes = await fetch(`${baseUrl}/public/properties`);
+  if (!propertiesRes.ok) {
+    throw new Error("Failed to fetch properties");
+  }
+
+  const propertiesData = await propertiesRes.json();
+
+  // Expected: { properties: [...] }
+  if (Array.isArray(propertiesData?.properties)) {
+    const normalized = propertiesData.properties.map((p: any) => ({
+      ...p,
+      galleryKeys: typeof p.gallery_keys === "string"
+        ? safeJsonParse(p.gallery_keys)
+        : p.galleryKeys || [],
+      amenities: typeof p.amenities === "string"
+        ? safeJsonParse(p.amenities)
+        : p.amenities || [],
+      idealFor: typeof p.ideal_for === "string"
+        ? safeJsonParse(p.ideal_for)
+        : p.idealFor || [],
+      bookingPlatforms: typeof p.booking_platforms === "string"
+        ? safeJsonParse(p.booking_platforms)
+        : p.bookingPlatforms || [],
+      reviews: typeof p.reviews === "string"
+        ? safeJsonParse(p.reviews)
+        : Array.isArray(p.reviews)
+        ? p.reviews
+        : [],
+    }));
+
+    sections.properties = {
+      ...sections.properties,
+      items: normalized
     };
-  });
+  }
+
+  return sections;
 }
 
 
@@ -202,7 +227,6 @@ export function ContentProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const load = () => {
     setIsLoading(true);
     fetchContent()
@@ -239,8 +263,9 @@ const cmsWorkerUrl = import.meta.env.VITE_CMS_WORKER_URL;
 
 export async function fetchContentFromCMS() {
   const token = localStorage.getItem("cms_jwt");
+
   const res = await fetch(
-    `${cmsWorkerUrl}/cms/content`,
+    `${cmsWorkerUrl}/admin/content`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -248,23 +273,51 @@ export async function fetchContentFromCMS() {
     }
   );
 
-  return res.json();
+  if (!res.ok) {
+    throw new Error("Failed to fetch admin CMS content");
+  }
+
+  const data = await res.json();
+
+  if (!data?.sections) {
+    throw new Error("Invalid admin CMS response format");
+  }
+
+  const sectionsArray = data.sections;
+  const normalized: any = {};
+
+  if (Array.isArray(sectionsArray)) {
+    for (const section of sectionsArray) {
+      if (section?.key && section?.content) {
+        normalized[section.key] = section;
+      }
+    }
+  } else {
+    Object.assign(normalized, sectionsArray);
+  }
+
+  return normalized as SiteContent;
 }
 
-export async function saveContentToCMS(content: SiteContent, sha: string) {
+
+export async function saveSectionToCMS(sectionKey: string, content: any) {
   const token = localStorage.getItem("cms_jwt");
 
   const res = await fetch(
-    `${cmsWorkerUrl}/cms/content`,
+    `${cmsWorkerUrl}/admin/section/${sectionKey}`,
     {
       method: "PUT",
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ content, sha })
+      body: JSON.stringify({ content })
     }
   );
+
+  if (!res.ok) {
+    throw new Error(`Failed to save section: ${sectionKey}`);
+  }
 
   return res.json();
 }

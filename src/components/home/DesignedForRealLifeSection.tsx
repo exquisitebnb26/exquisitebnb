@@ -5,8 +5,9 @@ import { iconRegistry } from "@/components/admin/icons";
 const DesignedForRealLifeSection = () => {
   const { content, isLoading } = useContent();
 
-  const section = content?.home?.designedForRealLife;
-  if (isLoading || !section) return null;
+if (isLoading || !content) return null;
+  const home = content.home;
+const section = home?.designedForRealLife;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-soft dark:bg-charcoal-light">

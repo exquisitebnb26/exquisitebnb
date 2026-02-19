@@ -7,11 +7,12 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const FeaturesSection = () => {
- const { content, isLoading, error } = useContent();
- if (isLoading || !content?.home?.features) {
-    return null;
-  }
-  const f = content.home.features;
+ const { content, isLoading } = useContent();
+
+if (isLoading || !content) return null;
+ const home = content.home;
+
+const f = home.features;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">

@@ -1,20 +1,22 @@
 // Frontend helper to fetch availability from Cloudflare Worker
-
 export async function fetchAvailability(propertyId: string) {
-  const res = await fetch(
-    `https://availability-worker.exquisitebnb-ai.workers.dev/api/availability?propertyId=${propertyId}`
-  );
+  const availabilityWorker = import.meta.env.VITE_AVAILABILITY_WORKER_URL;
 
+  if (!availabilityWorker) {
+    throw new Error("Availability worker URL not configured");
+  }
+
+  const res = await fetch(
+    `${availabilityWorker}/api/availability?propertyId=${propertyId}`
+  );
   if (!res.ok) {
     const text = await res.text();
     throw new Error(text || "Failed to fetch availability");
   }
 
   const data = await res.json();
-
   // Worker returns array of rows: [{ start_date, end_date, status }]
   const blockedDates: string[] = [];
-
   (data || [])
     .filter((d: any) => d.status === "booked")
     .forEach((d: any) => {
@@ -24,7 +26,7 @@ export async function fetchAvailability(propertyId: string) {
       // Expand date range into individual days
       for (
         let dt = new Date(start);
-        dt < end;
+        dt <= end;
         dt.setDate(dt.getDate() + 1)
       ) {
         blockedDates.push(dt.toISOString().split("T")[0]);

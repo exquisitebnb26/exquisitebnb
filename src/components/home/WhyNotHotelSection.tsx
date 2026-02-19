@@ -4,8 +4,9 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const WhyNotHotelSection = () => {
   const { content, isLoading } = useContent();
 
-  const section = content?.home?.whyNotHotel;
-  if (isLoading || !section) return null;
+if (isLoading || !content) return null;
+  const home = content.home;
+  const section = home?.whyNotHotel;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-soft dark:bg-charcoal-light">

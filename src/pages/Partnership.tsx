@@ -9,10 +9,13 @@ const iconMap: Record<string, LucideIcon> = { Sparkles, Shield, Users, Palette }
 
 const Partnership = () => {
   const { content, isLoading } = useContent();
-  if (isLoading || !content?.partnership) {
+
+if (isLoading || !content) return null;
+  const p = content.partnership;
+
+  if (isLoading || !p) {
     return null;
   }
-  const p = content.partnership;
 
   return (
     <Layout>

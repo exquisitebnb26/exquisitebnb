@@ -7,26 +7,36 @@ interface EditorProps {
 }
 
 export default function ReviewsEditor({ content, update }: EditorProps) {
-  const items = content.home.testimonials.items;
-
+  const items = content.home?.content?.testimonials?.items ?? [];
+  
   const updateReview = (index: number, field: string, value: unknown) => {
     const newItems = [...items];
     newItems[index] = { ...newItems[index], [field]: value };
-    update("home.testimonials.items", newItems);
+    update("home.content.testimonials.items", newItems);
   };
 
   return (
     <RepeatableList
       title="Review"
       count={items.length}
-      onAdd={() => update("home.testimonials.items", [...items, { rating: 5, text: "", author: "" }])}
+      onAdd={() =>
+        update("home.content.testimonials.items", [
+          ...items,
+          { rating: 5, text: "", author: "", label: "" }
+        ])
+      }
       addLabel="Add Review"
     >
       {items.map((t, i) => (
         <EditorCard
           key={i}
           title={t.author || `Review ${i + 1}`}
-          onRemove={() => update("home.testimonials.items", items.filter((_, j) => j !== i))}
+          onRemove={() =>
+            update(
+              "home.content.testimonials.items",
+              items.filter((_, j) => j !== i)
+            )
+          }
         >
           <StarRatingSelector value={t.rating} onChange={(v) => updateReview(i, "rating", v)} />
           <TextAreaField label="Review Text" value={t.text} onChange={(v) => updateReview(i, "text", v)} />

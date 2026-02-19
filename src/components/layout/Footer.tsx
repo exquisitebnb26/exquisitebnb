@@ -4,9 +4,8 @@ import { Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
 import { useContent } from "@/lib/content";
 
 const Footer = () => {
-  const { content, isLoading, error } = useContent();
-
-  if (isLoading || !content?.site) {
+  const { content, isLoading } = useContent();
+  if (isLoading || !content.site) {
     return null;
   }
   const currentYear = new Date().getFullYear();

@@ -4,7 +4,6 @@ import {
   Star, Users, MapPin, Wifi, Car, Snowflake, Tv, Coffee, UtensilsCrossed,
   ChevronLeft, ChevronRight, ExternalLink, LucideIcon,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import heroImage from "@/assets/hero-living-room.jpg";
@@ -34,22 +33,20 @@ const PropertyDetail = () => {
 
   // Support both CMS format and PMS nested format
   const rawItems: any[] = properties?.items || [];
-
-  const propertyList =
-    Array.isArray(rawItems) && rawItems[0]?.properties
-      ? rawItems[0].properties
-      : rawItems;
+ const propertyList = Array.isArray(rawItems) ? rawItems : [];
 
   const property =
     propertyList.find((p: any) => p.id === id) ??
     propertyList[0];
 
   // Support CMS image keys OR PMS direct image URLs
+  const gallery = Array.isArray(property?.galleryKeys)
+    ? property.galleryKeys
+    : [];
+
   const images =
-    property?.galleryKeys && property.galleryKeys.length > 0
-      ? property.galleryKeys.map((k: string) => imageMap[k] || heroImage)
-      : property?.images && property.images.length > 0
-      ? property.images
+    gallery.length > 0
+      ? gallery.map((k: string) => imageMap[k] || heroImage)
       : [heroImage];
 
   useEffect(() => {

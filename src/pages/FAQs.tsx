@@ -9,9 +9,11 @@ import {
 import { useContent } from "@/lib/content";
 
 const FAQs = () => {
-  const { content } = useContent();
-  const faqs = content?.faqs;
-  if (!faqs) return null;
+  const { content, isLoading } = useContent();
+
+if (isLoading || !content) return null;
+  const faqs = content.faqs;
+  if (isLoading || !faqs) return null;
 
   return (
     <Layout>

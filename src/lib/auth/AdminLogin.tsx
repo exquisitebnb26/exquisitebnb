@@ -39,7 +39,7 @@ export default function AdminLogin() {
               className="mt-1 w-full rounded-xl bg-transparent border border-warm-white/10 px-4 py-3 outline-none focus:border-gold/40"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="*****@exquisitebnb.com"
+              placeholder="Email address"
             />
           </div>
 
@@ -51,7 +51,7 @@ export default function AdminLogin() {
                 type={show ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="••••••••"
+                placeholder="password"
               />
               <button
                 type="button"

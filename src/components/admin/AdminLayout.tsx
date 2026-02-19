@@ -4,7 +4,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { theme } from "./theme";
 import LogoImage from "@/assets/Exquisitebnb.png";
 import type { SiteContent } from "@/lib/content";
-
 import SiteEditor from "./editors/SiteEditor";
 import HomeEditor from "./editors/HomeEditor";
 import AboutEditor from "./editors/AboutEditor";

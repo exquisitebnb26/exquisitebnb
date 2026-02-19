@@ -18,21 +18,27 @@ const imageMap: Record<string, string> = {
 
 const Properties = () => {
   const { content, isLoading } = useContent();
+
+if (isLoading || !content) return null;
   if (isLoading) {
     return null;
   }
-  const header = (content.properties?.header || {}) as { label?: string; title?: string; subtitle?: string };
-  const bookingNote = content.properties?.bookingNote || "";
-  const platforms = content.properties?.platforms || [];
+  const propertiesPage = content.properties_header;
+
+  const header = (propertiesPage?.header || {}) as {
+    label?: string;
+    title?: string;
+    subtitle?: string;
+  };
+
+  const bookingNote = propertiesPage?.bookingNote || "";
+  const platforms = propertiesPage?.platforms || [];
+
+  // Property items now come only from the properties table (merged in ContentProvider)
   const rawItems: any[] = content.properties?.items || [];
 
   // Normalize structure (supports both CMS and PMS shapes)
-  const items = Array.isArray(rawItems) &&
-    rawItems.length > 0 &&
-    rawItems[0]?.properties &&
-    Array.isArray(rawItems[0].properties)
-      ? rawItems[0].properties
-      : rawItems;
+  const items = Array.isArray(rawItems) ? rawItems : [];
 
   return (
     <Layout>
@@ -97,7 +103,7 @@ const Properties = () => {
 
                     {/* Ideal-for labels */}
                     <div className="flex flex-wrap gap-2 mb-4">
-                      {(property.idealFor || []).map((label, idx) => (
+                      {(Array.isArray(property?.idealFor) ? property.idealFor : []).map((label, idx) => (
                         <span
                           key={`${property.id}-ideal-${idx}`}
                           className="text-xs px-2.5 py-1 rounded-sm
@@ -116,7 +122,7 @@ const Properties = () => {
                         <Link to={`/properties/${property.id}`}>View Details</Link>
                       </Button>
                       <div className="flex flex-wrap gap-2 text-xs text-[hsl(var(--forest-dark))] dark:text-cream-muted">
-                        {(property.bookingPlatforms || []).map((platform, idx) => (
+                        {(Array.isArray(property?.bookingPlatforms) ? property.bookingPlatforms : []).map((platform, idx) => (
                           <span key={`${property.id}-platform-${idx}`}>
                             {platform?.name}
                           </span>

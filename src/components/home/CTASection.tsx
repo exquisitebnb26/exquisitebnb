@@ -4,11 +4,13 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
 const CTASection = () => {
-  const { content, isLoading, error } = useContent();
-  if (isLoading || !content?.home?.cta) {
-    return null;
-  }
-  const cta = content.home.cta;
+
+
+    const { content, isLoading } = useContent();
+
+if (isLoading || !content) return null;
+  const home = content.home;
+    const cta = home.cta;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal relative overflow-hidden">

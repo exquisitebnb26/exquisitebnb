@@ -6,18 +6,13 @@ import { useContent } from "@/lib/content";
 
 const HeroSection = () => {
   const { content, isLoading, error } = useContent();
+  if (isLoading || !content) return null;
+  if (!content?.home?.hero) return null;
 
-if (isLoading) return null;
-if (error) return null;
-
-const home = content?.home;
-if (!home) return null;
-
-const hero = home.hero;
+  const hero = content.home.hero;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center">
-      {/* Background Image */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
@@ -27,13 +22,10 @@ const hero = home.hero;
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/40 via-charcoal/20 to-charcoal/60" />
       </div>
 
-      {/* Hero Content */}
       <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
         <div className="max-w-3xl mx-auto space-y-8">
           <ScrollReveal variant="fade-in" duration={900} delay={200}>
-            <p className="text-sm tracking-[0.3em] uppercase luxury-text-glow">
-              {hero.label}
-            </p>
+            <p className="text-sm tracking-[0.3em] uppercase luxury-text-glow">{hero.label}</p>
           </ScrollReveal>
 
           <ScrollReveal variant="fade-up" duration={1000} delay={400}>
@@ -69,7 +61,6 @@ const hero = home.hero;
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
         <div className="w-px h-12 bg-gradient-to-b from-emerald-700 via-emerald-500/60 dark:from-gold dark:via-gold/60 to-transparent" />
       </div>

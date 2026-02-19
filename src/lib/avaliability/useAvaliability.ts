@@ -15,7 +15,6 @@ export function useAvailability(propertyId: string) {
       try {
         setLoading(true);
         const data = await fetchAvailability(propertyId);
-        console.log("Fetched availability:", data);
         if (mounted) {
           const dates = (data.blockedDates || []).map((d: string) => {
             // Force midnight to avoid timezone shifts
