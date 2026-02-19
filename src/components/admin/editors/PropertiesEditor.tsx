@@ -7,12 +7,14 @@ interface EditorProps {
 }
 
 export default function PropertiesEditor({ content, update }: EditorProps) {
-  const p = content.properties;
-
+const p=(content as any)?.properties?.content || {};
+  if (!p || !p.header) {
+    return null;
+  }
   const updateItem = (index: number, field: string, value: unknown) => {
     const items = [...p.items];
     items[index] = { ...items[index], [field]: value };
-    update("properties.items", items);
+    update("properties.content.items", items);
   };
 
   const addReviewToProperty = (propIndex: number) => {
@@ -21,7 +23,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
       ...items[propIndex],
       reviews: [...items[propIndex].reviews, { rating: 5, text: "", author: "",label: "" }],
     };
-    update("properties.items", items);
+    update("properties.content.items", items);
   };
 
   const removeReviewFromProperty = (propIndex: number, reviewIndex: number) => {
@@ -30,7 +32,7 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
       ...items[propIndex],
       reviews: items[propIndex].reviews.filter((_, j) => j !== reviewIndex),
     };
-    update("properties.items", items);
+    update("properties.content.items", items);
   };
 
   const updateReview = (propIndex: number, reviewIndex: number, field: string, value: unknown) => {
@@ -38,24 +40,24 @@ export default function PropertiesEditor({ content, update }: EditorProps) {
     const reviews = [...items[propIndex].reviews];
     reviews[reviewIndex] = { ...reviews[reviewIndex], [field]: value };
     items[propIndex] = { ...items[propIndex], reviews };
-    update("properties.items", items);
+    update("properties.content.items", items);
   };
 
   return (
     <div className="space-y-4">
       {/* Header */}
       <SectionDivider label="Header" />
-      <TextField label="Label" value={p.header.label} onChange={(v) => update("properties.header.label", v)} />
-      <TextField label="Title" value={p.header.title} onChange={(v) => update("properties.header.title", v)} />
-      <TextAreaField label="Subtitle" value={p.header.subtitle} onChange={(v) => update("properties.header.subtitle", v)} />
-      <TextField label="Booking Note" value={p.bookingNote} onChange={(v) => update("properties.bookingNote", v)} />
+      <TextField label="Label" value={p.header.label} onChange={(v) => update("properties.content.header.label", v)} />
+      <TextField label="Title" value={p.header.title} onChange={(v) => update("properties.content.header.title", v)} />
+      <TextAreaField label="Subtitle" value={p.header.subtitle} onChange={(v) => update("properties.content.header.subtitle", v)} />
+      <TextField label="Booking Note" value={p.bookingNote} onChange={(v) => update("properties.content.bookingNote", v)} />
 
       {/* Properties */}
       <SectionDivider label="Properties" />
       <RepeatableList
         title="Property"
         count={p.items.length}
-        onAdd={() => update("properties.items", [...p.items, {
+        onAdd={() => update("properties.content.items", [...p.items, {
           id: `property-${Date.now()}`,
           name: "New Property",
           location: "",

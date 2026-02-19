@@ -58,17 +58,29 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     }
   };
 
-  const update = (path: string, value: unknown) => {
-    if (!content) return;
-    const newContent = JSON.parse(JSON.stringify(content));
+  const update = (path: string, value: any) => {
+  setContent((prev: any) => {
     const keys = path.split(".");
-    let obj = newContent;
+    const newData = JSON.parse(JSON.stringify(prev));
+
+    let obj = newData;
+
     for (let i = 0; i < keys.length - 1; i++) {
-      obj = obj[keys[i]];
+      const key = keys[i];
+
+      // 🔥 Create missing structure automatically
+      if (!obj[key] || typeof obj[key] !== "object") {
+        obj[key] = {};
+      }
+
+      obj = obj[key];
     }
+
     obj[keys[keys.length - 1]] = value;
-    setContent(newContent);
-  };
+
+    return newData;
+  });
+};
 
   if (loading) {
     return (

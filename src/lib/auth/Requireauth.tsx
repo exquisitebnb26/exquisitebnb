@@ -1,5 +1,6 @@
 import { Navigate } from "react-router-dom";
 import { ReactNode } from "react";
+import { getToken } from "./session";
 
 interface Props {
   children: ReactNode;
@@ -19,7 +20,7 @@ function isTokenExpired(token: string) {
 }
 
 export default function RequireAuth({ children }: Props) {
-  const token = localStorage.getItem("cms_token");
+  const token = getToken();
 
   if (!token) {
     return <Navigate to="/login" replace />;

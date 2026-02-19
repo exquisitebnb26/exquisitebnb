@@ -18,7 +18,8 @@ import ScrollToTop from "./components/utils/ScrollToTop";
 import RedirectHandler from "./components/utils/RedirectHandler";
 import ChatWidget from "./components/chat/ChatWidget";
 import AdminLogin from "./lib/auth/AdminLogin";
-import RequireAuth from "./lib/auth/RequireAuth";
+import RequireAuth from "./lib/auth/Requireauth";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,9 +29,8 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-        
-        <RedirectHandler />
-        <ScrollToTop/>
+          <RedirectHandler />
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/properties" element={<Properties />} />
@@ -41,18 +41,18 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/partnership" element={<Partnership />} />
             <Route path="/login" element={<AdminLogin />} />
-          <Route
-            path="/admin"
-            element={
-              <RequireAuth>
-                <Admin />
-              </RequireAuth>
-            }
-          />
+            <Route
+              path="/admin"
+              element={
+                <RequireAuth>
+                  <Admin />
+                </RequireAuth>
+              }
+            />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ChatWidget />
         </BrowserRouter>
-        <ChatWidget/>
       </ContentProvider>
     </TooltipProvider>
   </QueryClientProvider>
