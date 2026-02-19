@@ -25,16 +25,28 @@ export async function askAI(message: string): Promise<string> {
   requestTimestamps.push(Date.now());
 
   const response = await fetch(
-    "https://exquisitebnb-ai.exquisitebnb-ai.workers.dev",
+    `${import.meta.env.VITE_AI_WORKER_URL}/agent/chat`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: sanitized }),
+      body: JSON.stringify({ question: sanitized }),
     }
   );
 
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("AI Worker error:", response.status, errorText);
+    return "Our concierge is temporarily unavailable. Please try again shortly.";
+  }
+
   const data = await response.json();
+
+  if (!data?.reply) {
+    console.warn("Unexpected AI response:", data);
+    return "I’m here to assist with your stay. How may I help you today?";
+  }
+
   return data.reply;
 }

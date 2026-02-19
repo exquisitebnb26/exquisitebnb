@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   SiteContent,
   fetchContentFromCMS,
-  saveContentToCMS,
+  saveSectionToCMS,
 } from "@/lib/content";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Navigate } from "react-router-dom";
@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom";
 
 function AdminDashboard({ onLogout }: { onLogout: () => void }) {
   const [content, setContent] = useState<SiteContent | null>(null);
-  const [sha, setSha] = useState("");
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -24,9 +23,8 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     setLoading(true);
     setError(null);
     try {
-      const { content: c, sha: s } = await fetchContentFromCMS();
+      const c = await fetchContentFromCMS();
       setContent(c);
-      setSha(s);
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -44,10 +42,13 @@ function AdminDashboard({ onLogout }: { onLogout: () => void }) {
     setError(null);
     setSaved(false);
     try {
-      const result = await saveContentToCMS(content, sha);
-      if (result.sha) {
-          setSha(result.sha);
-        }
+      // Save each top-level section individually
+      const entries = Object.entries(content);
+
+      for (const [sectionKey, sectionValue] of entries) {
+        await saveSectionToCMS(sectionKey, sectionValue);
+      }
+
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } catch (err: any) {

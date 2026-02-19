@@ -80,7 +80,7 @@ export async function askConciergeAI(payload: AskPayload): Promise<any> {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      message: sanitizedQuestion,
+      question: sanitizedQuestion,
       memory: payload.memory ?? [],
       propertyId: payload.propertyId ?? undefined,
       arrivalDate: payload.arrivalDate ?? undefined,

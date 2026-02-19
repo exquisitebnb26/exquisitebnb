@@ -150,42 +150,22 @@ const ContentContext = createContext<ContentContextValue>({
 async function fetchContent(): Promise<SiteContent> {
   const baseUrl = import.meta.env.VITE_CMS_WORKER_URL;
 
-  // List all public sections you want to load
-  const sections = [
-    "home",
-    "about",
-    "properties",
-    "faqs",
-    "contact",
-    "book",
-    "partnership"
-  ];
+  // Single bulk call instead of 8 separate requests
+  const res = await fetch(`${baseUrl}/public/content`);
 
-  const results = await Promise.all(
-    sections.map(async (section) => {
-      const res = await fetch(`${baseUrl}/public/section/${section}`);
-      if (!res.ok) {
-        throw new Error(`Failed to fetch section: ${section}`);
-      }
-      const data = await res.json();
-      return { key: section, data };
-    })
-  );
-
-  // Convert array to object shape matching SiteContent
-  const content: any = {};
-
-  for (const item of results) {
-    // DB returns { key, content, updated_at }
-    const parsed =
-      typeof item.data?.content === "string"
-        ? JSON.parse(item.data.content)
-        : item.data?.content || {};
-
-    content[item.key] = parsed;
+  if (!res.ok) {
+    throw new Error("Failed to fetch CMS content");
   }
 
-  return content as SiteContent;
+  const data = await res.json();
+
+  // Expected shape from worker:
+  // { sections: { home: {...}, about: {...}, ... } }
+  if (!data?.sections) {
+    throw new Error("Invalid CMS response format");
+  }
+
+  return data.sections as SiteContent;
 }
 
 
@@ -230,8 +210,9 @@ const cmsWorkerUrl = import.meta.env.VITE_CMS_WORKER_URL;
 
 export async function fetchContentFromCMS() {
   const token = localStorage.getItem("cms_jwt");
+
   const res = await fetch(
-    `${cmsWorkerUrl}/admin/section/home`,
+    `${cmsWorkerUrl}/admin/content`,
     {
       headers: {
         Authorization: `Bearer ${token}`
@@ -239,14 +220,25 @@ export async function fetchContentFromCMS() {
     }
   );
 
-  return res.json();
+  if (!res.ok) {
+    throw new Error("Failed to fetch admin CMS content");
+  }
+
+  const data = await res.json();
+
+  if (!data?.sections) {
+    throw new Error("Invalid admin CMS response format");
+  }
+
+  return data.sections as SiteContent;
 }
 
-export async function saveContentToCMS(content: SiteContent) {
+
+export async function saveSectionToCMS(sectionKey: string, content: any) {
   const token = localStorage.getItem("cms_jwt");
 
   const res = await fetch(
-    `${cmsWorkerUrl}/admin/section/home`,
+    `${cmsWorkerUrl}/admin/section/${sectionKey}`,
     {
       method: "PUT",
       headers: {
@@ -256,6 +248,10 @@ export async function saveContentToCMS(content: SiteContent) {
       body: JSON.stringify({ content })
     }
   );
+
+  if (!res.ok) {
+    throw new Error(`Failed to save section: ${sectionKey}`);
+  }
 
   return res.json();
 }

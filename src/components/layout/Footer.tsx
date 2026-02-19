@@ -5,7 +5,6 @@ import { useContent } from "@/lib/content";
 
 const Footer = () => {
   const { content, isLoading, error } = useContent();
-
   if (isLoading || !content?.site) {
     return null;
   }
