@@ -5,7 +5,8 @@ import { iconRegistry } from "@/components/admin/icons";
 const DesignedForRealLifeSection = () => {
   const { content, isLoading } = useContent();
 
-  const section = content?.home?.designedForRealLife;
+  const home = content?.home?.content;
+const section = home?.designedForRealLife;
   if (isLoading || !section) return null;
 
   return (

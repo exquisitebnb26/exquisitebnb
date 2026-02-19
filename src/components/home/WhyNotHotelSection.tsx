@@ -4,7 +4,8 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 const WhyNotHotelSection = () => {
   const { content, isLoading } = useContent();
 
-  const section = content?.home?.whyNotHotel;
+  const home = content?.home?.content;
+  const section = home?.whyNotHotel;
   if (isLoading || !section) return null;
 
   return (

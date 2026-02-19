@@ -33,8 +33,8 @@ const Contact = () => {
     defaultValues: { inquiryType: "General Inquiry", firstName: "", lastName: "", email: "", message: "" },
   });
 
-  const contact = content?.contact;
-  const site = content?.site;
+  const contact = content?.contact?.content;
+  const site = content?.site?.content;
 
   if (isLoading || !contact || !site) {
     return null;

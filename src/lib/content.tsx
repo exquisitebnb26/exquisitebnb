@@ -147,25 +147,68 @@ const ContentContext = createContext<ContentContextValue>({
 
 
 
+function safeJsonParse(value: string | null | undefined) {
+  try {
+    return value ? JSON.parse(value) : [];
+  } catch {
+    return [];
+  }
+}
+
 async function fetchContent(): Promise<SiteContent> {
   const baseUrl = import.meta.env.VITE_CMS_WORKER_URL;
 
-  // Single bulk call instead of 8 separate requests
-  const res = await fetch(`${baseUrl}/public/content`);
-
-  if (!res.ok) {
+  // 1️⃣ Fetch all CMS sections (except properties.items)
+  const contentRes = await fetch(`${baseUrl}/public/content`);
+  if (!contentRes.ok) {
     throw new Error("Failed to fetch CMS content");
   }
+  const contentData = await contentRes.json();
 
-  const data = await res.json();
-
-  // Expected shape from worker:
-  // { sections: { home: {...}, about: {...}, ... } }
-  if (!data?.sections) {
+  if (!contentData?.sections) {
     throw new Error("Invalid CMS response format");
   }
 
-  return data.sections as SiteContent;
+  const sections = contentData.sections as SiteContent;
+
+  // 2️⃣ Fetch live properties from properties table
+  const propertiesRes = await fetch(`${baseUrl}/public/properties`);
+  if (!propertiesRes.ok) {
+    throw new Error("Failed to fetch properties");
+  }
+
+  const propertiesData = await propertiesRes.json();
+
+  // Expected: { properties: [...] }
+  if (Array.isArray(propertiesData?.properties)) {
+    const normalized = propertiesData.properties.map((p: any) => ({
+      ...p,
+      galleryKeys: typeof p.gallery_keys === "string"
+        ? safeJsonParse(p.gallery_keys)
+        : p.galleryKeys || [],
+      amenities: typeof p.amenities === "string"
+        ? safeJsonParse(p.amenities)
+        : p.amenities || [],
+      idealFor: typeof p.ideal_for === "string"
+        ? safeJsonParse(p.ideal_for)
+        : p.idealFor || [],
+      bookingPlatforms: typeof p.booking_platforms === "string"
+        ? safeJsonParse(p.booking_platforms)
+        : p.bookingPlatforms || [],
+      reviews: typeof p.reviews === "string"
+        ? safeJsonParse(p.reviews)
+        : Array.isArray(p.reviews)
+        ? p.reviews
+        : [],
+    }));
+
+    sections.properties = {
+      ...sections.properties,
+      items: normalized
+    };
+  }
+
+  return sections;
 }
 
 

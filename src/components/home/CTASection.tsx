@@ -5,10 +5,13 @@ import { useContent } from "@/lib/content";
 
 const CTASection = () => {
   const { content, isLoading, error } = useContent();
-  if (isLoading || !content?.home?.cta) {
-    return null;
-  }
-  const cta = content.home.cta;
+  const home = content?.home?.content;
+
+    if (isLoading || !home?.cta) {
+      return null;
+    }
+
+    const cta = home.cta;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal relative overflow-hidden">

@@ -4,11 +4,13 @@ import { useContent } from "@/lib/content";
 const PhilosophySection = () => {
   const { content, isLoading, error } = useContent();
 
-  if (isLoading || !content?.home?.philosophy) {
-    return null;
-  }
+  const home = content?.home?.content;
 
-  const p = content.home.philosophy;
+if (isLoading || !home?.philosophy) {
+  return null;
+}
+
+const p = home.philosophy;
 
   return (
     <section className="py-24 lg:py-32 bg-cream-warm dark:bg-charcoal">

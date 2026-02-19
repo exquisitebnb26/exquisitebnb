@@ -7,7 +7,6 @@ interface EditorProps {
 }
 
 export default function PartnershipEditor({ content, update }: EditorProps) {
-  const p = content.partnership;
   const p=(content as any)?.partnership?.content || {};
   if (!p || !p.header) {
     return null;

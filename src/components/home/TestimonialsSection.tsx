@@ -8,10 +8,13 @@ const TestimonialsSection = () => {
   const { content, isLoading } = useContent();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  if (isLoading || !content?.home?.testimonials) {
-    return null;
-  }
-  const t = content.home.testimonials;
+  const home = content?.home?.content;
+
+if (isLoading || !home?.testimonials) {
+  return null;
+}
+
+const t = home.testimonials;
   const items = t.items.filter((r) => r.text !== "sk testing");
   const visibleCount = 3;
   const maxIndex = Math.max(0, items.length - visibleCount);
