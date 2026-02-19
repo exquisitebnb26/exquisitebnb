@@ -8,11 +8,8 @@ const TestimonialsSection = () => {
   const { content, isLoading } = useContent();
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const home = content?.home?.content;
-
-if (isLoading || !home?.testimonials) {
-  return null;
-}
+if (isLoading || !content) return null;
+  const home = content.home;
 
 const t = home.testimonials;
   const items = t.items.filter((r) => r.text !== "sk testing");

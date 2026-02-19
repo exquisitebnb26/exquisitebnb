@@ -4,13 +4,12 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
 const CTASection = () => {
-  const { content, isLoading, error } = useContent();
-  const home = content?.home?.content;
 
-    if (isLoading || !home?.cta) {
-      return null;
-    }
 
+    const { content, isLoading } = useContent();
+
+if (isLoading || !content) return null;
+  const home = content.home;
     const cta = home.cta;
 
   return (

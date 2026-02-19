@@ -5,11 +5,11 @@ import { useContent } from "@/lib/content";
 
 const Footer = () => {
   const { content, isLoading } = useContent();
-  if (isLoading || !content?.site?.content) {
+  if (isLoading || !content.site) {
     return null;
   }
   const currentYear = new Date().getFullYear();
-  const site = content.site.content;
+  const site = content.site;
 
   const footerLinks = [
     { name: "Home", path: "/" },

@@ -7,12 +7,10 @@ const iconMap: Record<string, LucideIcon> = {
 };
 
 const FeaturesSection = () => {
- const { content, isLoading, error } = useContent();
- const home = content?.home?.content;
+ const { content, isLoading } = useContent();
 
-if (isLoading || !home?.features) {
-  return null;
-}
+if (isLoading || !content) return null;
+ const home = content.home;
 
 const f = home.features;
 

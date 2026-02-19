@@ -7,7 +7,9 @@ const iconMap: Record<string, LucideIcon> = { Sparkles, Heart, Shield, Users };
 
 const About = () => {
   const { content, isLoading } = useContent();
-  const about = content?.about?.content;
+
+if (isLoading || !content) return null;
+  const about = content.about;
   if (isLoading || !about) return null;
 
   return (

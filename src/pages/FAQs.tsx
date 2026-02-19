@@ -10,7 +10,9 @@ import { useContent } from "@/lib/content";
 
 const FAQs = () => {
   const { content, isLoading } = useContent();
-  const faqs = content?.faqs?.content;
+
+if (isLoading || !content) return null;
+  const faqs = content.faqs;
   if (isLoading || !faqs) return null;
 
   return (

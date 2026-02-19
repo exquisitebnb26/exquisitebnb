@@ -30,15 +30,27 @@ const Contact = () => {
 
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { inquiryType: "General Inquiry", firstName: "", lastName: "", email: "", message: "" },
+    defaultValues: {
+      inquiryType: "General Inquiry",
+      firstName: "",
+      lastName: "",
+      email: "",
+      message: "",
+    },
   });
 
-  const contact = content?.contact?.content;
-  const site = content?.site?.content;
+  if (isLoading || !content) return null;
 
-  if (isLoading || !contact || !site) {
-    return null;
-  }
+  const contactSection = content?.contact;
+  const siteSection = content?.site;
+
+  if (!contactSection || !siteSection) return null;
+
+  // Handle possible nested shapes
+  const contact = contactSection?.content ?? contactSection ?? {};
+  const site = siteSection?.content ?? siteSection ?? {};
+
+  if (!contact?.header || !site?.supportEmail) return null;
 
   const onSubmit = (data: ContactFormData) => {
     const subject = encodeURIComponent(`${data.inquiryType} — ${data.firstName} ${data.lastName}`);
@@ -59,8 +71,8 @@ const Contact = () => {
                 <div className="w-16 h-16 mx-auto rounded-full bg-[hsl(var(--forest-dark))]/20 dark:bg-forest/30 flex items-center justify-center">
                   <CheckCircle className="w-8 h-8 text-[hsl(var(--forest-dark))] dark:text-gold" />
                 </div>
-                <h1 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">{contact.successTitle}</h1>
-                <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted leading-relaxed">{contact.successText}</p>
+                <h1 className="text-3xl md:text-4xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream">{contact.successTitle ?? "Thank You"}</h1>
+                <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted leading-relaxed">{contact.successText ?? "We'll be in touch shortly."}</p>
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                   <Button variant="luxuryOutline" asChild><Link to="/properties">View Properties</Link></Button>
                   <Button variant="ghost" className="text-[hsl(var(--forest-dark))] dark:text-gold" asChild><Link to="/faqs">Read FAQs</Link></Button>
@@ -78,10 +90,10 @@ const Contact = () => {
       <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-cream-warm dark:bg-charcoal">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <ScrollReveal variant="fade-in" duration={900} delay={100}>
-            <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">{contact.header.label}</p>
+            <p className="text-[hsl(var(--forest-dark))] dark:text-gold text-sm tracking-[0.25em] uppercase mb-4">{contact.header?.label ?? ""}</p>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={1000} delay={250}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">{contact.header.title}</h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[hsl(var(--forest-dark))] dark:text-cream mb-6">{contact.header?.title ?? ""}</h1>
           </ScrollReveal>
           <ScrollReveal variant="fade-up" duration={900} delay={400}>
             <p className="text-[hsl(var(--forest-dark))]/70 dark:text-cream-muted text-lg max-w-2xl mx-auto">

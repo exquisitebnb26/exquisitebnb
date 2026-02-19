@@ -13,12 +13,10 @@ const imageMap: Record<string, string> = {
 };
 
 const PropertiesPreview = () => {
-  const { content, isLoading, error } = useContent();
-  const home = content?.home?.content;
+  const { content, isLoading } = useContent();
 
-if (isLoading || !home?.propertiesPreview) {
-  return null;
-}
+if (isLoading || !content) return null;
+  const home = content.home;
 
 const pp = home.propertiesPreview;
   // Normalize properties (supports CMS format + PMS nested format)

@@ -7,9 +7,9 @@ const iconMap: Record<string, LucideIcon> = { Shield, CreditCard, Calendar };
 
 const Book = () => {
   const { content, isLoading } = useContent();
-  const book = content?.book?.content;
 
-  if (isLoading || !book) return null;
+if (isLoading || !content) return null;
+  const book = content.book;
   return (
     <Layout>
       {/* Header */}

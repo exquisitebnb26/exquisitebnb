@@ -7,7 +7,7 @@ interface EditorProps {
 }
 
 export default function PropertiesEditor({ content, update }: EditorProps) {
-const p = (content as any)?.properties_page?.content || {};
+const p = (content as any)?.properties_header?.content || {};
   if (!p || !p.header) {
     return null;
   }

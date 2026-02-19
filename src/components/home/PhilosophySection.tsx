@@ -2,14 +2,10 @@ import { ScrollReveal } from "@/components/ui/scroll-reveal";
 import { useContent } from "@/lib/content";
 
 const PhilosophySection = () => {
-  const { content, isLoading, error } = useContent();
+ const { content, isLoading } = useContent();
 
-  const home = content?.home?.content;
-
-if (isLoading || !home?.philosophy) {
-  return null;
-}
-
+if (isLoading || !content) return null;
+  const home = content.home;
 const p = home.philosophy;
 
   return (

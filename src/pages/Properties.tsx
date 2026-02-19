@@ -18,10 +18,12 @@ const imageMap: Record<string, string> = {
 
 const Properties = () => {
   const { content, isLoading } = useContent();
+
+if (isLoading || !content) return null;
   if (isLoading) {
     return null;
   }
-  const propertiesPage = content?.properties_page?.content;
+  const propertiesPage = content.properties_header;
 
   const header = (propertiesPage?.header || {}) as {
     label?: string;

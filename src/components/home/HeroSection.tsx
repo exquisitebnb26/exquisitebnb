@@ -6,14 +6,10 @@ import { useContent } from "@/lib/content";
 
 const HeroSection = () => {
   const { content, isLoading, error } = useContent();
+  if (isLoading || !content) return null;
+  if (!content?.home?.hero) return null;
 
-  if (isLoading) return null;
-  if (error) return null;
-
-  const home = content?.home?.content;
-  if (!home?.hero) return null;
-
-  const hero = home.hero;
+  const hero = content.home.hero;
 
   return (
     <section className="relative min-h-screen flex items-center justify-center">

@@ -146,8 +146,8 @@ const ContentContext = createContext<ContentContextValue>({
 
 
 
-
 function safeJsonParse(value: string | null | undefined) {
+
   try {
     return value ? JSON.parse(value) : [];
   } catch {
@@ -157,7 +157,6 @@ function safeJsonParse(value: string | null | undefined) {
 
 async function fetchContent(): Promise<SiteContent> {
   const baseUrl = import.meta.env.VITE_CMS_WORKER_URL;
-
   // 1️⃣ Fetch all CMS sections (except properties.items)
   const contentRes = await fetch(`${baseUrl}/public/content`);
   if (!contentRes.ok) {
@@ -169,7 +168,19 @@ async function fetchContent(): Promise<SiteContent> {
     throw new Error("Invalid CMS response format");
   }
 
-  const sections = contentData.sections as SiteContent;
+  // Normalize array response -> object keyed by section key
+  const sectionsArray = contentData.sections;
+  const sections: any = {};
+
+  if (Array.isArray(sectionsArray)) {
+    for (const section of sectionsArray) {
+      if (section?.key && section?.content) {
+        sections[section.key] = section.content;
+      }
+    }
+  } else {
+    Object.assign(sections, sectionsArray);
+  }
 
   // 2️⃣ Fetch live properties from properties table
   const propertiesRes = await fetch(`${baseUrl}/public/properties`);
@@ -216,7 +227,6 @@ export function ContentProvider({ children }: { children: ReactNode }) {
   const [content, setContent] = useState<SiteContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
   const load = () => {
     setIsLoading(true);
     fetchContent()
@@ -273,7 +283,20 @@ export async function fetchContentFromCMS() {
     throw new Error("Invalid admin CMS response format");
   }
 
-  return data.sections as SiteContent;
+  const sectionsArray = data.sections;
+  const normalized: any = {};
+
+  if (Array.isArray(sectionsArray)) {
+    for (const section of sectionsArray) {
+      if (section?.key && section?.content) {
+        normalized[section.key] = section;
+      }
+    }
+  } else {
+    Object.assign(normalized, sectionsArray);
+  }
+
+  return normalized as SiteContent;
 }
 
 
